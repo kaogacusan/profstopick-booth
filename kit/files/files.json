@@ -1,0 +1,20 @@
+{
+ "zip": {
+  "href": "/assets/kit/profstopick-brand-kit.zip",
+  "bytes": 7883886,
+  "files": 352
+ },
+ "drawings": {
+  "portrait": [
+   "saved-pick-shelf-scene",
+   "welcome-stair-scene"
+  ],
+  "wide": [
+   "graduation-horizon-footer"
+  ]
+ },
+ "share": [
+  "og-home",
+  "og-signin"
+ ]
+}

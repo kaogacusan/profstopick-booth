@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>profstopick — Booth plan</title>
+  <meta name="description" content="Layout, materials, print files, and shift schedule for the profstopick bazaar booth, Nov 9–13." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/assets/kit/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400..900&family=Red+Hat+Mono:wght@400..700&display=swap" rel="stylesheet" />
+  <!-- Onest has no ₱. This loads only the ₱ from Inter. -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&text=%E2%82%B1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/render/render.css" />
+  <script type="importmap">
+    { "imports": { "three": "/assets/vendor/three.module.js", "three/addons/": "/assets/vendor/addons/" } }
+  </script>
+</head>
+<body>
+
+  <header class="rnav">
+    <a href="/" class="rnav__brand" aria-label="profstopick booth"><img src="/assets/kit/brand/wordmark.svg" alt="profstopick" /></a>
+    <nav class="rnav__tabs" aria-label="Pages">
+      <a href="/" aria-current="page">Booth</a>
+      <a href="/kit/">Brand kit</a>
+    </nav>
+    <a href="https://profstopick.com" class="rnav__site">profstopick.com →</a>
+  </header>
+
+  <main>
+    <section class="rhero wrap">
+      <p class="mono"><i></i>Red Brick Road · Nov 9–13</p>
+      <h1 class="display">Bazaar booth <span class="blue">plan</span></h1>
+      <p class="lede">Layout, materials, print files, and staffing for our booth. Drag the model to rotate it. Numbers on the model match the item list.</p>
+      <ul class="facts">
+        <li><b>Nov 9–13</b><span>8 AM–5 PM, 3 shifts daily</span></li>
+        <li><b>1.5 m × 3 m</b><span>Half of a shared tent</span></li>
+        <li><b>100</b><span>Paid pass target</span></li>
+        <li><b>₱20,490</b><span>Revenue target</span></li>
+        <li><b>₱3,234</b><span>Booth budget, of ₱8,000</span></li>
+      </ul>
+      <a class="btn rhero__go" href="#assets">View print files ↓</a>
+    </section>
+
+    <section class="viewer wrap" aria-label="3D booth">
+      <div class="viewer__main">
+        <div class="viewtabs" id="viewTabs" role="tablist" aria-label="Camera views"></div>
+        <div class="stage" id="stage">
+          <canvas aria-label="3D model of the booth. Drag to rotate."></canvas>
+          <div class="stage__overlay"></div>
+          <div class="stage__tip" aria-hidden="true"></div>
+          <div class="stage__hint">Drag to rotate · Tap a number to find it</div>
+        </div>
+        <div class="controls">
+          <div class="lookpick">Print style <div class="seg seg--sm" data-looks role="group" aria-label="Print look on the model"></div></div>
+          <div class="toggles" id="toggles"></div>
+        </div>
+        <p class="caption" id="caption"></p>
+      </div>
+
+      <aside class="parts">
+        <p class="parts__lead"><b data-count></b> items. Most are borrowed or brought by members.</p>
+        <div id="partsList"></div>
+      </aside>
+    </section>
+
+    <section class="sec wrap rise" id="assets">
+      <div class="sec__head">
+        <div>
+          <h2 class="display">Print files</h2>
+          <p class="sec__sub">Each piece comes in six styles: three full, and three simple ones with less on them. Choosing a style updates the 3D model. Use the PDF for printing and the JPG for sharing. Logos and graphics are in the <a href="/kit/">brand kit</a>.</p>
+        </div>
+      </div>
+      <div class="looks">
+        <span class="looks__k">Apply to all:</span>
+        <div class="seg" data-looks role="group" aria-label="Apply one style to every piece"></div>
+        <p class="looks__about" id="lookAbout"></p>
+      </div>
+      <div class="assets" id="assetList"></div>
+    </section>
+
+    <section class="sec wrap rise">
+      <div class="sec__head">
+        <div>
+          <h2 class="display">Sales process</h2>
+          <p class="sec__sub">Lead with the Year Pass. Online payment is not live yet, so we accept cash, GCash, or Maya and give the buyer a voucher code. They enter it under “Have a code” at profstopick.com/pass.</p>
+        </div>
+      </div>
+      <ol class="steps" id="steps"></ol>
+    </section>
+
+    <section class="sec wrap rise">
+      <div class="sec__head">
+        <div>
+          <h2 class="display">Timeline and roles</h2>
+          <p class="sec__sub">On a two-person shift, one person handles the demo and sign-up, and the other handles sales.</p>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <h3>Timeline</h3>
+          <ol class="run" id="runSheet"></ol>
+        </div>
+        <div class="card">
+          <h3>Booth roles</h3>
+          <ol class="run run--posts" id="posts"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec wrap rise" id="shifts">
+      <div class="sec__head">
+        <div>
+          <h2 class="display">Shift schedule</h2>
+          <p class="sec__sub">Based on the shift table in the business report. Marcus has training 5–9 AM and leaves around 4:15 PM on Wed and Fri. Prince has classes all day on Mon and Thu.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="mat shifts">
+          <thead id="shiftHead"></thead>
+          <tbody id="shiftBody"></tbody>
+        </table>
+      </div>
+      <ul class="team" id="team"></ul>
+    </section>
+
+    <section class="sec wrap rise">
+      <div class="sec__head">
+        <div>
+          <h2 class="display">Daily checklist</h2>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <h3>Opening</h3>
+          <ul>
+            <li>Check the booth setup and signs.</li>
+            <li>Test the laptops, chargers, and internet.</li>
+            <li>Test the QR code, sign-up, and one voucher code.</li>
+            <li>Confirm who is on shift and review the demo script.</li>
+          </ul>
+          <h3 class="card__h3-gap">Closing</h3>
+          <ul>
+            <li>Match payments to passes sold.</li>
+            <li>Record sales and visitor counts.</li>
+            <li>Secure the devices and cash box.</li>
+            <li>Note any issues for the next day.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Troubleshooting</h3>
+          <ul class="trouble" id="trouble"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec wrap rise" id="materials">
+      <div class="sec__head">
+        <div>
+          <h2 class="display">Materials and costs</h2>
+          <p class="sec__sub">Total cost: <b data-total></b>. The Financial Tracker says ₱3,472: it still has 3 QR stands (now 1). Capital: ₱8,000 planned, ₱1,252 collected as of Nov 5.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="mat">
+          <thead><tr><th>Item</th><th>Size</th><th>Placement</th><th>Cost</th><th>Notes</th></tr></thead>
+          <tbody id="matBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec wrap rise">
+      <div class="sec__head"><h2 class="display">Status</h2></div>
+      <div class="grid2">
+        <div class="card">
+          <h3>Confirmed</h3>
+          <ul>
+            <li><b>Bazaar:</b> Mon Nov 9 to Fri Nov 13, Red Brick Road. Shifts: 8–11 AM, 11 AM–2 PM, 2–5 PM. <span class="src">All Info</span></li>
+            <li><b>Targets:</b> 100 paid passes, 20 sign-ups per day (about 2 per hour), and ₱20,490 in revenue. <span class="src">Marketing plan</span></li>
+            <li><b>Pricing:</b> Semester ₱99, Year ₱150, Graduation ₱250. The free plan includes reviews, a basic schedule builder, and 3 advisor questions per week. <span class="src">profstopick.com/pass</span></li>
+            <li><b>Main offer:</b> the Year Pass, listed first on all prints. <span class="src">Marketing plan</span></li>
+            <li><b>Payment:</b> cash, GCash, or Maya, then a voucher code redeemed at profstopick.com/pass. Prince issues the codes. <span class="src">Chat, Nov 5</span></li>
+            <li><b>Booth materials:</b> banner, 1 QR sign (the plan said 2–3), flyers, a price list, and live laptop demos. <span class="src">Marketing plan</span></li>
+            <li><b>Tagline:</b> “Enlist smarter with ProfstoPick.” <span class="src">Marketing plan</span></li>
+            <li><b>Setup:</b> Patrick leads. Marcus brings the table on Monday. Atasha brings the banner stand. <span class="src">Chat</span></li>
+          </ul>
+        </div>
+        <div class="card card--warn">
+          <h3>To confirm</h3>
+          <ul>
+            <li><b>Setup day:</b> Sun Nov 8 or Mon Nov 9 morning. Atasha is checking with Sophie.</li>
+            <li><b>Stall size:</b> this page assumes 1.5 × 3 m, half of a shared 3 × 3 m tent, based on the Blueprint bazaar rules.</li>
+            <li><b>Banner:</b> measure Atasha’s stand. Price not final (₱350–700).</li>
+            <li><b>Table:</b> dimensions of Marcus’s table.</li>
+            <li><b>Voucher codes:</b> Prince creates them before Nov 9. Printed cards or sent by chat?</li>
+            <li><b>Referral offer:</b> Sir is against it (Oct 30). Left off the prints for now.</li>
+            <li><b>User reviews:</b> Sir wants users to post their own prof reviews. Patrick asked on Nov 6; no reply yet.</li>
+            <li><b>Sales target:</b> the Year Pass is the main offer, but the revenue plan assumes 60 Graduation and 30 Year Passes.</li>
+            <li><b>Testing:</b> test sign-up and one voucher code before Nov 9. Test the printed QR on two phones.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="rfoot wrap">profstopick · Bazaar booth plan · Draft, updated Nov 7 · Measurements in metres</footer>
+  </main>
+
+  <script type="module" src="/booth.js"></script>
+</body>
+</html>

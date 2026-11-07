@@ -1,0 +1,15 @@
+{
+  "name": "profstopick-booth",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "playwright-core": "1.62.0",
+    "qrcode": "^1.5.4"
+  },
+  "scripts": {
+    "print": "node scripts/print/build.mjs",
+    "cards": "node scripts/print/cards.mjs",
+    "drawings": "python3 scripts/drawings.py",
+    "dev": "npx --yes serve -l 5190 ."
+  }
+}

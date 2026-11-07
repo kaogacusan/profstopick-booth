@@ -1,0 +1,728 @@
+{
+ "page": "booth",
+ "looks": [
+  {
+   "id": "v1",
+   "label": "Navy card",
+   "about": "Like the share card: navy ground, white type, one light-blue word, the line drawings."
+  },
+  {
+   "id": "v2",
+   "label": "Paper",
+   "about": "Like the app: light paper, dark type, blue accents, hairline boxes."
+  },
+  {
+   "id": "v3",
+   "label": "Big type",
+   "about": "Fewest words, biggest type. Solid brand blue. Built to read from far away."
+  },
+  {
+   "id": "v4",
+   "label": "Navy, simple",
+   "about": "V1 with less: navy and white, one light-blue word. No drawings, no sparkles, no boxes."
+  },
+  {
+   "id": "v5",
+   "label": "Paper, simple",
+   "about": "V2 with less: light paper and dark type. No drawings, no cards, no extra lines."
+  },
+  {
+   "id": "v6",
+   "label": "Big type, simple",
+   "about": "V3 with less: solid blue, only the headline, the QR, and the site."
+  }
+ ],
+ "assets": [
+  {
+   "id": "banner",
+   "piece": "banner",
+   "name": "Standing banner",
+   "size": "0.6 m × 1.6 m",
+   "mm": [
+    600,
+    1600
+   ],
+   "pages": [
+    "Banner"
+   ],
+   "print": "Tarp or banner cloth. Print at 100 dpi or more. Check the size against the stand before you print.",
+   "versions": [
+    {
+     "id": "v1",
+     "look": "v1",
+     "note": "Like the share card: navy, “prof.” in light blue, what the site does, the four features, and the drawing.",
+     "pdf": "/assets/print/booth/banner/v1.pdf",
+     "pdfKb": 147,
+     "jpg": [
+      "/assets/print/booth/banner/v1-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/banner/v1-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/banner/v1-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v2",
+     "look": "v2",
+     "note": "V1 on light paper: dark type, “prof.” in brand blue, the same features and drawing. No box.",
+     "pdf": "/assets/print/booth/banner/v2.pdf",
+     "pdfKb": 184,
+     "jpg": [
+      "/assets/print/booth/banner/v2-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/banner/v2-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/banner/v2-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v3",
+     "look": "v3",
+     "note": "Fewest words: the name, the headline as big as it fits, the four features, and the site in big type at the bottom.",
+     "pdf": "/assets/print/booth/banner/v3.pdf",
+     "pdfKb": 112,
+     "jpg": [
+      "/assets/print/booth/banner/v3-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/banner/v3-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/banner/v3-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v4",
+     "look": "v4",
+     "note": "V1 with less: the logo, the headline, one line on what it does, and the site. No drawing, no sparkles.",
+     "pdf": "/assets/print/booth/banner/v4.pdf",
+     "pdfKb": 39,
+     "jpg": [
+      "/assets/print/booth/banner/v4-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/banner/v4-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/banner/v4-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v5",
+     "look": "v5",
+     "note": "V2 with less: the logo, the headline, the four features as plain lines, and the site. No card, no drawing.",
+     "pdf": "/assets/print/booth/banner/v5.pdf",
+     "pdfKb": 42,
+     "jpg": [
+      "/assets/print/booth/banner/v5-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/banner/v5-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/banner/v5-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v6",
+     "look": "v6",
+     "note": "V3 with less: the name, the headline, and the site. Three things, read from across the road.",
+     "pdf": "/assets/print/booth/banner/v6.pdf",
+     "pdfKb": 22,
+     "jpg": [
+      "/assets/print/booth/banner/v6-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/banner/v6-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/banner/v6-1.t.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "qr",
+   "piece": "qr",
+   "name": "QR sign",
+   "size": "A5, 148 × 210 mm",
+   "mm": [
+    148,
+    210
+   ],
+   "pages": [
+    "Sign"
+   ],
+   "print": "Paper or photo paper, cut to A5. Fits the A5 acrylic stand. Print 1. Scan the QR with 2 phones before you print.",
+   "versions": [
+    {
+     "id": "v1",
+     "look": "v1",
+     "note": "Navy with the QR on a white tile and one light-blue line, like the share card.",
+     "pdf": "/assets/print/booth/qr/v1.pdf",
+     "pdfKb": 33,
+     "jpg": [
+      "/assets/print/booth/qr/v1-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/qr/v1-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/qr/v1-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v2",
+     "look": "v2",
+     "note": "Like the app: the QR sits in a white card with a thin line, and the link is inside the card.",
+     "pdf": "/assets/print/booth/qr/v2.pdf",
+     "pdfKb": 35,
+     "jpg": [
+      "/assets/print/booth/qr/v2-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/qr/v2-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/qr/v2-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v3",
+     "look": "v3",
+     "note": "Solid blue, three words in big type, and the QR as wide as the sign allows.",
+     "pdf": "/assets/print/booth/qr/v3.pdf",
+     "pdfKb": 23,
+     "jpg": [
+      "/assets/print/booth/qr/v3-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/qr/v3-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/qr/v3-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v4",
+     "look": "v4",
+     "note": "V1 with less: the ask, the QR, the site. No sparkles, no logo row.",
+     "pdf": "/assets/print/booth/qr/v4.pdf",
+     "pdfKb": 22,
+     "jpg": [
+      "/assets/print/booth/qr/v4-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/qr/v4-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/qr/v4-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v5",
+     "look": "v5",
+     "note": "V2 with less: the logo, two words, the QR, the site. No card, no extra line.",
+     "pdf": "/assets/print/booth/qr/v5.pdf",
+     "pdfKb": 23,
+     "jpg": [
+      "/assets/print/booth/qr/v5-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/qr/v5-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/qr/v5-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v6",
+     "look": "v6",
+     "note": "V3 with less: three words, the QR, and the site in big type.",
+     "pdf": "/assets/print/booth/qr/v6.pdf",
+     "pdfKb": 18,
+     "jpg": [
+      "/assets/print/booth/qr/v6-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/qr/v6-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/qr/v6-1.t.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "prices",
+   "piece": "prices",
+   "name": "Price list",
+   "size": "A4, 210 × 297 mm",
+   "mm": [
+    210,
+    297
+   ],
+   "pages": [
+    "Price list"
+   ],
+   "print": "Paper or photo paper, A4. Print at 100% (no fit to page).",
+   "versions": [
+    {
+     "id": "v1",
+     "look": "v1",
+     "note": "Navy. The Year Pass sits in its own box with the price in light blue; the rest are plain rows.",
+     "pdf": "/assets/print/booth/prices/v1.pdf",
+     "pdfKb": 159,
+     "jpg": [
+      "/assets/print/booth/prices/v1-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/prices/v1-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/prices/v1-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v2",
+     "look": "v2",
+     "note": "Like the /pass page: white cards with thin lines, the Year Pass card in a blue ring.",
+     "pdf": "/assets/print/booth/prices/v2.pdf",
+     "pdfKb": 178,
+     "jpg": [
+      "/assets/print/booth/prices/v2-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/prices/v2-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/prices/v2-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v3",
+     "look": "v3",
+     "note": "Solid blue, prices only, as big as they fit. The Year Pass price fills the top half.",
+     "pdf": "/assets/print/booth/prices/v3.pdf",
+     "pdfKb": 75,
+     "jpg": [
+      "/assets/print/booth/prices/v3-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/prices/v3-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/prices/v3-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v4",
+     "look": "v4",
+     "note": "V1 with less: the Year Pass price big in light blue, then the other passes in plain rows. No box, no drawing.",
+     "pdf": "/assets/print/booth/prices/v4.pdf",
+     "pdfKb": 57,
+     "jpg": [
+      "/assets/print/booth/prices/v4-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/prices/v4-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/prices/v4-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v5",
+     "look": "v5",
+     "note": "V2 with less: the same rows on light paper. No cards, no small print.",
+     "pdf": "/assets/print/booth/prices/v5.pdf",
+     "pdfKb": 57,
+     "jpg": [
+      "/assets/print/booth/prices/v5-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/prices/v5-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/prices/v5-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v6",
+     "look": "v6",
+     "note": "V3 with less: solid blue, the prices and how to pay. Nothing else.",
+     "pdf": "/assets/print/booth/prices/v6.pdf",
+     "pdfKb": 56,
+     "jpg": [
+      "/assets/print/booth/prices/v6-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/prices/v6-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/prices/v6-1.t.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "flyer",
+   "piece": "flyers",
+   "name": "Flyer",
+   "size": "A6, 105 × 148 mm",
+   "mm": [
+    105,
+    148
+   ],
+   "pages": [
+    "Front",
+    "Back"
+   ],
+   "print": "Paper. Print 4 per A4 at 100% (no fit to page). The back side flips on the long edge.",
+   "versions": [
+    {
+     "id": "v1",
+     "look": "v1",
+     "note": "Navy front like the share card, with the drawing and the QR to profstopick.com; the back lists the passes.",
+     "pdf": "/assets/print/booth/flyer/v1.pdf",
+     "pdfKb": 248,
+     "jpg": [
+      "/assets/print/booth/flyer/v1-1.jpg",
+      "/assets/print/booth/flyer/v1-2.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/flyer/v1-1.m.jpg",
+      "/assets/print/booth/flyer/v1-2.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/flyer/v1-1.t.jpg",
+      "/assets/print/booth/flyer/v1-2.t.jpg"
+     ]
+    },
+    {
+     "id": "v2",
+     "look": "v2",
+     "note": "Light paper like the app: the four things it does in a white card, and the QR in a thin-line box.",
+     "pdf": "/assets/print/booth/flyer/v2.pdf",
+     "pdfKb": 175,
+     "jpg": [
+      "/assets/print/booth/flyer/v2-1.jpg",
+      "/assets/print/booth/flyer/v2-2.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/flyer/v2-1.m.jpg",
+      "/assets/print/booth/flyer/v2-2.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/flyer/v2-1.t.jpg",
+      "/assets/print/booth/flyer/v2-2.t.jpg"
+     ]
+    },
+    {
+     "id": "v3",
+     "look": "v3",
+     "note": "Solid blue, the headline as big as it fits, and a bigger QR. The back keeps the same facts.",
+     "pdf": "/assets/print/booth/flyer/v3.pdf",
+     "pdfKb": 134,
+     "jpg": [
+      "/assets/print/booth/flyer/v3-1.jpg",
+      "/assets/print/booth/flyer/v3-2.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/flyer/v3-1.m.jpg",
+      "/assets/print/booth/flyer/v3-2.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/flyer/v3-1.t.jpg",
+      "/assets/print/booth/flyer/v3-2.t.jpg"
+     ]
+    },
+    {
+     "id": "v4",
+     "look": "v4",
+     "note": "V1 with less: the headline, the QR, and the site. The back: the passes, how to buy, how to redeem.",
+     "pdf": "/assets/print/booth/flyer/v4.pdf",
+     "pdfKb": 107,
+     "jpg": [
+      "/assets/print/booth/flyer/v4-1.jpg",
+      "/assets/print/booth/flyer/v4-2.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/flyer/v4-1.m.jpg",
+      "/assets/print/booth/flyer/v4-2.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/flyer/v4-1.t.jpg",
+      "/assets/print/booth/flyer/v4-2.t.jpg"
+     ]
+    },
+    {
+     "id": "v5",
+     "look": "v5",
+     "note": "V2 with less: no feature card, no boxes. The back has no small print under each pass.",
+     "pdf": "/assets/print/booth/flyer/v5.pdf",
+     "pdfKb": 107,
+     "jpg": [
+      "/assets/print/booth/flyer/v5-1.jpg",
+      "/assets/print/booth/flyer/v5-2.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/flyer/v5-1.m.jpg",
+      "/assets/print/booth/flyer/v5-2.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/flyer/v5-1.t.jpg",
+      "/assets/print/booth/flyer/v5-2.t.jpg"
+     ]
+    },
+    {
+     "id": "v6",
+     "look": "v6",
+     "note": "V3 with less: the headline, the QR, and the site. The back: prices and how to buy only.",
+     "pdf": "/assets/print/booth/flyer/v6.pdf",
+     "pdfKb": 106,
+     "jpg": [
+      "/assets/print/booth/flyer/v6-1.jpg",
+      "/assets/print/booth/flyer/v6-2.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/flyer/v6-1.m.jpg",
+      "/assets/print/booth/flyer/v6-2.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/flyer/v6-1.t.jpg",
+      "/assets/print/booth/flyer/v6-2.t.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card",
+   "piece": "card",
+   "name": "Pass card, front",
+   "size": "90 × 54 mm, the pass",
+   "mm": [
+    90,
+    54
+   ],
+   "pages": [
+    "Front"
+   ],
+   "print": "Card stock, 250 gsm or more. Print this on one side and “Pass card, back” on the other. Ask the shop to cut to 90 × 54 mm.",
+   "versions": [
+    {
+     "id": "v1",
+     "look": "v1",
+     "note": "Navy, the logo, “Pass card”, and the ticket drawing.",
+     "pdf": "/assets/print/booth/card/v1.pdf",
+     "pdfKb": 29,
+     "jpg": [
+      "/assets/print/booth/card/v1-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/card/v1-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/card/v1-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v2",
+     "look": "v2",
+     "note": "Light paper like the app, with the ticket drawing and the site.",
+     "pdf": "/assets/print/booth/card/v2.pdf",
+     "pdfKb": 36,
+     "jpg": [
+      "/assets/print/booth/card/v2-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/card/v2-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/card/v2-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v3",
+     "look": "v3",
+     "note": "Solid blue, “Pass card” in big type.",
+     "pdf": "/assets/print/booth/card/v3.pdf",
+     "pdfKb": 11,
+     "jpg": [
+      "/assets/print/booth/card/v3-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/card/v3-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/card/v3-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v4",
+     "look": "v4",
+     "note": "V1 with less: the logo and “Pass”.",
+     "pdf": "/assets/print/booth/card/v4.pdf",
+     "pdfKb": 10,
+     "jpg": [
+      "/assets/print/booth/card/v4-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/card/v4-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/card/v4-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v5",
+     "look": "v5",
+     "note": "V2 with less: the logo and “Pass”, no drawing.",
+     "pdf": "/assets/print/booth/card/v5.pdf",
+     "pdfKb": 10,
+     "jpg": [
+      "/assets/print/booth/card/v5-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/card/v5-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/card/v5-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v6",
+     "look": "v6",
+     "note": "V3 with less: the badge and “Pass”.",
+     "pdf": "/assets/print/booth/card/v6.pdf",
+     "pdfKb": 6,
+     "jpg": [
+      "/assets/print/booth/card/v6-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/card/v6-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/card/v6-1.t.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cardback",
+   "piece": "card",
+   "name": "Pass card, back",
+   "size": "90 × 54 mm, the voucher code",
+   "mm": [
+    90,
+    54
+   ],
+   "pages": [
+    "Back"
+   ],
+   "print": "The other side of the pass card. This file shows a sample code (XXXX-XXXX). For the real codes run npm run cards: one PDF, front and back, one card per code.",
+   "versions": [
+    {
+     "id": "v1",
+     "look": "v1",
+     "note": "Navy. The code in a big white box, one line on how to use it, and where to redeem it.",
+     "pdf": "/assets/print/booth/cardback/v1.pdf",
+     "pdfKb": 47,
+     "jpg": [
+      "/assets/print/booth/cardback/v1-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/cardback/v1-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/cardback/v1-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v2",
+     "look": "v2",
+     "note": "Light paper. The code in a thin-line box, one line on how to use it, and where to redeem it.",
+     "pdf": "/assets/print/booth/cardback/v2.pdf",
+     "pdfKb": 47,
+     "jpg": [
+      "/assets/print/booth/cardback/v2-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/cardback/v2-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/cardback/v2-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v3",
+     "look": "v3",
+     "note": "Solid blue. The code in a big white box, one line on how to use it, and where to redeem it.",
+     "pdf": "/assets/print/booth/cardback/v3.pdf",
+     "pdfKb": 47,
+     "jpg": [
+      "/assets/print/booth/cardback/v3-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/cardback/v3-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/cardback/v3-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v4",
+     "look": "v4",
+     "note": "V1 with less: the code, big, and where to redeem it.",
+     "pdf": "/assets/print/booth/cardback/v4.pdf",
+     "pdfKb": 28,
+     "jpg": [
+      "/assets/print/booth/cardback/v4-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/cardback/v4-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/cardback/v4-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v5",
+     "look": "v5",
+     "note": "V2 with less: the code, big, and where to redeem it.",
+     "pdf": "/assets/print/booth/cardback/v5.pdf",
+     "pdfKb": 28,
+     "jpg": [
+      "/assets/print/booth/cardback/v5-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/cardback/v5-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/cardback/v5-1.t.jpg"
+     ]
+    },
+    {
+     "id": "v6",
+     "look": "v6",
+     "note": "V3 with less: the code, big, and where to redeem it.",
+     "pdf": "/assets/print/booth/cardback/v6.pdf",
+     "pdfKb": 28,
+     "jpg": [
+      "/assets/print/booth/cardback/v6-1.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/cardback/v6-1.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/cardback/v6-1.t.jpg"
+     ]
+    }
+   ]
+  }
+ ]
+}
