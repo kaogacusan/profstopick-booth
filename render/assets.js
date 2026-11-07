@@ -128,11 +128,11 @@ export function mountAssets(art, { pieces = [], stage = null } = {}) {
       <div class="asset__body">
         <p class="asset__k">${p?.num ? `<i>${p.num}</i>` : ''}<span>${esc(a.size)}</span></p>
         <h3>${esc(a.name)}</h3>
-        <div class="asset__vs" role="radiogroup" aria-label="Versions of ${esc(a.name)}">
+        ${a.versions.length > 1 ? `<div class="asset__vs" role="radiogroup" aria-label="Versions of ${esc(a.name)}">
           ${a.versions.map((v) => `<button type="button" class="vchip" role="radio" data-v="${v.id}" aria-checked="false">
             <img src="${v.t[0]}" alt="" loading="lazy" decoding="async" />
             <span><b>${v.id.toUpperCase()}</b> ${esc(lookOf(v).label)}</span></button>`).join('')}
-        </div>
+        </div>` : ''}
         <p class="asset__note"></p>
         <p class="asset__print">${esc(a.print)}</p>
         <div class="asset__dl">
@@ -143,7 +143,7 @@ export function mountAssets(art, { pieces = [], stage = null } = {}) {
       </div>`;
     host.appendChild(el);
 
-    el.querySelector('.asset__vs').addEventListener('click', (e) => { const b = e.target.closest('[data-v]'); if (b) art.pick(a.id, b.dataset.v); });
+    el.querySelector('.asset__vs')?.addEventListener('click', (e) => { const b = e.target.closest('[data-v]'); if (b) art.pick(a.id, b.dataset.v); });
     el.querySelector('.asset__pages')?.addEventListener('click', (e) => {
       const b = e.target.closest('[data-pg]');
       if (!b) return;
@@ -167,7 +167,7 @@ export function mountAssets(art, { pieces = [], stage = null } = {}) {
     const name = `profstopick-${page}-${a.id}-${v.id}`;
     const img = el.querySelector('.asset__img img');
     if (img.getAttribute('src') !== v.t[i]) img.src = v.t[i];
-    img.alt = `${a.name}, ${a.pages[i]}, ${v.id.toUpperCase()} ${lookOf(v).label}`;
+    img.alt = `${a.name}, ${a.pages[i]}${a.versions.length > 1 ? `, ${v.id.toUpperCase()} ${lookOf(v).label}` : ''}`;
     el.querySelector('.asset__img').href = v.jpg[i];
     el.querySelectorAll('.vchip').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.v === v.id)));
     el.querySelectorAll('[data-pg]').forEach((b) => b.setAttribute('aria-pressed', String(+b.dataset.pg === i)));
@@ -182,7 +182,8 @@ export function mountAssets(art, { pieces = [], stage = null } = {}) {
 
   function sync() {
     manifest.assets.forEach((a) => draw(a.id));
-    const all = manifest.looks.find((L) => manifest.assets.every((a) => (art.version(a.id).look || art.version(a.id).id) === L.id));
+    // a piece with one version (the staff FAQ) has no look, so it does not count
+    const all = manifest.looks.find((L) => manifest.assets.every((a) => a.versions.length < 2 || (art.version(a.id).look || art.version(a.id).id) === L.id));
     bars.forEach((bar) => bar.querySelectorAll('[data-look]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.look === all?.id))));
     if (about) about.textContent = all ? all.about : 'Mixed: each piece uses the style chosen on its card.';
   }

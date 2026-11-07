@@ -49,7 +49,7 @@ const pieces = [
     note: 'Members print 4 per A4 sheet. Front: headline and the QR to profstopick.com. Back: passes, how to pay at the booth, and how to redeem a code.', view: zoomTable },
   { id: 'card', num: 5, cat: 'print', name: 'Pass cards', size: '90 × 54 mm (business card)', where: 'Table, next to the flyers',
     basis: 'print',
-    note: 'The voucher is on the pass. Front: the pass. Back: the voucher code, printed. Give one after each cash, GCash, or Maya sale. The buyer enters the code under “Have a code” at profstopick.com/pass. Print the real codes with npm run cards (a private PDF, never on this site).', view: zoomTable },
+    note: 'The voucher is on the pass. Front: “1 year of profstopick” and the Year Pass tag, like a paid plan. Back: the voucher code, printed. Give one after each cash, GCash, or Maya sale. The buyer enters the code under “Have a code” at profstopick.com/pass. Print the real codes with npm run cards (a private PDF, never on this site).', view: zoomTable },
 
   { id: 'bannerstand', num: 6, cat: 'stand', name: 'Banner stand', size: 'Tarp stand, about 60 cm wide', where: 'Back right corner',
     cost: [0, 0], basis: 'lend',

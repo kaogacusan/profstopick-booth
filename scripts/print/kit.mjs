@@ -12,6 +12,7 @@ export const C = {
   accent: '#416ea8',    // --color-accent
   deep: '#31567f',      // --color-accent-deep
   sky: '#9ac0f4',       // the light blue word on the share card
+  blue: '#2c5092',      // v3 + v6 ground: between accent and navy, so the light-blue word reads on it (4.2:1)
   tint: '#eaeff6',      // --color-accent-tint
   paper: '#f7f8fa',     // --color-paper
   well: '#eff1f5',      // --color-well
@@ -36,10 +37,11 @@ export const F = {
   schools: 'Ateneo · UP Diliman · De La Salle · Mapúa',
   free: { name: 'Free', price: '₱0', lines: ['Prof reviews and ratings', 'Basic schedule builder', '3 advisor asks a week'] },
   passes: [
-    { id: 'semester', name: 'Semester Pass', price: '₱99', per: '/ semester', about: 'One enlistment and the semester after it.', month: 'about ₱20 a month' },
+    // span: how long the pass lasts, as the card front says it ("1 year of profstopick")
+    { id: 'semester', name: 'Semester Pass', price: '₱99', per: '/ semester', span: '1 semester', about: 'One enlistment and the semester after it.', month: 'about ₱20 a month' },
     // main: the pass the booth pushes (plan: "MAIN SALE"). It is first and biggest on every print.
-    { id: 'year', name: 'Year Pass', price: '₱150', per: '/ year', about: 'Two enlistments and everything between.', month: '₱15 a month', main: true },
-    { id: 'graduation', name: 'Graduation Pass', price: '₱250', per: '/ 4 years', about: 'Pay once. Every enlistment until you graduate.', month: 'about ₱6 a month' },
+    { id: 'year', name: 'Year Pass', price: '₱150', per: '/ year', span: '1 year', about: 'Two enlistments and everything between.', month: '₱15 a month', main: true },
+    { id: 'graduation', name: 'Graduation Pass', price: '₱250', per: '/ 4 years', span: '4 years', about: 'Pay once. Every enlistment until you graduate.', month: 'about ₱6 a month' },
   ],
   pick: 'Our pick',                                         // the tag on the main pass
   every: ['Unlimited advisor asks', 'Works on 2 devices', 'Full refund within 7 days'],
@@ -52,10 +54,54 @@ export const F = {
   ig: '@profs.to.pick',
   email: 'ateneoprofstopick@gmail.com',
   bazaar: 'Nov 9–13',
-  // The pass card: the front is the pass, the back prints the voucher code. The public files show this sample.
+  // The pass card: the front says "1 year of profstopick" with the pass name, like a paid plan. The back prints the
+  // voucher code. The public files show this sample.
   // Real codes never go in assets/ (the site is public): `npm run cards -- <codes.txt>` makes a private PDF.
   sampleCode: 'XXXX-XXXX',
 };
+
+// Hook flyers: one question a student already asks, big, then the site headline (F.headline) under it on every one.
+// q: \n = new line, *word* = the accent word. size = question type size in mm on v1–v3 (v4–v6 have no drawing, so
+// they set it 2 mm bigger). The longest line must fit 89 mm.
+// art = the drawing on the rich looks (v1–v3), [group, name] in assets/kit/ready.
+export const HOOKS = [
+  { id: 'easy-a', q: 'Want an\n*easy A?*', size: 20, art: ['object', 'exam-paper'] },
+  { id: 'workload', q: 'Don’t want\na *heavy*\nworkload?', size: 16, art: ['object', 'workload-gauge'] },
+  { id: 'chill', q: 'Want your\nnext sem to\nbe *chill*?', size: 15, art: ['spot', 'paint-free-hour-spot'] },
+  { id: 'strict', q: 'Don’t like\n*strict*\nprofs?', size: 16, art: ['spot', 'compare-professor-spot'] },
+  { id: 'worried', q: 'Worried\nabout a\n*subject*?', size: 17, art: ['object', 'difficulty-stair'] },
+  { id: 'eight-am', q: 'Hate\n*8 AM*\nclasses?', size: 17, art: ['spot', 'enlistment-rush-spot'] },
+];
+
+// Staff FAQ (A4, for the team, not for visitors): what people ask at the booth, and what to say.
+// From the live site (/pass, /help, /about, /privacy, /terms) and the All Info file. [section, [[question, answer], ...]]
+const P = Object.fromEntries(F.passes.map((p) => [p.id, p]));
+export const FAQ = [
+  ['The site', [
+    ['What is profstopick?', 'A site for enlistment, made by students. Prof reviews, grading statistics, live section schedules, a schedule builder, and an AI advisor.'],
+    ['Is it from Ateneo?', 'No. Students run it. It is not part of any school.'],
+    ['Which schools?', 'Ateneo and UP Diliman: reviews and section schedules. Mapúa and De La Salle: reviews only, for now.'],
+    // source: the user (Nov 7): the reviews come from the Profs to Pick Facebook group. Site comments: /terms.
+    ['Where do the reviews come from?', 'The Profs to Pick Facebook group, where students post about their profs. Students can also post on the site. We check every review before it shows.'],
+    // All Info "Privacy and scraping" + /privacy ("we do not sell anything") + /terms (take down while we look)
+    ['What about privacy?', 'Reviews are de-identified first: we remove names, profile links, phone numbers, emails, student IDs, and outside links. We sell no data. This follows the Data Privacy Act. A review about you? We take it down while we check.'],
+    ['What does a score mean?', 'It sums up how students feel about the prof. It is not a grade. Few comments: read the comments. No comments: no score.'],
+    ['How do I find my prof?', 'Search a surname or a course code, like MATH 30.23. Always check section times in the official enlistment system.'],
+  ]],
+  ['Free or paid', [
+    ['Is it free?', `Yes. Reviews, ratings, and the schedule builder are free. Free gets ${F.free.lines[2]}.`],
+    ['What does a pass add?', 'Unlimited AI advisor asks. Ask who to take for a course. It answers from the reviews and the sections.'],
+    ['Which pass should I get?', `The ${P.year.name}: ${P.year.price} for two enlistments, ${P.year.month}. ${P.semester.name} ${P.semester.price}: one enlistment. ${P.graduation.name} ${P.graduation.price}: every enlistment until you graduate.`],
+    ['Can I share my pass?', 'It works on 2 devices. A 3rd login cuts access. Schedules and advisor chats are personal.'],
+    ['I got a new phone.', 'Sign in on it. Remove the old one in Settings. The pass moves over.'],
+    ['Can I get my money back?', `Yes. Full refund within 7 days. Message ${F.email} or ${F.ig}.`],
+  ]],
+  ['Paying and the code', [
+    ['How do I pay?', `${F.pay[0].toUpperCase()}${F.pay.slice(1)}, here at the booth. Online payment is not on yet.`],
+    ['How do I use my code?', 'Scan the QR or type profstopick.com. Make an account. Go to profstopick.com/pass, type the code under “Have a code”, and tap Redeem.'],
+    ['The QR or code does not work.', 'QR: type profstopick.com. Code: check that they are signed in, then type it again. Still stuck: tell Prince.'],
+  ]],
+];
 
 // Real links. Every QR on every print goes to `home` (one QR for the whole booth). Test it on 2 phones before you print.
 export const URLS = {
@@ -70,20 +116,22 @@ export const URLS = {
 export const LOOKS = [
   { id: 'v1', label: 'Navy card', about: 'Like the share card: navy ground, white type, one light-blue word, the line drawings.' },
   { id: 'v2', label: 'Paper', about: 'Like the app: light paper, dark type, blue accents, hairline boxes.' },
-  { id: 'v3', label: 'Big type', about: 'Fewest words, biggest type. Solid brand blue. Built to read from far away.' },
+  { id: 'v3', label: 'Blue', about: 'V2 in blue: the same layout as V2, on solid blue with white type, light-blue accents, and see-through boxes.' },
   { id: 'v4', label: 'Navy, simple', about: 'V1 with less: navy and white, one light-blue word. No drawings, no sparkles, no boxes.' },
   { id: 'v5', label: 'Paper, simple', about: 'V2 with less: light paper and dark type. No drawings, no cards, no extra lines.' },
-  { id: 'v6', label: 'Big type, simple', about: 'V3 with less: solid blue, only the headline, the QR, and the site.' },
+  { id: 'v6', label: 'Blue, simple', about: 'V3 with less: solid blue, one light-blue word, only the headline, the QR, and the site.' },
 ];
 
 // Colors per look. bg = page, ink = main text, sub = second text, hi = the one accent word,
 // rule = thin lines, card = boxes, word = wordmark color, tile = what a QR sits on,
 // draw = drawing set ('' = dark lines; '-fill' = navy lines, people filled white, so skin is not blue on a dark ground),
-// block = mid-blue ground: prices and small type stay white (navy is only for the big accent word).
+// tagBg = the pill behind the "Our pick" tag, link = small blue text, well = a box with no line (v2 and v3 only).
 export const LOOK = {
   v1: { bg: C.navy, ink: '#fff', sub: '#c9dbf7', hi: C.sky, rule: 'rgba(154,192,244,0.35)', card: 'rgba(255,255,255,0.07)', word: '#fff', tile: '#fff', draw: '-fill' },
-  v2: { bg: C.paper, ink: C.ink, sub: C.ink2, hi: C.accent, rule: C.line, card: '#fff', word: C.ink, tile: '#fff', draw: '' },
-  v3: { bg: C.accent, ink: '#fff', sub: '#e3ecf9', hi: C.navy, rule: 'rgba(255,255,255,0.4)', card: 'rgba(255,255,255,0.1)', word: '#fff', tile: '#fff', draw: '-fill', block: true },
+  v2: { bg: C.paper, ink: C.ink, sub: C.ink2, hi: C.accent, rule: C.line, card: '#fff', word: C.ink, tile: '#fff', draw: '', tagBg: C.tint, link: C.deep, well: C.well },
+  // v3 = v2's layout in blue: the same tokens, so one function draws both
+  v3: { bg: C.blue, ink: '#fff', sub: '#e3ecf9', hi: C.sky, rule: 'rgba(255,255,255,0.4)', card: 'rgba(255,255,255,0.1)', word: '#fff', tile: '#fff', draw: '-fill',
+    tagBg: 'rgba(154,192,244,0.2)', link: C.sky, well: 'rgba(13,59,122,0.5)' },
 };
 LOOK.v4 = { ...LOOK.v1 };
 LOOK.v5 = { ...LOOK.v2 };

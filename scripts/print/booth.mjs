@@ -1,9 +1,9 @@
 // Print files for the profstopick booth (Nov 9–13, Red Brick Road): every printed piece, in six looks.
 // Sizes in mm. `piece` is the id the 3D model uses. A version's html(i) returns page i.
-// Words come from F in kit.mjs only. Looks: v1 Navy card, v2 Paper, v3 Big type, and v4–v6, the same three
-// with less (LOOK in kit.mjs). One QR on every print: profstopick.com.
+// Words come from F in kit.mjs only. Looks: v1 Navy card, v2 Paper, v3 Blue (v2's layout, v3's colors), and
+// v4–v6, the same three with less (LOOK in kit.mjs). One QR on every print: profstopick.com.
 // Every ₱ goes through peso() at the end (Onest has no ₱, so it is set in Inter on purpose).
-import { C, F, URLS, LOOK, margin, word, badge, lockup, art, confetti, qrTile, peso } from './kit.mjs';
+import { C, F, URLS, HOOKS, FAQ, LOOK, margin, word, badge, lockup, art, confetti, qrTile, peso } from './kit.mjs';
 
 // ---------- small helpers ----------
 const at = (x, y, inner, style = '', cls = '') => `<div class="abs ${cls}" style="left:${x}mm;top:${y}mm;${style}">${inner}</div>`;
@@ -24,10 +24,10 @@ LOGO.v4 = LOGO.v1; LOGO.v5 = LOGO.v2; LOGO.v6 = LOGO.v3;
 const logo = (v, h) => lockup(h, LOGO[v]);
 const mark = (v, h) => badge(h, { bg: LOGO[v].badgeBg, fg: LOGO[v].badgeFg });
 
-// The one accent word, in the look's accent color (v3 + v6: navy on the blue ground). No box behind it.
+// The one accent word, in the look's accent color (light blue on navy and blue, brand blue on paper). No box.
 const hi = (v, t) => `<span style="color:${LOOK[v].hi}">${t}</span>`;
-// a small label in a navy block (v3 only), for the main pass tag (F.pick)
-const tag3 = (t, size) => `<span class="nw" style="display:inline-block;background:${C.navy};color:#fff;font-size:${size}mm;font-weight:700;letter-spacing:-0.005em;line-height:1;padding:${(size * 0.32).toFixed(2)}mm ${(size * 0.55).toFixed(2)}mm;border-radius:${(size * 0.18).toFixed(2)}mm">${t}</span>`;
+// the main pass tag (F.pick) in v2 and v3: a soft pill
+const pill = (v, t, size, pad) => `<span class="m" style="font-size:${size}mm;color:${LOOK[v].hi};background:${LOOK[v].tagBg};padding:${pad};border-radius:10mm">${t}</span>`;
 
 // faint sparkles like the share card. list = [name, w, x, y, opacity?]
 const CF = { v1: [C.sky, 0.32], v2: [C.accent, 0.22], v3: ['#fff', 0.28] };
@@ -76,7 +76,7 @@ const simpleBanner = (v) => {
     ${atb(BM - 2, BM, F.site, `font-size:${v === 'v6' ? 62 : 56}mm;color:${v === 'v5' ? C.accent : k.ink}`, 'd nw')}`;
 };
 
-// v1 + v2: the share card layout. v1 on navy, v2 the same on light paper.
+// v1–v3: the share card layout. v1 on navy, v2 the same on light paper, v3 on blue.
 const shareBanner = (v) => {
   const k = LOOK[v];
   return `
@@ -97,20 +97,7 @@ const banner = {
   versions: [
     { id: 'v1', note: 'Like the share card: navy, “prof.” in light blue, what the site does, the four features, and the drawing.', html: () => shareBanner('v1') },
     { id: 'v2', note: 'V1 on light paper: dark type, “prof.” in brand blue, the same features and drawing. No box.', html: () => shareBanner('v2') },
-    {
-      id: 'v3',
-      note: 'Fewest words: the name, the headline as big as it fits, the four features, and the site in big type at the bottom.',
-      html: () => {
-        const k = LOOK.v3;
-        return `
-        ${ground('v3')}
-        ${at(BM, 60, word(86, k.word))}
-        ${at(BM - 5, 222, `Pick<br>the right<br>${hi('v3', 'prof.')}`, `font-size:132mm;color:${k.ink}`, 'd nw')}
-        ${at(BM, 690, F.features.join('<br>'), `font-size:44mm;font-weight:700;letter-spacing:-0.02em;line-height:1.25;color:${k.ink}`, 'nw')}
-        ${at(BW - BM - 400, 1040, art('scene', 'landing-schedule', 400, { set: k.draw }))}
-        ${atb(BM - 2, BM, F.site, `font-size:62mm;color:${k.ink}`, 'd nw')}`;
-      },
-    },
+    { id: 'v3', note: 'V2 in blue: white type, “prof.” in light blue, the same features and drawing.', html: () => shareBanner('v3') },
     { id: 'v4', note: 'V1 with less: the logo, the headline, one line on what it does, and the site. No drawing, no sparkles.', html: () => simpleBanner('v4') },
     { id: 'v5', note: 'V2 with less: the logo, the headline, the four features as plain lines, and the site. No card, no drawing.', html: () => simpleBanner('v5') },
     { id: 'v6', note: 'V3 with less: the name, the headline, and the site. Three things, read from across the road.', html: () => simpleBanner('v6') },
@@ -123,6 +110,21 @@ const banner = {
 // ======================================================================
 const AW = 148, AH = 210, AM = margin(AW, AH), ACW = AW - 2 * AM;
 const signTile = (opts = {}) => qrTile(URLS.home, ACW, opts);
+
+// v2 + v3: like the app. The QR sits in a white card with a thin line, and the link is inside the card.
+const paperSign = (v) => {
+  const k = LOOK[v];
+  const t = signTile({
+    footH: 13,
+    foot: `<div class="m nw" style="width:100%;border-top:0.3mm solid ${C.line};padding-top:3.4mm;text-align:center;font-size:4.4mm;color:${C.deep}">${SHORT.home}</div>`,
+  });
+  return `
+    ${ground(v)}
+    ${at(AM, AM, logo(v, 7))}
+    ${at(AM - 0.6, 27, `Try it ${hi(v, 'free.')}`, `font-size:17mm;color:${k.ink}`, 'd nw')}
+    ${at(AM, 46, 'Prof reviews, schedules, and an AI advisor.', `font-size:5mm;font-weight:500;color:${k.sub}`, 'nw')}
+    ${at(AM, 57, `<div style="border:0.3mm solid ${k.rule};border-radius:1.4mm;overflow:hidden;background:#fff">${t.html}</div>`)}`;
+};
 
 const qrSign = {
   id: 'qr', piece: 'qr', name: 'QR sign', size: 'A5, 148 × 210 mm', mm: [AW, AH], pages: ['Sign'],
@@ -144,32 +146,9 @@ const qrSign = {
     {
       id: 'v2',
       note: 'Like the app: the QR sits in a white card with a thin line, and the link is inside the card.',
-      html: () => {
-        const k = LOOK.v2;
-        const t = signTile({
-          footH: 13,
-          foot: `<div class="m nw" style="width:100%;border-top:0.3mm solid ${C.line};padding-top:3.4mm;text-align:center;font-size:4.4mm;color:${C.deep}">${SHORT.home}</div>`,
-        });
-        return `
-        ${ground('v2')}
-        ${at(AM, AM, logo('v2', 7))}
-        ${at(AM - 0.6, 27, `Try it ${hi('v2', 'free.')}`, `font-size:17mm;color:${k.ink}`, 'd nw')}
-        ${at(AM, 46, 'Prof reviews, schedules, and an AI advisor.', `font-size:5mm;font-weight:500;color:${k.sub}`, 'nw')}
-        ${at(AM, 57, `<div style="border:0.3mm solid ${C.line};border-radius:1.4mm;overflow:hidden;background:#fff">${t.html}</div>`)}`;
-      },
+      html: () => paperSign('v2'),
     },
-    {
-      id: 'v3',
-      note: 'Solid blue, three words in big type, and the QR as wide as the sign allows.',
-      html: () => {
-        const k = LOOK.v3;
-        return `
-        ${ground('v3')}
-        ${at(AM - 1, AM + 1, `Try it ${hi('v3', 'free.')}`, `font-size:19.5mm;color:${k.ink}`, 'd nw')}
-        ${at(AM, 51, signTile({ radius: 2.4 }).html)}
-        ${atb(AM, AM, `<span>${SHORT.home}</span>${word(4.6, k.word)}`, `width:${ACW}mm;display:flex;justify-content:space-between;align-items:center;font-size:4.6mm;font-weight:600;color:${k.ink}`, 'nw')}`;
-      },
-    },
+    { id: 'v3', note: 'V2 in blue: the logo, “Try it free.”, and the QR in a white card with the link inside.', html: () => paperSign('v3') },
     {
       id: 'v4',
       note: 'V1 with less: the ask, the QR, the site. No sparkles, no logo row.',
@@ -236,10 +215,47 @@ const simplePrices = (v) => {
       <div>${v === 'v6' ? word(9, k.word) : logo(v, 9)}<div class="d nw" style="font-size:19mm;margin:12mm 0 0 -1mm;color:${k.ink}">Pick a ${hi(v, 'pass.')}</div></div>
       <div>
         <div class="nw" style="font-size:10mm;font-weight:700;letter-spacing:-0.02em;color:${k.ink}">${MAIN.name}</div>
-        <div class="d nw" style="font-size:64mm;line-height:0.8;margin:9mm 0 0 -1.5mm;color:${k.block ? k.ink : k.hi}">${MAIN.price}</div>
+        <div class="d nw" style="font-size:64mm;line-height:0.8;margin:9mm 0 0 -1.5mm;color:${k.hi}">${MAIN.price}</div>
       </div>
       <div>${row(GRAD)}${row(SEM)}${row(FREE)}</div>
       <div class="nw" style="font-size:5.6mm;font-weight:600;color:${k.ink}">Pay with ${F.pay}.</div>`)}`;
+};
+
+// v2 + v3: like the /pass page. Cards with thin lines, the Year Pass card in a ring.
+const paperPrices = (v) => {
+  const k = LOOK[v];
+  const small = (p) => `<div style="background:${k.card};border:0.3mm solid ${k.rule};border-radius:1.4mm;padding:5mm 5mm 5.5mm;display:flex;flex-direction:column">
+    <div class="nw" style="font-size:5mm;font-weight:700;letter-spacing:-0.015em;color:${k.ink}">${p.name}</div>
+    <div class="nw" style="margin-top:3mm"><span class="d" style="font-size:13mm;color:${k.ink}">${p.price}</span>${p.per ? `<span style="font-size:3.6mm;font-weight:600;margin-left:1.4mm;color:${k.sub}">${p.per}</span>` : ''}</div>
+    <div style="font-size:3.8mm;font-weight:500;line-height:1.35;margin-top:3mm;color:${k.sub}">${p.about}</div>
+    ${p.month ? `<div style="font-size:3.6mm;font-weight:600;margin-top:auto;padding-top:3mm;color:${k.link}">${p.month}</div>` : ''}
+  </div>`;
+  return `
+    ${ground(v)}
+    ${column(PM, PW, PH, `
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center">${logo(v, 9)}<span class="m" style="font-size:3.6mm;color:${k.sub}">${F.site}</span></div>
+        <div class="d nw" style="font-size:19mm;margin:12mm 0 0 -1mm;color:${k.ink}">Pick a ${hi(v, 'pass.')}</div></div>
+      <div style="background:${k.card};border:0.6mm solid ${k.hi};border-radius:1.6mm;padding:7mm 8mm 8mm;display:flex;justify-content:space-between;align-items:flex-end">
+        <div>
+          <div class="nw" style="display:flex;gap:3mm;align-items:center">
+            <span style="font-size:7.4mm;font-weight:700;letter-spacing:-0.02em;color:${k.ink}">${MAIN.name}</span>
+            ${pill(v, F.pick, 3.4, '1.2mm 2.8mm')}</div>
+          <div class="nw" style="display:flex;align-items:baseline;gap:2.4mm;margin-top:5mm">
+            <span class="d" style="font-size:30mm;line-height:0.86;color:${k.ink}">${MAIN.price}</span>
+            <span style="font-size:5.6mm;font-weight:600;color:${k.sub}">${MAIN.per}</span></div>
+          <div class="nw" style="font-size:4.6mm;font-weight:500;margin-top:5mm;color:${k.ink}">${MAIN.about}</div>
+          <div class="nw" style="font-size:4.2mm;font-weight:600;margin-top:1.6mm;color:${k.link}">${MAIN.month}</div>
+        </div>
+        ${art('object', 'season-ticket', 38, { set: k.draw, style: 'margin:0 -1mm 4mm 0' })}
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;align-items:stretch">${small(GRAD)}${small(SEM)}${small(FREE)}</div>
+      <div style="background:${k.well};border-radius:1.4mm;padding:5mm 6mm 5.4mm">
+        <div class="m" style="font-size:3.4mm;color:${k.sub};margin-bottom:3mm">Every pass</div>
+        ${everyList({ size: 4.1, tickSize: 4.2, color: k.ink, tickColor: k.hi, gap: 3, row: true })}
+      </div>
+      <div class="nw" style="display:flex;gap:3mm;align-items:baseline;border-top:0.3mm solid ${k.rule};padding-top:4mm">
+        <span class="m" style="font-size:3.4mm;color:${k.sub}">Pay with</span><span style="font-size:4.4mm;font-weight:600;color:${k.ink}">${F.pay}</span></div>`)}`;
 };
 
 const prices = {
@@ -278,70 +294,8 @@ const prices = {
           </div>`)}`;
       },
     },
-    {
-      id: 'v2',
-      note: 'Like the /pass page: white cards with thin lines, the Year Pass card in a blue ring.',
-      html: () => {
-        const k = LOOK.v2;
-        const small = (p) => `<div style="background:#fff;border:0.3mm solid ${C.line};border-radius:1.4mm;padding:5mm 5mm 5.5mm;display:flex;flex-direction:column">
-          <div class="nw" style="font-size:5mm;font-weight:700;letter-spacing:-0.015em;color:${k.ink}">${p.name}</div>
-          <div class="nw" style="margin-top:3mm"><span class="d" style="font-size:13mm;color:${k.ink}">${p.price}</span>${p.per ? `<span style="font-size:3.6mm;font-weight:600;margin-left:1.4mm;color:${k.sub}">${p.per}</span>` : ''}</div>
-          <div style="font-size:3.8mm;font-weight:500;line-height:1.35;margin-top:3mm;color:${k.sub}">${p.about}</div>
-          ${p.month ? `<div style="font-size:3.6mm;font-weight:600;margin-top:auto;padding-top:3mm;color:${C.deep}">${p.month}</div>` : ''}
-        </div>`;
-        return `
-        ${ground('v2')}
-        ${column(PM, PW, PH, `
-          <div>
-            <div style="display:flex;justify-content:space-between;align-items:center">${logo('v2', 9)}<span class="m" style="font-size:3.6mm;color:${k.sub}">${F.site}</span></div>
-            <div class="d nw" style="font-size:19mm;margin:12mm 0 0 -1mm;color:${k.ink}">Pick a ${hi('v2', 'pass.')}</div></div>
-          <div style="background:#fff;border:0.6mm solid ${C.accent};border-radius:1.6mm;padding:7mm 8mm 8mm;display:flex;justify-content:space-between;align-items:flex-end">
-            <div>
-              <div class="nw" style="display:flex;gap:3mm;align-items:center">
-                <span style="font-size:7.4mm;font-weight:700;letter-spacing:-0.02em;color:${k.ink}">${MAIN.name}</span>
-                <span class="m" style="font-size:3.4mm;color:${C.accent};background:${C.tint};padding:1.2mm 2.8mm;border-radius:10mm">${F.pick}</span></div>
-              <div class="nw" style="display:flex;align-items:baseline;gap:2.4mm;margin-top:5mm">
-                <span class="d" style="font-size:30mm;line-height:0.86;color:${k.ink}">${MAIN.price}</span>
-                <span style="font-size:5.6mm;font-weight:600;color:${k.sub}">${MAIN.per}</span></div>
-              <div class="nw" style="font-size:4.6mm;font-weight:500;margin-top:5mm;color:${k.ink}">${MAIN.about}</div>
-              <div class="nw" style="font-size:4.2mm;font-weight:600;margin-top:1.6mm;color:${C.deep}">${MAIN.month}</div>
-            </div>
-            ${art('object', 'season-ticket', 38, { set: k.draw, style: 'margin:0 -1mm 4mm 0' })}
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;align-items:stretch">${small(GRAD)}${small(SEM)}${small(FREE)}</div>
-          <div style="background:${C.well};border-radius:1.4mm;padding:5mm 6mm 5.4mm">
-            <div class="m" style="font-size:3.4mm;color:${k.sub};margin-bottom:3mm">Every pass</div>
-            ${everyList({ size: 4.1, tickSize: 4.2, color: k.ink, tickColor: C.accent, gap: 3, row: true })}
-          </div>
-          <div class="nw" style="display:flex;gap:3mm;align-items:baseline;border-top:0.3mm solid ${C.line};padding-top:4mm">
-            <span class="m" style="font-size:3.4mm;color:${k.sub}">Pay with</span><span style="font-size:4.4mm;font-weight:600;color:${k.ink}">${F.pay}</span></div>`)}`;
-      },
-    },
-    {
-      id: 'v3',
-      note: 'Solid blue, prices only, as big as they fit. The Year Pass price fills the top half.',
-      html: () => {
-        const k = LOOK.v3;
-        const line = (p) => `<div style="display:flex;justify-content:space-between;align-items:baseline;padding:4mm 0 3mm;border-top:0.5mm solid ${k.rule}">
-          <span class="nw" style="font-size:8mm;font-weight:700;letter-spacing:-0.02em;color:${k.ink}">${p.name}</span>
-          <span class="d nw" style="font-size:20mm;color:${k.ink}">${p.price}</span></div>`;
-        return `
-        ${ground('v3')}
-        ${column(PM, PW, PH, `
-          <div>${word(9, k.word)}</div>
-          <div>
-            <div class="nw" style="display:flex;gap:4mm;align-items:center">
-              <span style="font-size:9mm;font-weight:700;letter-spacing:-0.02em;color:${k.ink}">${MAIN.name}</span>${tag3(F.pick, 4.6)}</div>
-            <div class="d nw" style="font-size:68mm;line-height:0.8;margin:8mm 0 0 -1.5mm;color:${k.ink}">${MAIN.price}</div>
-            <div class="nw" style="font-size:7mm;font-weight:600;margin-top:8mm;color:${k.ink}">${MAIN.per} · ${MAIN.month}</div>
-          </div>
-          <div>${line(GRAD)}${line(SEM)}${line(FREE)}</div>
-          <div>
-            ${everyList({ size: 5.4, tickSize: 5.4, color: k.ink, tickColor: '#fff', gap: 2.6 })}
-            <div style="margin-top:5mm;padding-top:4.4mm;border-top:0.5mm solid ${k.rule};font-size:5.4mm;font-weight:600;color:${k.ink}">Pay with ${F.pay}.</div>
-          </div>`)}`;
-      },
-    },
+    { id: 'v2', note: 'Like the /pass page: white cards with thin lines, the Year Pass card in a blue ring.', html: () => paperPrices('v2') },
+    { id: 'v3', note: 'V2 in blue: see-through cards with thin lines, the Year Pass card in a light-blue ring.', html: () => paperPrices('v3') },
     { id: 'v4', note: 'V1 with less: the Year Pass price big in light blue, then the other passes in plain rows. No box, no drawing.', html: () => simplePrices('v4') },
     { id: 'v5', note: 'V2 with less: the same rows on light paper. No cards, no small print.', html: () => simplePrices('v5') },
     { id: 'v6', note: 'V3 with less: solid blue, the prices and how to pay. Nothing else.', html: () => simplePrices('v6') },
@@ -353,30 +307,51 @@ const prices = {
 // ======================================================================
 const FW = 105, FH = 148, FM = margin(FW, FH), FCW = FW - 2 * FM;
 
+// v1 on navy; v2 and v3 share the paper layout (v3 in blue)
 const flyerBack = (v) => {
-  const k = LOOK[v];
-  const small = v === 'v3' ? k.ink : k.sub;   // small text on the blue ground stays white
-  const bestTag = v === 'v3' ? tag3(F.pick, 2.6)
-    : `<span class="m" style="font-size:2.6mm;font-weight:500;${v === 'v2' ? `color:${C.accent};background:${C.tint}` : `color:${k.sub};border:0.25mm solid ${k.rule}`};padding:0.6mm 1.6mm;border-radius:4mm">${F.pick}</span>`;
+  const k = LOOK[v], v1 = v === 'v1';
+  const small = k.sub;
+  const bestTag = v1 ? `<span class="m" style="font-size:2.6mm;font-weight:500;color:${k.sub};border:0.25mm solid ${k.rule};padding:0.6mm 1.6mm;border-radius:4mm">${F.pick}</span>`
+    : pill(v, F.pick, 2.6, '0.6mm 1.6mm');
   const row = (p) => `<div style="display:flex;justify-content:space-between;align-items:center;gap:4mm;padding:3.2mm 0;border-top:0.3mm solid ${k.rule}">
       <div><div class="nw" style="display:flex;gap:2mm;align-items:center;font-size:4.4mm;font-weight:700;letter-spacing:-0.01em;color:${k.ink}">${p.name}${p.main ? bestTag : ''}</div>
         <div style="font-size:3.1mm;font-weight:500;line-height:1.3;margin-top:0.9mm;color:${small}">${p.about}</div></div>
-      <div class="nw" style="text-align:right"><div class="d" style="font-size:9mm;color:${v === 'v1' && p.main ? k.hi : k.ink}">${p.price}</div>
+      <div class="nw" style="text-align:right"><div class="d" style="font-size:9mm;color:${v1 && p.main ? k.hi : k.ink}">${p.price}</div>
         <div style="font-size:2.9mm;font-weight:600;margin-top:0.8mm;color:${small}">${p.per}</div></div></div>`;
-  const tickColor = v === 'v2' ? C.accent : (v === 'v1' ? k.sub : '#fff');
+  const tickColor = v1 ? k.sub : k.hi;
   return `
     ${ground(v)}
     ${column(FM, FW, FH, `
       <div>
-        <div class="d nw" style="font-size:9mm;margin:0 0 4.4mm -0.4mm;color:${k.ink}">${v === 'v2' ? `Get the ${hi('v2', 'pass.')}` : 'Get the pass.'}</div>
+        <div class="d nw" style="font-size:9mm;margin:0 0 4.4mm -0.4mm;color:${k.ink}">${v1 ? 'Get the pass.' : `Get the ${hi(v, 'pass.')}`}</div>
         ${ORDER.map(row).join('')}
       </div>
       ${everyList({ size: 3.3, tickSize: 3.2, color: k.ink, tickColor, gap: 1.6 })}
-      <div style="padding:3mm 3.6mm;border-radius:1.2mm;font-size:3.3mm;font-weight:600;line-height:1.35;${v === 'v2' ? `background:${C.tint};color:${C.ink}` : v === 'v1' ? `background:${k.card};border:0.3mm solid ${k.rule};color:${k.ink}` : `border:0.35mm solid ${k.rule};color:${k.ink}`}">${F.booth}</div>
+      <div style="padding:3mm 3.6mm;border-radius:1.2mm;font-size:3.3mm;font-weight:600;line-height:1.35;color:${k.ink};${v1 ? `background:${k.card};border:0.3mm solid ${k.rule}` : `background:${v === 'v2' ? C.tint : k.well}`}">${F.booth}</div>
       <div>
-        <div style="font-size:3.1mm;font-weight:500;line-height:1.35;color:${v === 'v3' ? k.ink : k.sub}">${F.redeem}</div>
-        <div class="m nw" style="display:flex;justify-content:space-between;margin-top:3mm;padding-top:2.6mm;border-top:0.3mm solid ${k.rule};font-size:3mm;color:${v === 'v3' ? k.ink : k.sub}"><span>${F.ig}</span><span>${F.site}</span></div>
+        <div style="font-size:3.1mm;font-weight:500;line-height:1.35;color:${k.sub}">${F.redeem}</div>
+        <div class="m nw" style="display:flex;justify-content:space-between;margin-top:3mm;padding-top:2.6mm;border-top:0.3mm solid ${k.rule};font-size:3mm;color:${k.sub}"><span>${F.ig}</span><span>${F.site}</span></div>
       </div>`)}`;
+};
+
+// v2 + v3 front: like the app. The four things it does in a card, and the QR in a thin-line box.
+const paperFlyerFront = (v) => {
+  const k = LOOK[v];
+  const t = qrTile(URLS.home, 40, {});
+  return `
+    ${ground(v)}
+    ${column(FM, FW, FH, `
+      <div>${logo(v, 6)}
+        <div class="d nw" style="font-size:14.6mm;margin:9mm 0 0 -0.4mm;color:${k.ink}">Pick the right<br>${hi(v, 'prof.')}</div>
+        <div class="nw" style="font-size:4.4mm;font-weight:600;margin-top:4.4mm;color:${k.ink}">${F.tagline}</div></div>
+      <div style="background:${k.card};border:0.3mm solid ${k.rule};border-radius:1.2mm;display:grid;grid-template-columns:1fr 1fr">
+        ${F.features.map((f, j) => `<div style="display:flex;gap:1.8mm;align-items:center;padding:3mm 3mm;font-size:3.5mm;font-weight:600;color:${k.ink};${j % 2 ? `border-left:0.3mm solid ${k.rule};` : ''}${j > 1 ? `border-top:0.3mm solid ${k.rule};` : ''}">${tick(3.2, k.hi)}<span class="nw">${f}</span></div>`).join('')}</div>
+      <div style="display:flex;background:${k.card};border:0.3mm solid ${k.rule};border-radius:1.2mm;overflow:hidden">
+        <div style="padding:1.4mm;background:${k.tile}">${t.html}</div>
+        <div style="flex:1;padding:4.6mm 4mm 4.4mm;display:flex;flex-direction:column;border-left:0.3mm solid ${k.rule}">
+          <div class="d nw" style="font-size:6.6mm;line-height:1.02;color:${k.ink}">${CTA[0]}<br>${CTA[1]}</div>
+          <div style="font-size:3.4mm;font-weight:500;line-height:1.3;margin-top:2.4mm;color:${k.sub}">Make a free account.</div>
+          <div class="m nw" style="margin-top:auto;font-size:2.9mm;color:${k.link}">${SHORT.home}</div></div></div>`)}`;
 };
 
 // v4–v6 front: the logo, the headline, the QR, the ask, the site.
@@ -397,7 +372,7 @@ const simpleFlyerBack = (v) => {
   const k = LOOK[v];
   const row = (p) => `<div style="display:flex;justify-content:space-between;align-items:baseline;padding:3.6mm 0 2.6mm;border-top:0.3mm solid ${k.rule}">
     <span class="nw" style="font-size:4.8mm;font-weight:700;letter-spacing:-0.01em;color:${k.ink}">${p.name}</span>
-    <span class="d nw" style="font-size:${p.main ? 12 : 9}mm;color:${p.main && !k.block ? k.hi : k.ink}">${p.price}</span></div>`;
+    <span class="d nw" style="font-size:${p.main ? 12 : 9}mm;color:${p.main ? k.hi : k.ink}">${p.price}</span></div>`;
   return `
     ${ground(v)}
     ${column(FM, FW, FH, `
@@ -407,7 +382,7 @@ const simpleFlyerBack = (v) => {
       </div>
       <div>
         <div style="font-size:3.8mm;font-weight:600;line-height:1.4;color:${k.ink}">${F.booth}</div>
-        <div style="font-size:3.5mm;font-weight:500;line-height:1.4;margin-top:3mm;color:${k.block ? k.ink : k.sub}">${F.redeem}</div>
+        <div style="font-size:3.5mm;font-weight:500;line-height:1.4;margin-top:3mm;color:${k.sub}">${F.redeem}</div>
       </div>`)}`;
 };
 
@@ -436,45 +411,8 @@ const flyer = {
         ${atb(FM + 43, FM, SHORT.home, `font-size:2.9mm;color:${k.ink}`, 'm nw')}`;
       },
     },
-    {
-      id: 'v2',
-      note: 'Light paper like the app: the four things it does in a white card, and the QR in a thin-line box.',
-      html: (i) => {
-        if (i === 1) return flyerBack('v2');
-        const k = LOOK.v2;
-        const t = qrTile(URLS.home, 40, {});
-        return `
-        ${ground('v2')}
-        ${column(FM, FW, FH, `
-          <div>${logo('v2', 6)}
-            <div class="d nw" style="font-size:14.6mm;margin:9mm 0 0 -0.4mm;color:${k.ink}">Pick the right<br>${hi('v2', 'prof.')}</div>
-            <div class="nw" style="font-size:4.4mm;font-weight:600;margin-top:4.4mm;color:${k.ink}">${F.tagline}</div></div>
-          <div style="background:#fff;border:0.3mm solid ${C.line};border-radius:1.2mm;display:grid;grid-template-columns:1fr 1fr">
-            ${F.features.map((f, j) => `<div style="display:flex;gap:1.8mm;align-items:center;padding:3mm 3mm;font-size:3.5mm;font-weight:600;color:${k.ink};${j % 2 ? `border-left:0.3mm solid ${C.line};` : ''}${j > 1 ? `border-top:0.3mm solid ${C.line};` : ''}">${tick(3.2, C.accent)}<span class="nw">${f}</span></div>`).join('')}</div>
-          <div style="display:flex;background:#fff;border:0.3mm solid ${C.line};border-radius:1.2mm;overflow:hidden">
-            <div style="padding:1.4mm">${t.html}</div>
-            <div style="flex:1;padding:4.6mm 4mm 4.4mm;display:flex;flex-direction:column;border-left:0.3mm solid ${C.line}">
-              <div class="d nw" style="font-size:6.6mm;line-height:1.02;color:${k.ink}">${CTA[0]}<br>${CTA[1]}</div>
-              <div style="font-size:3.4mm;font-weight:500;line-height:1.3;margin-top:2.4mm;color:${k.sub}">Make a free account.</div>
-              <div class="m nw" style="margin-top:auto;font-size:2.9mm;color:${C.deep}">${SHORT.home}</div></div></div>`)}`;
-      },
-    },
-    {
-      id: 'v3',
-      note: 'Solid blue, the headline as big as it fits, and a bigger QR. The back keeps the same facts.',
-      html: (i) => {
-        if (i === 1) return flyerBack('v3');
-        const k = LOOK.v3;
-        const t = qrTile(URLS.home, 44, { radius: 1.2 });
-        return `
-        ${ground('v3')}
-        ${at(FM, FM, word(5.6, k.word))}
-        ${at(FM - 0.6, 22, `Pick<br>the right<br>${hi('v3', 'prof.')}`, `font-size:21mm;color:${k.ink}`, 'd nw')}
-        ${at(FM, FH - FM - 44, t.html)}
-        ${at(FM + 49, FH - FM - 44, `<div class="d nw" style="font-size:7.4mm;line-height:1.02">${CTA[0]}<br>${CTA[1]}</div>`, `color:${k.ink}`)}
-        ${atb(FM + 49, FM, SHORT.home, `font-size:2.9mm;color:${k.ink}`, 'm nw')}`;
-      },
-    },
+    { id: 'v2', note: 'Light paper like the app: the four things it does in a white card, and the QR in a thin-line box.', html: (i) => (i ? flyerBack('v2') : paperFlyerFront('v2')) },
+    { id: 'v3', note: 'V2 in blue: the four things it does in a see-through card, and the QR in a thin-line box. The back is V2 in blue.', html: (i) => (i ? flyerBack('v3') : paperFlyerFront('v3')) },
     { id: 'v4', note: 'V1 with less: the headline, the QR, and the site. The back: the passes, how to buy, how to redeem.', html: (i) => (i ? simpleFlyerBack('v4') : simpleFlyerFront('v4')) },
     { id: 'v5', note: 'V2 with less: no feature card, no boxes. The back has no small print under each pass.', html: (i) => (i ? simpleFlyerBack('v5') : simpleFlyerFront('v5')) },
     { id: 'v6', note: 'V3 with less: the headline, the QR, and the site. The back: prices and how to buy only.', html: (i) => (i ? simpleFlyerBack('v6') : simpleFlyerFront('v6')) },
@@ -482,42 +420,45 @@ const flyer = {
 };
 
 // ======================================================================
-// Pass card, 90 × 54 mm. The voucher is on the pass: the front is the pass, the back prints the voucher code.
-// Given after a cash, GCash, or Maya sale. The public files show F.sampleCode.
+// Pass card, 90 × 54 mm. Reads like a paid plan: "1 year of profstopick" and the pass name in a tag.
+// The back prints the voucher code. Given after a cash, GCash, or Maya sale. The public files show F.sampleCode.
 // `npm run cards -- <codes.txt>` prints the real codes into a private PDF (scripts/print/cards.mjs).
 // ======================================================================
 const KW = 90, KH = 54, KM = 5, KCW = KW - 2 * KM;
 export const CARD_MM = [KW, KH];
 
-export const cardFront = (v) => {
-  const k = LOOK[v];
-  if (v === 'v1') return `
-    ${ground('v1')}
-    ${stars('v1', [['sparkle-four', 3.4, 52, 8], ['sparkle-small', 2.2, 46, 16], ['circle', 1.2, 60, 44]])}
-    ${at(KM, KM, logo('v1', 5.4))}
-    ${at(56, 13, art('object', 'season-ticket', 30, { set: k.draw }))}
-    ${atb(KM - 0.3, KM, `${hi('v1', 'Pass')} card`, `font-size:11mm;color:${k.ink}`, 'd nw')}`;
-  if (v === 'v2') return `
-    ${ground('v2')}
-    ${at(KM, KM, logo('v2', 5.4))}
-    ${at(57, 11, art('object', 'season-ticket', 29, { set: k.draw }))}
-    ${atb(KM - 0.3, KM + 5.4, `${hi('v2', 'Pass')} card`, `font-size:11mm;color:${k.ink}`, 'd nw')}
-    ${atb(KM, KM, F.site, `font-size:2.8mm;color:${k.sub}`, 'm nw')}`;
-  if (v === 'v3') return `
-    ${ground('v3')}
-    ${at(KM, KM, word(4.6, k.word))}
-    ${atb(KM - 0.6, KM - 0.4, `${hi('v3', 'Pass')} card`, `font-size:16mm;color:${k.ink}`, 'd nw')}`;
-  // v4–v6: the logo and the word "Pass", nothing else
+// the pass a card is for, by id or name ('year', 'Year Pass'). Blank: the main pass. No match: undefined.
+export const passFor = (s = '') => {
+  const t = String(s).trim().toLowerCase();
+  return t ? F.passes.find((p) => p.id === t || p.name.toLowerCase() === t) : MAIN;
+};
+
+// the pass name tag, filled like a plan badge
+const TAG = { v1: [C.sky, C.navy], v2: [C.accent, '#fff'], v3: [C.sky, C.navy] };
+TAG.v4 = TAG.v1; TAG.v5 = TAG.v2; TAG.v6 = TAG.v3;
+const passTag = (v, p, size = 2.6) => `<span class="m nw" style="display:inline-block;font-size:${size}mm;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${TAG[v][1]};background:${TAG[v][0]};padding:1.1mm 2.4mm 1mm;border-radius:10mm">${p.name}</span>`;
+
+// front: the badge and the pass tag on top; "1 year of" and the wordmark at the bottom.
+// v1–v3 add the ticket drawing, sparkles (v1), and what the pass unlocks. v4–v6: only the words.
+export const cardFront = (v, p = MAIN) => {
+  const k = LOOK[v], rich = !simple(v);
+  const big = rich ? 8 : 9.4;
   return `
     ${ground(v)}
-    ${at(KM, KM, v === 'v6' ? mark(v, 6) : logo(v, 5.4))}
-    ${atb(KM - 0.6, KM - 0.6, hi(v, 'Pass'), `font-size:${v === 'v6' ? 20 : 16}mm;color:${k.ink}`, 'd nw')}`;
+    ${v === 'v1' ? stars('v1', [['sparkle-four', 3.4, 54, 9], ['sparkle-small', 2.2, 48, 16]]) : ''}
+    ${rich ? at(61, 17, art('object', 'season-ticket', 25, { set: k.draw })) : ''}
+    ${at(KM, KM, mark(v, 6.4))}
+    ${at(KM, KM + 0.6, passTag(v, p), `width:${KCW}mm;text-align:right`)}
+    ${atb(KM, KM, `
+      <div class="d nw" style="font-size:${big}mm;margin-left:-0.3mm;color:${k.ink}">${hi(v, p.span)} of</div>
+      ${word(big * 1.12, k.word, `margin-top:${(big * 0.22).toFixed(2)}mm`)}
+      ${rich ? `<div class="nw" style="font-size:2.7mm;font-weight:600;margin-top:2.6mm;color:${k.sub}">${F.every.slice(0, 2).join(' · ')}</div>` : ''}`)}`;
 };
 
 // code = the voucher code; pass = the pass it is for, if the codes list says (blank: not printed)
 export const cardBack = (v, { code = F.sampleCode, pass = '' } = {}) => {
   const k = LOOK[v];
-  const soft = k.block ? k.ink : k.sub;
+  const soft = k.sub;
   const label = `<span>Voucher code</span>${pass ? `<span>${esc(pass)}</span>` : ''}`;
   if (simple(v)) return `
     ${ground(v)}
@@ -538,12 +479,12 @@ const card = {
   id: 'card', piece: 'card', name: 'Pass card, front', size: '90 × 54 mm, the pass', mm: [KW, KH], pages: ['Front'],
   print: 'Card stock, 250 gsm or more. Print this on one side and “Pass card, back” on the other. Ask the shop to cut to 90 × 54 mm.',
   versions: [
-    { id: 'v1', note: 'Navy, the logo, “Pass card”, and the ticket drawing.', html: () => cardFront('v1') },
-    { id: 'v2', note: 'Light paper like the app, with the ticket drawing and the site.', html: () => cardFront('v2') },
-    { id: 'v3', note: 'Solid blue, “Pass card” in big type.', html: () => cardFront('v3') },
-    { id: 'v4', note: 'V1 with less: the logo and “Pass”.', html: () => cardFront('v4') },
-    { id: 'v5', note: 'V2 with less: the logo and “Pass”, no drawing.', html: () => cardFront('v5') },
-    { id: 'v6', note: 'V3 with less: the badge and “Pass”.', html: () => cardFront('v6') },
+    { id: 'v1', note: 'Navy, like a paid plan: “1 year of profstopick”, the Year Pass tag, what it unlocks, and the ticket drawing.', html: () => cardFront('v1') },
+    { id: 'v2', note: 'Light paper: “1 year of profstopick”, the Year Pass tag in brand blue, what it unlocks, and the ticket drawing.', html: () => cardFront('v2') },
+    { id: 'v3', note: 'V2 in blue: “1 year of profstopick”, the Year Pass tag, what it unlocks, and the ticket drawing.', html: () => cardFront('v3') },
+    { id: 'v4', note: 'V1 with less: “1 year of profstopick” and the Year Pass tag.', html: () => cardFront('v4') },
+    { id: 'v5', note: 'V2 with less: “1 year of profstopick” and the Year Pass tag.', html: () => cardFront('v5') },
+    { id: 'v6', note: 'V3 with less: “1 year of profstopick” and the Year Pass tag.', html: () => cardFront('v6') },
   ],
 };
 
@@ -553,11 +494,89 @@ const cardBackPrint = {
   versions: [
     { id: 'v1', note: 'Navy. The code in a big white box, one line on how to use it, and where to redeem it.', html: () => cardBack('v1') },
     { id: 'v2', note: 'Light paper. The code in a thin-line box, one line on how to use it, and where to redeem it.', html: () => cardBack('v2') },
-    { id: 'v3', note: 'Solid blue. The code in a big white box, one line on how to use it, and where to redeem it.', html: () => cardBack('v3') },
+    { id: 'v3', note: 'V2 in blue. The code in a big white box, one line on how to use it, and where to redeem it.', html: () => cardBack('v3') },
     { id: 'v4', note: 'V1 with less: the code, big, and where to redeem it.', html: () => cardBack('v4') },
     { id: 'v5', note: 'V2 with less: the code, big, and where to redeem it.', html: () => cardBack('v5') },
     { id: 'v6', note: 'V3 with less: the code, big, and where to redeem it.', html: () => cardBack('v6') },
   ],
+};
+
+// ======================================================================
+// Hook flyers, A6, two sides. One question a student already asks (HOOKS in kit.mjs), big, and "Pick the right
+// prof." under it. The back is the flyer back of the same look. Hand out a mix.
+// ======================================================================
+const ask = (v, q) => q.split('\n').map((l) => l.replace(/\*(.+?)\*/g, (_, w) => hi(v, w))).join('<br>');
+
+const hookFront = (v, h) => {
+  const k = LOOK[v], rich = !simple(v), q = 36;
+  const t = qrTile(URLS.home, q, { radius: 1.2 });
+  return `
+    ${ground(v)}
+    ${v === 'v1' ? stars('v1', [['sparkle-four', 4.2, 54, 10], ['sparkle-small', 2.8, 47, 17]]) : ''}
+    ${column(FM, FW, FH, `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        ${v === 'v6' ? word(5.6, k.word) : logo(v, 6)}
+        ${rich ? art(h.art[0], h.art[1], 30, { set: k.draw, style: 'margin:-2mm -1mm -6mm 0' }) : ''}</div>
+      <div>
+        <div class="d nw" style="font-size:${h.size + (rich ? 0 : 2)}mm;margin-left:-0.5mm;color:${k.ink}">${ask(v, h.q)}</div>
+        <div class="nw" style="font-size:5.4mm;font-weight:700;letter-spacing:-0.01em;margin-top:4.4mm;color:${k.sub}">${F.headline.join(' ')}</div>
+      </div>
+      <div style="display:flex;gap:5mm">
+        ${t.html}
+        <div style="display:flex;flex-direction:column;justify-content:space-between;padding:1mm 0 0.4mm">
+          <div class="d nw" style="font-size:6.4mm;line-height:1.02;color:${k.ink}">${CTA[0]}<br>${CTA[1]}</div>
+          <div class="m nw" style="font-size:2.9mm;color:${v === 'v2' || v === 'v5' ? k.link || C.deep : k.ink}">${SHORT.home}</div></div></div>`)}`;
+};
+
+const HOOK_NOTE = {
+  v1: 'Navy: the question big, the drawing, and the QR. The back lists the passes.',
+  v2: 'Light paper: the question big with the accent word in brand blue, the drawing, and the QR.',
+  v3: 'V2 in blue: the question big, the drawing, and the QR.',
+  v4: 'V1 with less: the question, one line, the QR. No drawing.',
+  v5: 'V2 with less: the question, one line, the QR. No drawing.',
+  v6: 'V3 with less: the question, one line, the QR. No drawing.',
+};
+const flyerBackFor = (v) => (simple(v) ? simpleFlyerBack(v) : flyerBack(v));
+
+const hookFlyers = HOOKS.map((h) => ({
+  id: `hook-${h.id}`, piece: 'flyers', name: `Flyer: “${h.q.replace(/\*/g, '').replace(/\n/g, ' ')}”`, size: 'A6, 105 × 148 mm', mm: [FW, FH], pages: ['Front', 'Back'],
+  print: flyer.print,
+  versions: ['v1', 'v2', 'v3', 'v4', 'v5', 'v6'].map((v) => ({ id: v, note: HOOK_NOTE[v], html: (i) => (i ? flyerBackFor(v) : hookFront(v, h)) })),
+}));
+
+// ======================================================================
+// Staff FAQ, A4. For the team at the booth, not for visitors. White, one version. Words: FAQ in kit.mjs.
+// ======================================================================
+const faqPage = () => {
+  const M = 15, CW = PW - 2 * M;
+  const row = ([q, a]) => `<div style="display:grid;grid-template-columns:46mm 1fr;gap:5mm;padding:1.5mm 0 1.7mm;border-top:0.25mm solid ${C.line}">
+    <div style="font-size:3.3mm;font-weight:700;line-height:1.3;color:${C.ink}">${q}</div>
+    <div style="font-size:3.2mm;font-weight:500;line-height:1.34;color:${C.ink}">${a}</div></div>`;
+  const section = ([title, list]) => `<div style="margin-top:4mm">
+    <div class="m" style="font-size:2.9mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:2mm">${title}</div>
+    ${list.map(row).join('')}</div>`;
+  const price = (p) => `<div style="flex:1;border:${p.main ? `0.5mm solid ${C.accent}` : `0.25mm solid ${C.line}`};border-radius:1.4mm;padding:2.2mm 3mm">
+    <div class="nw" style="font-size:3.1mm;font-weight:600;color:${C.ink2}">${p.name}${p.main ? ` · <span style="color:${C.accent}">push this</span>` : ''}</div>
+    <div class="d nw" style="font-size:6.6mm;margin-top:1mm;color:${C.ink}">${p.price}</div></div>`;
+  return `
+    <div class="fill" style="background:#fff"></div>
+    <div class="abs" style="left:${M}mm;top:${M}mm;width:${CW}mm">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end">
+        <div><div class="d nw" style="font-size:10mm;color:${C.ink}">Booth FAQ</div>
+          <div style="font-size:3.6mm;font-weight:500;margin-top:2mm;color:${C.ink2}">For staff. What visitors ask, and what to say.</div></div>
+        ${lockup(5.6, LOGO.v2)}</div>
+      <div style="display:flex;gap:2.6mm;margin-top:5mm">${[{ name: F.free.name, price: F.free.price }, SEM, MAIN, GRAD].map(price).join('')}</div>
+      ${FAQ.map(section).join('')}
+    </div>
+    <div class="abs" style="left:${M}mm;bottom:${M}mm;width:${CW}mm;border-top:0.5mm solid ${C.ink};padding-top:3mm;display:flex;justify-content:space-between;align-items:baseline;gap:6mm">
+      <div style="font-size:3.4mm;font-weight:700;color:${C.ink}">After every sale: give the pass card, then log the sale and how they found us.</div>
+      <div class="m nw" style="font-size:2.8mm;color:${C.ink2}">${F.ig}</div></div>`;
+};
+
+const faq = {
+  id: 'faq', piece: 'faq', name: 'Staff FAQ', size: 'A4, 210 × 297 mm', mm: [PW, PH], pages: ['FAQ'],
+  print: 'Plain paper, A4. For the team: keep one behind the table. Not for visitors.',
+  versions: [{ id: 'v1', look: 'staff', note: 'White page: the prices, then each common question with what to say.', html: faqPage }],
 };
 
 // every ₱ in Inter (see peso() in kit.mjs). Its bars reach right, so keep the kit's small gap after it.
@@ -565,5 +584,5 @@ const withPeso = (asset) => ({ ...asset, versions: asset.versions.map((v) => ({ 
 
 export default {
   page: 'booth',
-  assets: [banner, qrSign, prices, flyer, card, cardBackPrint].map(withPeso),
+  assets: [banner, qrSign, prices, flyer, ...hookFlyers, card, cardBackPrint, faq].map(withPeso),
 };

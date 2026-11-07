@@ -5,12 +5,13 @@
 //   npm run cards -- ~/Downloads/codes.txt v1     any look, v1 to v6
 //
 // codes.txt: one code per line. Lines that start with # are skipped.
-// To print the pass on the card too, add it after a comma:  ABCD-1234, Year Pass
+// The front says "1 year of profstopick" (the Year Pass). For another pass, add it after a comma:
+//   ABCD-1234, Semester Pass      the front says "1 semester of", the back names the pass too
 import { chromium } from 'playwright-core';
 import { readFile } from 'node:fs/promises';
 import { resolve, dirname, join } from 'node:path';
 import { BASE_CSS, FONTS, LOOKS, peso } from './kit.mjs';
-import { CARD_MM, cardFront, cardBack } from './booth.mjs';
+import { CARD_MM, cardFront, cardBack, passFor } from './booth.mjs';
 
 const [file, look = 'v4'] = process.argv.slice(2);
 if (!file || !LOOKS.some((L) => L.id === look)) {
@@ -20,12 +21,13 @@ if (!file || !LOOKS.some((L) => L.id === look)) {
 const cards = (await readFile(file, 'utf8')).split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !l.startsWith('#'))
   .map((l) => { const [code, pass = ''] = l.split(',').map((x) => x.trim()); return { code, pass }; });
 if (!cards.length) { console.error(`No codes in ${file}`); process.exit(1); }
+const bad = cards.find((c) => !passFor(c.pass));
+if (bad) { console.error(`No pass called "${bad.pass}" (code ${bad.code}). Use Semester Pass, Year Pass, or Graduation Pass.`); process.exit(1); }
 
 const [w, h] = CARD_MM;
 const pg = (inner) => `<section class="pg" style="width:${w}mm;height:${h}mm">${peso(inner)}</section>`;
-const front = pg(cardFront(look));
 const html = `<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="${FONTS}">
-<style>@page{size:${w}mm ${h}mm;margin:0}${BASE_CSS}</style></head><body>${cards.map((c) => front + pg(cardBack(look, c))).join('')}</body></html>`;
+<style>@page{size:${w}mm ${h}mm;margin:0}${BASE_CSS}</style></head><body>${cards.map((c) => pg(cardFront(look, passFor(c.pass))) + pg(cardBack(look, c))).join('')}</body></html>`;
 
 const out = join(dirname(resolve(file)), `pass-cards-${look}.pdf`);
 const browser = await chromium.launch();

@@ -32,7 +32,7 @@ python3 -m http.server 5190     # then open http://localhost:5190/
 
 ## Print files
 
-Each printed piece (standing banner, QR sign, price list, flyers, pass cards) has six versions:
+Each printed piece (standing banner, QR sign, price list, flyers, hook flyers, pass cards) has six versions:
 
 - **V1 Navy card**: like the share card. Navy, white type, one light-blue word, the line drawings.
 - **V2 Paper**: like the app. Light paper, dark type, blue accents.
@@ -51,12 +51,22 @@ There is one QR on every print: `https://profstopick.com` (`URLS.home`). Print o
 
 The banner has no prices. The price list and the flyer back have them.
 
-The pass card is the voucher: the front is the pass, the back prints the voucher code. The files on this site show a
-sample code (`F.sampleCode`). Real codes never go in `assets/` (the site is public). To print them:
+The six hook flyers each ask one question big ("Want an easy A?", "Hate 8 AM classes?" ...). The words are in
+`HOOKS` in `kit.mjs`. The back is the normal flyer back. Hand out a mix.
+
+The staff FAQ (A4, white, one version) is for the team, not for visitors: the prices, then each common question with
+what to say. The words are in `FAQ` in `kit.mjs`.
+
+The pass card is the voucher. The front reads like a paid plan: "1 year of profstopick" and a Year Pass tag. The back
+prints the voucher code. The files on this site show a sample code (`F.sampleCode`). Real codes never go in `assets/`
+(the site is public). To print them:
 
 ```bash
-npm run cards -- ~/Downloads/codes.txt v4    # one code per line; add ", Year Pass" to print the pass too
+npm run cards -- ~/Downloads/codes.txt v4    # one code per line; add ", Semester Pass" for another pass
 ```
+
+A line with no pass prints the Year Pass. A line with a pass changes the front ("1 semester of profstopick") and names
+the pass on the back.
 
 This makes `pass-cards-v4.pdf` next to the codes file: front, back, front, back, one pair per code.
 
