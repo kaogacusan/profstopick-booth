@@ -37,10 +37,10 @@
    "id": "banner",
    "piece": "banner",
    "name": "Standing banner",
-   "size": "0.6 m × 1.6 m",
+   "size": "2.75 ft × 6.5 ft (838 × 1981 mm)",
    "mm": [
-    600,
-    1600
+    838,
+    1981
    ],
    "pages": [
     "Banner"
@@ -52,7 +52,7 @@
      "look": "v1",
      "note": "Like the share card: navy, “prof.” in light blue, what the site does, the four features, and the drawing.",
      "pdf": "/assets/print/booth/banner/v1.pdf",
-     "pdfKb": 147,
+     "pdfKb": 145,
      "jpg": [
       "/assets/print/booth/banner/v1-1.jpg"
      ],
@@ -68,7 +68,7 @@
      "look": "v2",
      "note": "V1 on light paper: dark type, “prof.” in brand blue, the same features and drawing. No box.",
      "pdf": "/assets/print/booth/banner/v2.pdf",
-     "pdfKb": 184,
+     "pdfKb": 182,
      "jpg": [
       "/assets/print/booth/banner/v2-1.jpg"
      ],
@@ -84,7 +84,7 @@
      "look": "v3",
      "note": "V2 in blue: white type, “prof.” in light blue, the same features and drawing.",
      "pdf": "/assets/print/booth/banner/v3.pdf",
-     "pdfKb": 147,
+     "pdfKb": 145,
      "jpg": [
       "/assets/print/booth/banner/v3-1.jpg"
      ],
@@ -100,7 +100,7 @@
      "look": "v4",
      "note": "V1 with less: the logo, the headline, one line on what it does, and the site. No drawing, no sparkles.",
      "pdf": "/assets/print/booth/banner/v4.pdf",
-     "pdfKb": 39,
+     "pdfKb": 38,
      "jpg": [
       "/assets/print/booth/banner/v4-1.jpg"
      ],
@@ -116,7 +116,7 @@
      "look": "v5",
      "note": "V2 with less: the logo, the headline, the four features as plain lines, and the site. No card, no drawing.",
      "pdf": "/assets/print/booth/banner/v5.pdf",
-     "pdfKb": 42,
+     "pdfKb": 41,
      "jpg": [
       "/assets/print/booth/banner/v5-1.jpg"
      ],
@@ -132,7 +132,7 @@
      "look": "v6",
      "note": "V3 with less: the name, the headline, and the site. Three things, read from across the road.",
      "pdf": "/assets/print/booth/banner/v6.pdf",
-     "pdfKb": 22,
+     "pdfKb": 21,
      "jpg": [
       "/assets/print/booth/banner/v6-1.jpg"
      ],

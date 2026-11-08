@@ -56,24 +56,27 @@ const ORDER = [MAIN, ...F.passes.filter((p) => !p.main)];
 const FREE = { name: F.free.name, price: F.free.price, per: '', about: `${F.free.lines.map((l, i) => (i ? l[0].toLowerCase() + l.slice(1) : l)).join(', ')}.` };
 
 // ======================================================================
-// Standing banner, 0.6 × 1.6 m. Seen from 2–4 m. No prices: the price list and the flyer have them.
-// People may hide the lower third, so the logo and the headline stay in the top two thirds (above 1067 mm).
-// Sizes: wordmark 400+ mm wide, headline caps 59 mm or more.
+// Standing banner, 2.75 × 6.5 ft (838 × 1981 mm). Seen from 2–4 m. No prices: the price list and the flyer have them.
+// People may hide the lower third, so the logo and the headline stay in the top two thirds (above 1321 mm).
+// The layout was drawn at 600 × 1600 mm; Y() scales its heights and type sizes to the real banner,
+// and X() its sparkle spots across. Sizes: wordmark 500+ mm wide, headline caps 73 mm or more.
 // ======================================================================
-const BW = 600, BH = 1600, BM = margin(BW, BH), BCW = BW - 2 * BM;
+const BW = 838, BH = 1981, BM = margin(BW, BH), BCW = BW - 2 * BM;
+const Y = (n) => Math.round(n * BH / 1600);
+const X = (n) => Math.round(n * BW / 600);
 
 // v4–v6: logo, the headline on four lines as big as it fits, one more thing (v4, v5), the site. Nothing else.
 const simpleBanner = (v) => {
-  const k = LOOK[v], big = v === 'v6' ? 196 : 190;
-  const more = v === 'v4' ? at(BM, 1030, F.what, `width:${BCW}mm;font-size:36mm;line-height:1.3;color:${k.sub}`, 't')
-    : v === 'v5' ? at(BM, 1030, F.features.join('<br>'), `font-size:38mm;font-weight:600;line-height:1.35;color:${k.sub}`, 'nw')
+  const k = LOOK[v], big = Y(v === 'v6' ? 196 : 190);
+  const more = v === 'v4' ? at(BM, Y(1030), F.what, `width:${BCW}mm;font-size:${Y(36)}mm;line-height:1.3;color:${k.sub}`, 't')
+    : v === 'v5' ? at(BM, Y(1030), F.features.join('<br>'), `font-size:${Y(38)}mm;font-weight:600;line-height:1.35;color:${k.sub}`, 'nw')
     : '';
   return `
     ${ground(v)}
-    ${at(BM, 60, v === 'v6' ? word(86, k.word) : logo(v, 80))}
-    ${at(BM - 6, 206, `Pick<br>the<br>right<br>${hi(v, 'prof.')}`, `font-size:${big}mm;color:${k.ink}`, 'd nw')}
+    ${at(BM, Y(60), v === 'v6' ? word(Y(86), k.word) : logo(v, Y(80)))}
+    ${at(BM - 8, Y(206), `Pick<br>the<br>right<br>${hi(v, 'prof.')}`, `font-size:${big}mm;color:${k.ink}`, 'd nw')}
     ${more}
-    ${atb(BM - 2, BM, F.site, `font-size:${v === 'v6' ? 62 : 56}mm;color:${v === 'v5' ? C.accent : k.ink}`, 'd nw')}`;
+    ${atb(BM - 2, BM, F.site, `font-size:${Y(v === 'v6' ? 62 : 56)}mm;color:${v === 'v5' ? C.accent : k.ink}`, 'd nw')}`;
 };
 
 // v1–v3: the share card layout. v1 on navy, v2 the same on light paper, v3 on blue.
@@ -81,18 +84,18 @@ const shareBanner = (v) => {
   const k = LOOK[v];
   return `
     ${ground(v)}
-    ${stars(v, [['sparkle-four', 40, 452, 332], ['sparkle-small', 20, 372, 372], ['circle', 10, 330, 188], ['sparkle-four', 26, 66, 1060], ['circle', 9, 92, 1488], ['sparkle-small', 22, 528, 1028]])}
-    ${at(BM, 60, logo(v, 80))}
-    ${at(BM - 3, 236, `Pick the right<br>${hi(v, 'prof.')}`, `font-size:84mm;color:${k.ink}`, 'd nw')}
-    ${at(BM, 446, F.what, `width:${BCW}mm;font-size:31mm;line-height:1.3;color:${k.sub}`, 't')}
-    ${at(BM, 628, `<div style="border-top:1.6mm solid ${k.rule};padding-top:40mm">
-      ${checks(F.features, { size: 36, tickSize: 34, color: k.ink, tickColor: k.hi, gap: 20 })}</div>`, `width:${BCW}mm`)}
-    ${at(BW - BM - 440, 990, art('scene', 'landing-compare', 440, { set: k.draw }))}
-    ${atb(BM - 2, BM, F.site, `font-size:52mm;color:${k.ink}`, 'd nw')}`;
+    ${stars(v, [['sparkle-four', Y(40), X(452), Y(332)], ['sparkle-small', Y(20), X(372), Y(372)], ['circle', Y(10), X(330), Y(188)], ['sparkle-four', Y(26), X(66), Y(1060)], ['circle', Y(9), X(92), Y(1488)], ['sparkle-small', Y(22), X(528), Y(1028)]])}
+    ${at(BM, Y(60), logo(v, Y(80)))}
+    ${at(BM - 4, Y(236), `Pick the right<br>${hi(v, 'prof.')}`, `font-size:${Y(84)}mm;color:${k.ink}`, 'd nw')}
+    ${at(BM, Y(446), F.what, `width:${BCW}mm;font-size:${Y(31)}mm;line-height:1.3;color:${k.sub}`, 't')}
+    ${at(BM, Y(628), `<div style="border-top:${Y(16) / 10}mm solid ${k.rule};padding-top:${Y(40)}mm">
+      ${checks(F.features, { size: Y(36), tickSize: Y(34), color: k.ink, tickColor: k.hi, gap: Y(20) })}</div>`, `width:${BCW}mm`)}
+    ${at(BW - BM - Y(440), Y(990), art('scene', 'landing-compare', Y(440), { set: k.draw }))}
+    ${atb(BM - 2, BM, F.site, `font-size:${Y(52)}mm;color:${k.ink}`, 'd nw')}`;
 };
 
 const banner = {
-  id: 'banner', piece: 'banner', name: 'Standing banner', size: '0.6 m × 1.6 m', mm: [BW, BH], pages: ['Banner'],
+  id: 'banner', piece: 'banner', name: 'Standing banner', size: '2.75 ft × 6.5 ft (838 × 1981 mm)', mm: [BW, BH], pages: ['Banner'],
   print: 'Tarp or banner cloth. Print at 100 dpi or more. Check the size against the stand before you print.',
   versions: [
     { id: 'v1', note: 'Like the share card: navy, “prof.” in light blue, what the site does, the four features, and the drawing.', html: () => shareBanner('v1') },
