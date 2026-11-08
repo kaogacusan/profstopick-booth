@@ -37,10 +37,10 @@
    "id": "banner",
    "piece": "banner",
    "name": "Standing banner",
-   "size": "2.75 ft × 6.5 ft (838 × 1981 mm)",
+   "size": "2 ft × 5 ft (610 × 1524 mm)",
    "mm": [
-    838,
-    1981
+    610,
+    1524
    ],
    "pages": [
     "Banner"

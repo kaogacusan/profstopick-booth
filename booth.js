@@ -13,7 +13,7 @@ const DEPTH = 3;           // tent depth (bazaar rule)
 const EAVE = 2.0;          // eave height to ask for
 const PEAK = 3.05;         // assumed
 const T = { x0: 0, x1: 0.9, z0: -0.85, z1: -0.25, h: 0.75 };          // selling table (Marcus brings it; size assumed)
-const BN = { x: 1.06, z: -2.7, w: 0.838, h: 1.981, y0: 0.06 };        // standing banner, 2.75 × 6.5 ft (83.8 × 198.1 cm)
+const BN = { x: 1.17, z: -2.7, w: 0.61, h: 1.524, y0: 0.08 };         // standing banner, 2 × 5 ft (61 × 152.4 cm)
 const QR_X = [0.26];                                                  // the one QR stand, back row
 const QR_Z = -0.74;
 const LAP = { x0: 0.56, x1: 0.88, z0: -0.64, z1: -0.42 };             // laptop base
@@ -31,10 +31,10 @@ const groups = [
 ];
 
 const zoomTable = { az: 0.42, el: 0.6, tx: 0.45, ty: 0.86, tz: -0.55, size: 1.05, width: 1.5 };
-const zoomBanner = { az: 0, el: 0.1, tx: 0.95, ty: 1.08, tz: -2.7, size: 2.4, width: 2.6 };
+const zoomBanner = { az: 0, el: 0.1, tx: 1.05, ty: 0.88, tz: -2.7, size: 2.0, width: 2.4 };
 
 const pieces = [
-  { id: 'banner', num: 1, cat: 'print', name: 'Standing banner', size: '2.75 × 6.5 ft (83.8 × 198.1 cm)', where: 'Back right, facing the aisle',
+  { id: 'banner', num: 1, cat: 'print', name: 'Standing banner', size: '2 × 5 ft (61 × 152.4 cm)', where: 'Back right, facing the aisle',
     cost: [700, 700], basis: 'planned', flag: 'Price not final',
     note: 'Shows the site name, headline, and what the site does. No prices: the price list and flyer have them. Keep the logo and headline in the top half, since people at the table block the bottom. Atasha’s printer quotes ₱350–450; Patrick is comparing two shops. Measure the stand before printing.',
     view: zoomBanner },
@@ -51,9 +51,9 @@ const pieces = [
     basis: 'print',
     note: 'The voucher is on the pass. Front: “1 year of profstopick” and the Year Pass tag, like a paid plan. Back: the voucher code, printed. Give one after each cash, GCash, or Maya sale. The buyer enters the code under “Have a code” at profstopick.com/pass. Print the real codes with npm run cards (a private PDF, never on this site).', view: zoomTable },
 
-  { id: 'bannerstand', num: 6, cat: 'stand', name: 'Banner stand', size: 'Tarp stand, 2.75 ft (83.8 cm) wide', where: 'Back right corner',
+  { id: 'bannerstand', num: 6, cat: 'stand', name: 'Banner stand', size: 'Tarp stand, 2 ft (61 cm) wide', where: 'Back right corner',
     cost: [0, 0], basis: 'lend',
-    note: 'Lent by Atasha. The banner is 2.75 × 6.5 ft; check the stand takes that size.', view: zoomBanner },
+    note: 'Lent by Atasha. The banner is 2 × 5 ft; check the stand takes that size.', view: zoomBanner },
   { id: 'qrstands', num: 7, cat: 'stand', name: 'QR stand', size: '1 A5 acrylic stand', where: 'Table, back row',
     cost: [119, 119], basis: 'planned',
     note: '1 × ₱119. Holds the QR sign upright. The plan had 3; one QR needs one stand.', view: zoomTable },
@@ -423,14 +423,14 @@ async function build(S) {
   S.dim([0, 0, 0], [0, 0, -DEPTH], '3 m', { off: [-0.32, 0, 0], tick: [1, 0, 0] });
   S.dim([0, 0, 0], [0, EAVE, 0], 'eave 2.0 m', { off: [-0.3, 0, 0.3], tick: [1, 0, 0] });
   S.dim([3, 0, -1.5], [3, PEAK, -1.5], 'peak 3.05 m (estimate)', { off: [0.75, 0, 0], tick: [1, 0, 0] });
-  S.dim([BN.x - BN.w / 2, BN.y0 + BN.h, BN.z + 0.02], [BN.x + BN.w / 2, BN.y0 + BN.h, BN.z + 0.02], '2.75 ft (0.84 m)', { off: [0, 0.14, 0], tick: [0, 1, 0] });
-  S.dim([BN.x + BN.w / 2, BN.y0, BN.z + 0.02], [BN.x + BN.w / 2, BN.y0 + BN.h, BN.z + 0.02], '6.5 ft (1.98 m)', { off: [0.16, 0, 0], tick: [1, 0, 0] });
+  S.dim([BN.x - BN.w / 2, BN.y0 + BN.h, BN.z + 0.02], [BN.x + BN.w / 2, BN.y0 + BN.h, BN.z + 0.02], '2 ft (0.61 m)', { off: [0, 0.14, 0], tick: [0, 1, 0] });
+  S.dim([BN.x + BN.w / 2, BN.y0, BN.z + 0.02], [BN.x + BN.w / 2, BN.y0 + BN.h, BN.z + 0.02], '5 ft (1.52 m)', { off: [0.16, 0, 0], tick: [1, 0, 0] });
   S.dim([T.x1, 0.02, -2.05], [HALF, 0.02, -2.05], '0.6 m', { tick: [0, 0, 1] });
   S.dim([0, 0.01, 0], [0, 0.01, T.z1], '0.25 m', { off: [0.06, 0, 0], tick: [1, 0, 0] });
 
   // ---------- pins (numbers match the list) ----------
   const pins = {
-    banner: [BN.x, 1.25, BN.z + 0.03], qr: [QR_X[0], T.h + 0.3, QR_Z], prices: [0.14, T.h + 0.04, -0.43],
+    banner: [BN.x, 1.0, BN.z + 0.03], qr: [QR_X[0], T.h + 0.3, QR_Z], prices: [0.14, T.h + 0.04, -0.43],
     flyers: [0.33, T.h + 0.06, -0.36], card: [0.46, T.h + 0.05, -0.32],
     bannerstand: [BN.x + BN.w / 2 - 0.02, 0.12, BN.z - 0.16], qrstands: [QR_X[0] - 0.06, T.h + 0.02, QR_Z + 0.02],
     laptop: [(LAP.x0 + LAP.x1) / 2, T.h + 0.26, LAP.z0 - 0.04], table: [T.x1, 0.42, T.z0],
@@ -445,7 +445,7 @@ async function build(S) {
 
 // ---------- page text that is not in the model ----------
 document.getElementById('caption').textContent =
-  'Measurements in metres. Booth size follows the Blueprint bazaar rules (1.5 × 3 m per group) and still needs to be confirmed with Sophie. The banner is 2.75 × 6.5 ft. The table size is an estimate until measured.';
+  'Measurements in metres. Booth size follows the Blueprint bazaar rules (1.5 × 3 m per group) and still needs to be confirmed with Sophie. The banner is 2 × 5 ft. The table size is an estimate until measured.';
 document.getElementById('runSheet').innerHTML = week.map(([time, title, text]) => `<li><time>${time}</time><div><b>${title}</b><span>${text}</span></div></li>`).join('');
 document.getElementById('posts').innerHTML = posts.map(([who, text]) => `<li><time>×${who.split(' · ')[1]}</time><div><b>${who.split(' · ')[0]}</b><span>${text}</span></div></li>`).join('');
 document.getElementById('steps').innerHTML = steps.map(([n, title, text]) => `<li><span class="step__n">${n}</span><b>${title}</b><span>${text}</span></li>`).join('');
