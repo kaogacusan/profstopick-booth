@@ -1402,7 +1402,7 @@
    "id": "card-semester",
    "piece": "card",
    "name": "Pass card, front: Semester Pass",
-   "size": "90 × 54 mm, “1 sem of profstopick”",
+   "size": "90 × 54 mm, “1 semester of profstopick”",
    "mm": [
     90,
     54
@@ -1415,9 +1415,9 @@
     {
      "id": "v1",
      "look": "v1",
-     "note": "Navy, like a paid plan: “1 sem of profstopick”, the Semester Pass tag, what it unlocks, and the ticket drawing.",
+     "note": "Navy, like a paid plan: “1 semester of profstopick”, the Semester Pass tag, what it unlocks, and the ticket drawing.",
      "pdf": "/assets/print/booth/card-semester/v1.pdf",
-     "pdfKb": 46,
+     "pdfKb": 47,
      "jpg": [
       "/assets/print/booth/card-semester/v1-1.jpg"
      ],
@@ -1431,9 +1431,9 @@
     {
      "id": "v2",
      "look": "v2",
-     "note": "Light paper: “1 sem of profstopick”, the Semester Pass tag in brand blue, what it unlocks, and the ticket drawing.",
+     "note": "Light paper: “1 semester of profstopick”, the Semester Pass tag in brand blue, what it unlocks, and the ticket drawing.",
      "pdf": "/assets/print/booth/card-semester/v2.pdf",
-     "pdfKb": 47,
+     "pdfKb": 48,
      "jpg": [
       "/assets/print/booth/card-semester/v2-1.jpg"
      ],
@@ -1447,9 +1447,9 @@
     {
      "id": "v3",
      "look": "v3",
-     "note": "V2 in blue: “1 sem of profstopick”, the Semester Pass tag, what it unlocks, and the ticket drawing.",
+     "note": "V2 in blue: “1 semester of profstopick”, the Semester Pass tag, what it unlocks, and the ticket drawing.",
      "pdf": "/assets/print/booth/card-semester/v3.pdf",
-     "pdfKb": 42,
+     "pdfKb": 43,
      "jpg": [
       "/assets/print/booth/card-semester/v3-1.jpg"
      ],
@@ -1463,9 +1463,9 @@
     {
      "id": "v4",
      "look": "v4",
-     "note": "V1 with less: profstopick.com on top, and “1 sem of profstopick”.",
+     "note": "V1 with less: profstopick.com on top, and “1 semester of profstopick”.",
      "pdf": "/assets/print/booth/card-semester/v4.pdf",
-     "pdfKb": 14,
+     "pdfKb": 15,
      "jpg": [
       "/assets/print/booth/card-semester/v4-1.jpg"
      ],
@@ -1479,9 +1479,9 @@
     {
      "id": "v5",
      "look": "v5",
-     "note": "V2 with less: profstopick.com on top, and “1 sem of profstopick”.",
+     "note": "V2 with less: profstopick.com on top, and “1 semester of profstopick”.",
      "pdf": "/assets/print/booth/card-semester/v5.pdf",
-     "pdfKb": 14,
+     "pdfKb": 15,
      "jpg": [
       "/assets/print/booth/card-semester/v5-1.jpg"
      ],
@@ -1495,9 +1495,9 @@
     {
      "id": "v6",
      "look": "v6",
-     "note": "V3 with less: profstopick.com on top, and “1 sem of profstopick”.",
+     "note": "V3 with less: profstopick.com on top, and “1 semester of profstopick”.",
      "pdf": "/assets/print/booth/card-semester/v6.pdf",
-     "pdfKb": 14,
+     "pdfKb": 15,
      "jpg": [
       "/assets/print/booth/card-semester/v6-1.jpg"
      ],

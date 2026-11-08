@@ -440,8 +440,8 @@ const TAG = { v1: [C.sky, C.navy], v2: [C.accent, '#fff'], v3: [C.sky, C.navy] }
 TAG.v4 = TAG.v1; TAG.v5 = TAG.v2; TAG.v6 = TAG.v3;
 const passTag = (v, p, size = 2.6) => `<span class="m nw" style="display:inline-block;font-size:${size}mm;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${TAG[v][1]};background:${TAG[v][0]};padding:1.1mm 2.4mm 1mm;border-radius:10mm">${p.name}</span>`;
 
-// what the card says the pass is: "1 sem of profstopick", "1 year of", "Graduation pass of"
-const CARD_LINE = { semester: '1 sem', year: '1 year', graduation: 'Graduation pass' };
+// what the card says the pass is: "1 semester of profstopick", "1 year of", "Graduation pass of"
+const CARD_LINE = { semester: '1 semester', year: '1 year', graduation: 'Graduation pass' };
 
 // front, v1–v3: the badge and the pass tag on top; "1 year of" and the wordmark at the bottom, the ticket drawing,
 // sparkles (v1), and what the pass unlocks.
