@@ -44,7 +44,7 @@ export const F = {
     { id: 'graduation', name: 'Graduation Pass', price: '₱250', per: '/ 4 years', span: '4 years', about: 'Pay once. Every enlistment until you graduate.', month: 'about ₱6 a month' },
   ],
   pick: 'Our pick',                                         // the tag on the main pass
-  every: ['Unlimited advisor asks', 'Works on 2 devices', 'Full refund within 7 days'],
+  every: ['Unlimited advisor asks', 'Full refund within 7 days'],
   // Online payment (Xendit or PayMongo) is not on yet. At the booth: cash, GCash, or Maya, then a voucher code.
   pay: 'cash, GCash, or Maya',
   booth: 'Buy at our booth on Red Brick Road, Nov 9–13. Pay with cash, GCash, or Maya.',
@@ -92,7 +92,6 @@ export const FAQ = [
     ['Is it free?', `Yes. Reviews, ratings, and the schedule builder are free. Free gets ${F.free.lines[2]}.`],
     ['What does a pass add?', 'Unlimited AI advisor asks. Ask who to take for a course. It answers from the reviews and the sections.'],
     ['Which pass should I get?', `The ${P.year.name}: ${P.year.price} for two enlistments, ${P.year.month}. ${P.semester.name} ${P.semester.price}: one enlistment. ${P.graduation.name} ${P.graduation.price}: every enlistment until you graduate.`],
-    ['Can I share my pass?', 'It works on 2 devices. A 3rd login cuts access. Schedules and advisor chats are personal.'],
     ['I got a new phone.', 'Sign in on it. Remove the old one in Settings. The pass moves over.'],
     ['Can I get my money back?', `Yes. Full refund within 7 days. Message ${F.email} or ${F.ig}.`],
   ]],

@@ -292,7 +292,7 @@
      "look": "v2",
      "note": "Like the /pass page: white cards with thin lines, the Year Pass card in a blue ring.",
      "pdf": "/assets/print/booth/prices/v2.pdf",
-     "pdfKb": 178,
+     "pdfKb": 176,
      "jpg": [
       "/assets/print/booth/prices/v2-1.jpg"
      ],
@@ -308,7 +308,7 @@
      "look": "v3",
      "note": "V2 in blue: see-through cards with thin lines, the Year Pass card in a light-blue ring.",
      "pdf": "/assets/print/booth/prices/v3.pdf",
-     "pdfKb": 175,
+     "pdfKb": 174,
      "jpg": [
       "/assets/print/booth/prices/v3-1.jpg"
      ],
@@ -389,7 +389,7 @@
      "look": "v1",
      "note": "Navy front like the share card, with the drawing and the QR to profstopick.com; the back lists the passes.",
      "pdf": "/assets/print/booth/flyer/v1.pdf",
-     "pdfKb": 248,
+     "pdfKb": 247,
      "jpg": [
       "/assets/print/booth/flyer/v1-1.jpg",
       "/assets/print/booth/flyer/v1-2.jpg"
@@ -408,7 +408,7 @@
      "look": "v2",
      "note": "Light paper like the app: the four things it does in a white card, and the QR in a thin-line box.",
      "pdf": "/assets/print/booth/flyer/v2.pdf",
-     "pdfKb": 175,
+     "pdfKb": 174,
      "jpg": [
       "/assets/print/booth/flyer/v2-1.jpg",
       "/assets/print/booth/flyer/v2-2.jpg"
@@ -427,7 +427,7 @@
      "look": "v3",
      "note": "V2 in blue: the four things it does in a see-through card, and the QR in a thin-line box. The back is V2 in blue.",
      "pdf": "/assets/print/booth/flyer/v3.pdf",
-     "pdfKb": 176,
+     "pdfKb": 175,
      "jpg": [
       "/assets/print/booth/flyer/v3-1.jpg",
       "/assets/print/booth/flyer/v3-2.jpg"
@@ -520,7 +520,7 @@
      "look": "v1",
      "note": "Navy: the question big, the drawing, and the QR. The back lists the passes.",
      "pdf": "/assets/print/booth/hook-easy-a/v1.pdf",
-     "pdfKb": 159,
+     "pdfKb": 158,
      "jpg": [
       "/assets/print/booth/hook-easy-a/v1-1.jpg",
       "/assets/print/booth/hook-easy-a/v1-2.jpg"
@@ -558,7 +558,7 @@
      "look": "v3",
      "note": "V2 in blue: the question big, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-easy-a/v3.pdf",
-     "pdfKb": 155,
+     "pdfKb": 154,
      "jpg": [
       "/assets/print/booth/hook-easy-a/v3-1.jpg",
       "/assets/print/booth/hook-easy-a/v3-2.jpg"
@@ -651,7 +651,7 @@
      "look": "v1",
      "note": "Navy: the question big, the drawing, and the QR. The back lists the passes.",
      "pdf": "/assets/print/booth/hook-workload/v1.pdf",
-     "pdfKb": 162,
+     "pdfKb": 161,
      "jpg": [
       "/assets/print/booth/hook-workload/v1-1.jpg",
       "/assets/print/booth/hook-workload/v1-2.jpg"
@@ -670,7 +670,7 @@
      "look": "v2",
      "note": "Light paper: the question big with the accent word in brand blue, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-workload/v2.pdf",
-     "pdfKb": 163,
+     "pdfKb": 162,
      "jpg": [
       "/assets/print/booth/hook-workload/v2-1.jpg",
       "/assets/print/booth/hook-workload/v2-2.jpg"
@@ -689,7 +689,7 @@
      "look": "v3",
      "note": "V2 in blue: the question big, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-workload/v3.pdf",
-     "pdfKb": 157,
+     "pdfKb": 156,
      "jpg": [
       "/assets/print/booth/hook-workload/v3-1.jpg",
       "/assets/print/booth/hook-workload/v3-2.jpg"
@@ -708,7 +708,7 @@
      "look": "v4",
      "note": "V1 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-workload/v4.pdf",
-     "pdfKb": 119,
+     "pdfKb": 118,
      "jpg": [
       "/assets/print/booth/hook-workload/v4-1.jpg",
       "/assets/print/booth/hook-workload/v4-2.jpg"
@@ -782,7 +782,7 @@
      "look": "v1",
      "note": "Navy: the question big, the drawing, and the QR. The back lists the passes.",
      "pdf": "/assets/print/booth/hook-chill/v1.pdf",
-     "pdfKb": 180,
+     "pdfKb": 179,
      "jpg": [
       "/assets/print/booth/hook-chill/v1-1.jpg",
       "/assets/print/booth/hook-chill/v1-2.jpg"
@@ -801,7 +801,7 @@
      "look": "v2",
      "note": "Light paper: the question big with the accent word in brand blue, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-chill/v2.pdf",
-     "pdfKb": 197,
+     "pdfKb": 196,
      "jpg": [
       "/assets/print/booth/hook-chill/v2-1.jpg",
       "/assets/print/booth/hook-chill/v2-2.jpg"
@@ -820,7 +820,7 @@
      "look": "v3",
      "note": "V2 in blue: the question big, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-chill/v3.pdf",
-     "pdfKb": 176,
+     "pdfKb": 175,
      "jpg": [
       "/assets/print/booth/hook-chill/v3-1.jpg",
       "/assets/print/booth/hook-chill/v3-2.jpg"
@@ -877,7 +877,7 @@
      "look": "v6",
      "note": "V3 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-chill/v6.pdf",
-     "pdfKb": 119,
+     "pdfKb": 120,
      "jpg": [
       "/assets/print/booth/hook-chill/v6-1.jpg",
       "/assets/print/booth/hook-chill/v6-2.jpg"
@@ -913,7 +913,7 @@
      "look": "v1",
      "note": "Navy: the question big, the drawing, and the QR. The back lists the passes.",
      "pdf": "/assets/print/booth/hook-strict/v1.pdf",
-     "pdfKb": 180,
+     "pdfKb": 179,
      "jpg": [
       "/assets/print/booth/hook-strict/v1-1.jpg",
       "/assets/print/booth/hook-strict/v1-2.jpg"
@@ -932,7 +932,7 @@
      "look": "v2",
      "note": "Light paper: the question big with the accent word in brand blue, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-strict/v2.pdf",
-     "pdfKb": 192,
+     "pdfKb": 191,
      "jpg": [
       "/assets/print/booth/hook-strict/v2-1.jpg",
       "/assets/print/booth/hook-strict/v2-2.jpg"
@@ -951,7 +951,7 @@
      "look": "v3",
      "note": "V2 in blue: the question big, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-strict/v3.pdf",
-     "pdfKb": 175,
+     "pdfKb": 174,
      "jpg": [
       "/assets/print/booth/hook-strict/v3-1.jpg",
       "/assets/print/booth/hook-strict/v3-2.jpg"
@@ -1044,7 +1044,7 @@
      "look": "v1",
      "note": "Navy: the question big, the drawing, and the QR. The back lists the passes.",
      "pdf": "/assets/print/booth/hook-worried/v1.pdf",
-     "pdfKb": 160,
+     "pdfKb": 159,
      "jpg": [
       "/assets/print/booth/hook-worried/v1-1.jpg",
       "/assets/print/booth/hook-worried/v1-2.jpg"
@@ -1063,7 +1063,7 @@
      "look": "v2",
      "note": "Light paper: the question big with the accent word in brand blue, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-worried/v2.pdf",
-     "pdfKb": 159,
+     "pdfKb": 158,
      "jpg": [
       "/assets/print/booth/hook-worried/v2-1.jpg",
       "/assets/print/booth/hook-worried/v2-2.jpg"
@@ -1082,7 +1082,7 @@
      "look": "v3",
      "note": "V2 in blue: the question big, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-worried/v3.pdf",
-     "pdfKb": 156,
+     "pdfKb": 155,
      "jpg": [
       "/assets/print/booth/hook-worried/v3-1.jpg",
       "/assets/print/booth/hook-worried/v3-2.jpg"
@@ -1175,7 +1175,7 @@
      "look": "v1",
      "note": "Navy: the question big, the drawing, and the QR. The back lists the passes.",
      "pdf": "/assets/print/booth/hook-eight-am/v1.pdf",
-     "pdfKb": 177,
+     "pdfKb": 176,
      "jpg": [
       "/assets/print/booth/hook-eight-am/v1-1.jpg",
       "/assets/print/booth/hook-eight-am/v1-2.jpg"
@@ -1194,7 +1194,7 @@
      "look": "v2",
      "note": "Light paper: the question big with the accent word in brand blue, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-eight-am/v2.pdf",
-     "pdfKb": 189,
+     "pdfKb": 188,
      "jpg": [
       "/assets/print/booth/hook-eight-am/v2-1.jpg",
       "/assets/print/booth/hook-eight-am/v2-2.jpg"
@@ -1213,7 +1213,7 @@
      "look": "v3",
      "note": "V2 in blue: the question big, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-eight-am/v3.pdf",
-     "pdfKb": 172,
+     "pdfKb": 171,
      "jpg": [
       "/assets/print/booth/hook-eight-am/v3-1.jpg",
       "/assets/print/booth/hook-eight-am/v3-2.jpg"
@@ -1305,7 +1305,7 @@
      "look": "v1",
      "note": "Navy, like a paid plan: “1 year of profstopick”, the Year Pass tag, what it unlocks, and the ticket drawing.",
      "pdf": "/assets/print/booth/card/v1.pdf",
-     "pdfKb": 45,
+     "pdfKb": 47,
      "jpg": [
       "/assets/print/booth/card/v1-1.jpg"
      ],
@@ -1321,7 +1321,7 @@
      "look": "v2",
      "note": "Light paper: “1 year of profstopick”, the Year Pass tag in brand blue, what it unlocks, and the ticket drawing.",
      "pdf": "/assets/print/booth/card/v2.pdf",
-     "pdfKb": 46,
+     "pdfKb": 48,
      "jpg": [
       "/assets/print/booth/card/v2-1.jpg"
      ],
@@ -1337,7 +1337,7 @@
      "look": "v3",
      "note": "V2 in blue: “1 year of profstopick”, the Year Pass tag, what it unlocks, and the ticket drawing.",
      "pdf": "/assets/print/booth/card/v3.pdf",
-     "pdfKb": 41,
+     "pdfKb": 43,
      "jpg": [
       "/assets/print/booth/card/v3-1.jpg"
      ],
@@ -1529,7 +1529,7 @@
      "look": "staff",
      "note": "White page: the prices, then each common question with what to say.",
      "pdf": "/assets/print/booth/faq/v1.pdf",
-     "pdfKb": 150,
+     "pdfKb": 149,
      "jpg": [
       "/assets/print/booth/faq/v1-1.jpg"
      ],
