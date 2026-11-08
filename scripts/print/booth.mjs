@@ -3,7 +3,7 @@
 // Words come from F in kit.mjs only. Looks: v1 Navy card, v2 Paper, v3 Blue (v2's layout, v3's colors), and
 // v4–v6, the same three with less (LOOK in kit.mjs). One QR on every print: profstopick.com.
 // Every ₱ goes through peso() at the end (Onest has no ₱, so it is set in Inter on purpose).
-import { C, F, URLS, HOOKS, FAQ, LOOK, margin, word, badge, lockup, art, confetti, qrTile, peso } from './kit.mjs';
+import { C, F, URLS, HOOKS, FAQ, LOOK, margin, word, wordCom, badge, lockup, art, confetti, qrTile, peso } from './kit.mjs';
 
 // ---------- small helpers ----------
 const at = (x, y, inner, style = '', cls = '') => `<div class="abs ${cls}" style="left:${x}mm;top:${y}mm;${style}">${inner}</div>`;
@@ -423,7 +423,7 @@ const flyer = {
 
 // ======================================================================
 // Pass card, 90 × 54 mm. Reads like a paid plan: "1 year of profstopick" and the pass name in a tag.
-// The back prints the voucher code. Given after a cash, GCash, or Maya sale. The public files show F.sampleCode.
+// The back has a blank box for the voucher code, written in by hand after a cash, GCash, or Maya sale.
 // `npm run cards -- <codes.txt>` prints the real codes into a private PDF (scripts/print/cards.mjs).
 // ======================================================================
 const KW = 90, KH = 54, KM = 5, KCW = KW - 2 * KM;
@@ -440,32 +440,42 @@ const TAG = { v1: [C.sky, C.navy], v2: [C.accent, '#fff'], v3: [C.sky, C.navy] }
 TAG.v4 = TAG.v1; TAG.v5 = TAG.v2; TAG.v6 = TAG.v3;
 const passTag = (v, p, size = 2.6) => `<span class="m nw" style="display:inline-block;font-size:${size}mm;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${TAG[v][1]};background:${TAG[v][0]};padding:1.1mm 2.4mm 1mm;border-radius:10mm">${p.name}</span>`;
 
-// front: the badge and the pass tag on top; "1 year of" and the wordmark at the bottom.
-// v1–v3 add the ticket drawing, sparkles (v1), and what the pass unlocks. v4–v6: only the words.
+// what the card says the pass is: "1 sem of profstopick", "1 year of", "Graduation pass of"
+const CARD_LINE = { semester: '1 sem', year: '1 year', graduation: 'Graduation pass' };
+
+// front, v1–v3: the badge and the pass tag on top; "1 year of" and the wordmark at the bottom, the ticket drawing,
+// sparkles (v1), and what the pass unlocks.
+// front, v4–v6: the badge and profstopick.com (in the logo's letters) on top; "1 year of" and the wordmark at the bottom.
 export const cardFront = (v, p = MAIN) => {
   const k = LOOK[v], rich = !simple(v);
   const big = rich ? 8 : 9.4;
+  const line = CARD_LINE[p.id] || p.span;
+  // a long line (Graduation pass) gets smaller so it stays on one line inside the card
+  const size = Math.min(big, +(KCW / (line.length + 3) / 0.56).toFixed(2));
   return `
     ${ground(v)}
     ${v === 'v1' ? stars('v1', [['sparkle-four', 3.4, 54, 9], ['sparkle-small', 2.2, 48, 16]]) : ''}
     ${rich ? at(61, 17, art('object', 'season-ticket', 25, { set: k.draw })) : ''}
     ${at(KM, KM, mark(v, 6.4))}
-    ${at(KM, KM + 0.6, passTag(v, p), `width:${KCW}mm;text-align:right`)}
+    ${rich ? at(KM, KM + 0.6, passTag(v, p), `width:${KCW}mm;text-align:right`)
+      : at(KM, KM, wordCom(4.2, k.word), `width:${KCW}mm;height:6.4mm;display:flex;justify-content:flex-end;align-items:center`)}
     ${atb(KM, KM, `
-      <div class="d nw" style="font-size:${big}mm;margin-left:-0.3mm;color:${k.ink}">${hi(v, p.span)} of</div>
+      <div class="d nw" style="font-size:${size}mm;margin-left:-0.3mm;color:${k.ink}">${hi(v, line)} of</div>
       ${word(big * 1.12, k.word, `margin-top:${(big * 0.22).toFixed(2)}mm`)}
       ${rich ? `<div class="nw" style="font-size:2.7mm;font-weight:600;margin-top:2.6mm;color:${k.sub}">${F.every.slice(0, 2).join(' · ')}</div>` : ''}`)}`;
 };
 
-// code = the voucher code; pass = the pass it is for, if the codes list says (blank: not printed)
-export const cardBack = (v, { code = F.sampleCode, pass = '' } = {}) => {
+// code = the voucher code; pass = the pass it is for, if the codes list says (blank: not printed).
+// No code (the public files): the box is left white and empty, to write the code in by hand with a pen.
+export const cardBack = (v, { code = '', pass = '' } = {}) => {
   const k = LOOK[v];
   const soft = k.sub;
   const label = `<span>Voucher code</span>${pass ? `<span>${esc(pass)}</span>` : ''}`;
   if (simple(v)) return `
     ${ground(v)}
     ${at(KM, KM, label, `width:${KCW}mm;display:flex;justify-content:space-between;font-size:2.8mm;color:${soft}`, 'm nw')}
-    ${at(KM - 0.3, 16, esc(code), `font-size:10mm;font-weight:700;letter-spacing:0.05em;color:${k.ink}`, 'm nw')}
+    ${code ? at(KM - 0.3, 16, esc(code), `font-size:10mm;font-weight:700;letter-spacing:0.05em;color:${k.ink}`, 'm nw')
+      : at(KM, 12, '', `width:${KCW}mm;height:20mm;background:#fff;border-radius:1.4mm;${v === 'v5' ? `border:0.3mm solid ${C.ink3};` : ''}`)}
     ${atb(KM, KM, `Redeem at <b style="font-weight:700">${SHORT.pass}</b>`, `font-size:3.4mm;font-weight:500;color:${k.ink}`, 'nw')}`;
   const field = v === 'v2' ? `border:0.3mm solid ${C.ink3};` : '';
   return `
@@ -484,22 +494,31 @@ const card = {
     { id: 'v1', note: 'Navy, like a paid plan: “1 year of profstopick”, the Year Pass tag, what it unlocks, and the ticket drawing.', html: () => cardFront('v1') },
     { id: 'v2', note: 'Light paper: “1 year of profstopick”, the Year Pass tag in brand blue, what it unlocks, and the ticket drawing.', html: () => cardFront('v2') },
     { id: 'v3', note: 'V2 in blue: “1 year of profstopick”, the Year Pass tag, what it unlocks, and the ticket drawing.', html: () => cardFront('v3') },
-    { id: 'v4', note: 'V1 with less: “1 year of profstopick” and the Year Pass tag.', html: () => cardFront('v4') },
-    { id: 'v5', note: 'V2 with less: “1 year of profstopick” and the Year Pass tag.', html: () => cardFront('v5') },
-    { id: 'v6', note: 'V3 with less: “1 year of profstopick” and the Year Pass tag.', html: () => cardFront('v6') },
+    { id: 'v4', note: 'V1 with less: profstopick.com on top, and “1 year of profstopick”.', html: () => cardFront('v4') },
+    { id: 'v5', note: 'V2 with less: profstopick.com on top, and “1 year of profstopick”.', html: () => cardFront('v5') },
+    { id: 'v6', note: 'V3 with less: profstopick.com on top, and “1 year of profstopick”.', html: () => cardFront('v6') },
   ],
+};
+
+// the same front for the Semester and Graduation passes
+const cardFor = (id) => {
+  const p = F.passes.find((x) => x.id === id), line = `${CARD_LINE[id]} of profstopick`;
+  return {
+    ...card, id: `card-${id}`, name: `Pass card, front: ${p.name}`, size: `90 × 54 mm, “${line}”`,
+    versions: card.versions.map((x) => ({ ...x, note: x.note.replace(/1 year of profstopick/g, line).replace(/Year Pass/g, p.name), html: () => cardFront(x.id, p) })),
+  };
 };
 
 const cardBackPrint = {
   id: 'cardback', piece: 'card', name: 'Pass card, back', size: '90 × 54 mm, the voucher code', mm: [KW, KH], pages: ['Back'],
-  print: `The other side of the pass card. This file shows a sample code (${F.sampleCode}). For the real codes run npm run cards: one PDF, front and back, one card per code.`,
+  print: 'The other side of the pass card. The code box is left blank: write the voucher code in it with a pen. To print the codes instead, run npm run cards: one PDF, front and back, one card per code.',
   versions: [
     { id: 'v1', note: 'Navy. The code in a big white box, one line on how to use it, and where to redeem it.', html: () => cardBack('v1') },
     { id: 'v2', note: 'Light paper. The code in a thin-line box, one line on how to use it, and where to redeem it.', html: () => cardBack('v2') },
     { id: 'v3', note: 'V2 in blue. The code in a big white box, one line on how to use it, and where to redeem it.', html: () => cardBack('v3') },
-    { id: 'v4', note: 'V1 with less: the code, big, and where to redeem it.', html: () => cardBack('v4') },
-    { id: 'v5', note: 'V2 with less: the code, big, and where to redeem it.', html: () => cardBack('v5') },
-    { id: 'v6', note: 'V3 with less: the code, big, and where to redeem it.', html: () => cardBack('v6') },
+    { id: 'v4', note: 'V1 with less: a blank white box to write the code in, and where to redeem it.', html: () => cardBack('v4') },
+    { id: 'v5', note: 'V2 with less: a blank box to write the code in, and where to redeem it.', html: () => cardBack('v5') },
+    { id: 'v6', note: 'V3 with less: a blank white box to write the code in, and where to redeem it.', html: () => cardBack('v6') },
   ],
 };
 
@@ -586,5 +605,5 @@ const withPeso = (asset) => ({ ...asset, versions: asset.versions.map((v) => ({ 
 
 export default {
   page: 'booth',
-  assets: [banner, qrSign, prices, flyer, ...hookFlyers, card, cardBackPrint, faq].map(withPeso),
+  assets: [banner, qrSign, prices, flyer, ...hookFlyers, card, cardFor('semester'), cardFor('graduation'), cardBackPrint, faq].map(withPeso),
 };

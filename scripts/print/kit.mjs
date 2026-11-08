@@ -161,6 +161,11 @@ export const word = (h, color = C.ink, style = '') =>
   `<svg class="lg" style="height:${h}mm;width:${(h * WORD_RATIO).toFixed(2)}mm;${style}" viewBox="0 0 255 51" xmlns="http://www.w3.org/2000/svg">${
     WORD_ONLY.replace(/fill="#16181d"/g, `fill="${color}"`)}</svg>`;
 
+// "profstopick.com" in the logo's letters. The wordmark is Quicksand Bold, so ".com" is set in Quicksand 700,
+// sized and spaced to sit on the same baseline (checked by laying one over the other).
+export const wordCom = (h, color = C.ink, style = '') =>
+  `<div class="nw" style="display:inline-flex;align-items:flex-start;${style}">${word(h, color)}<span style="font-family:Quicksand,sans-serif;font-weight:700;font-size:${(h * 0.912).toFixed(2)}mm;line-height:1;letter-spacing:-0.012em;margin-top:${(-h * 0.03).toFixed(2)}mm;margin-left:${(h * 0.02).toFixed(2)}mm;color:${color}">.com</span></div>`;
+
 // Word + badge, like the site header. h = height of the whole lockup.
 export const lockup = (h, { color = C.ink, badgeBg = C.accent, badgeFg = '#fff', style = '' } = {}) =>
   `<div class="lockup" style="gap:${(h * 0.16).toFixed(2)}mm;${style}">${word(h, color)}${badge(h * 0.9, { bg: badgeBg, fg: badgeFg })}</div>`;
@@ -199,7 +204,7 @@ export async function qr(text = URLS.signup, size = 40, { color = C.ink, style =
 // ---------- fonts + base CSS for every print page ----------
 // Onest (body) and Red Hat Mono (code) are the site's two fonts.
 // Onest and Red Hat Mono have no peso sign (₱, U+20B1), so the ₱ alone comes from Inter (see peso()).
-export const FONTS = 'https://fonts.googleapis.com/css2?family=Inter:wght@400..900&family=Onest:wght@400..900&family=Red+Hat+Mono:wght@400..700&display=block';
+export const FONTS = 'https://fonts.googleapis.com/css2?family=Inter:wght@400..900&family=Onest:wght@400..900&family=Red+Hat+Mono:wght@400..700&family=Quicksand:wght@700&display=block';
 
 // Wrap every ₱ so it renders in Inter on purpose, not in a random system font.
 export const peso = (text) => String(text).replace(/₱/g, '<span class="peso">₱</span>');
