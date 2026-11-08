@@ -58,12 +58,12 @@ const BY_PRICE = F.passes;
 const FREE = { name: F.free.name, price: F.free.price, per: '', about: `${F.free.lines.map((l, i) => (i ? l[0].toLowerCase() + l.slice(1) : l)).join(', ')}.` };
 
 // ======================================================================
-// Standing banner, 2 × 5 ft (610 × 1524 mm). Seen from 2–4 m. No prices: the price list and the flyer have them.
+// Standing banner, 2 × 5 ft (609.6 × 1524 mm). Seen from 2–4 m. No prices: the price list and the flyer have them.
 // People may hide the lower third, so the logo and the headline stay in the top two thirds (above 1016 mm).
 // The layout was drawn at 600 × 1600 mm; Y() scales its heights and type sizes to the real banner,
 // and X() its sparkle spots across. Sizes: wordmark 380+ mm wide, headline caps 56 mm or more.
 // ======================================================================
-const BW = 610, BH = 1524, BM = margin(BW, BH), BCW = BW - 2 * BM;
+const BW = 609.6, BH = 1524, BM = margin(BW, BH), BCW = BW - 2 * BM;
 const Y = (n) => Math.round(n * BH / 1600);
 const X = (n) => Math.round(n * BW / 600);
 
@@ -97,7 +97,7 @@ const shareBanner = (v) => {
 };
 
 const banner = {
-  id: 'banner', piece: 'banner', name: 'Standing banner', size: '2 ft × 5 ft (610 × 1524 mm)', mm: [BW, BH], pages: ['Banner'],
+  id: 'banner', piece: 'banner', name: 'Standing banner', size: '2 ft × 5 ft (609.6 × 1524 mm)', mm: [BW, BH], pages: ['Banner'],
   print: 'Tarp or banner cloth. Print at 100 dpi or more. Check the size against the stand before you print.',
   versions: [
     { id: 'v1', note: 'Like the share card: navy, “prof.” in light blue, what the site does, the four features, and the drawing.', html: () => shareBanner('v1') },
