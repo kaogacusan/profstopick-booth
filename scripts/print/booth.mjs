@@ -310,31 +310,31 @@ const prices = {
 // ======================================================================
 const FW = 105, FH = 148, FM = margin(FW, FH), FCW = FW - 2 * FM;
 
+// The four things the site does (F.features), two by two with a check each. card = in a thin-line box.
+const featureGrid = (v, { card = true, size = 3.6 } = {}) => {
+  const k = LOOK[v], line = `0.3mm solid ${k.rule}`;
+  return `<div style="display:grid;grid-template-columns:1fr 1fr;${card ? `background:${k.card};border:${line};border-radius:1.2mm` : 'gap:2.6mm 3mm'}">
+    ${F.features.map((f, j) => `<div style="display:flex;gap:1.8mm;align-items:center;${card ? `padding:3mm;${j % 2 ? `border-left:${line};` : ''}${j > 1 ? `border-top:${line};` : ''}` : ''}font-size:${size}mm;font-weight:600;color:${k.ink}">${tick(size * 0.9, v === 'v1' || v === 'v4' ? k.sub : k.hi)}<span class="nw">${f}</span></div>`).join('')}</div>`;
+};
+// the small label over a block
+const label = (v, t) => `<div class="m" style="font-size:2.9mm;color:${LOOK[v].sub};margin-bottom:2.4mm">${t}</div>`;
+
 // v1 on navy; v2 and v3 share the paper layout (v3 in blue)
 const flyerBack = (v) => {
   const k = LOOK[v], v1 = v === 'v1';
-  const small = k.sub;
-  const bestTag = v1 ? `<span class="m" style="font-size:2.6mm;font-weight:500;color:${k.sub};border:0.25mm solid ${k.rule};padding:0.6mm 1.6mm;border-radius:4mm">${F.pick}</span>`
-    : pill(v, F.pick, 2.6, '0.6mm 1.6mm');
-  const row = (p) => `<div style="display:flex;justify-content:space-between;align-items:center;gap:4mm;padding:3.2mm 0;border-top:0.3mm solid ${k.rule}">
-      <div><div class="nw" style="display:flex;gap:2mm;align-items:center;font-size:4.4mm;font-weight:700;letter-spacing:-0.01em;color:${k.ink}">${p.name}${p.main ? bestTag : ''}</div>
-        <div style="font-size:3.1mm;font-weight:500;line-height:1.3;margin-top:0.9mm;color:${small}">${p.about}</div></div>
+  const row = (p, j) => `<div style="display:flex;justify-content:space-between;align-items:center;gap:4mm;padding:3mm 0;${j ? `border-top:0.3mm solid ${k.rule}` : ''}">
+      <div><div class="nw" style="font-size:4.4mm;font-weight:700;letter-spacing:-0.01em;color:${k.ink}">${p.name}</div>
+        <div style="font-size:3.1mm;font-weight:500;line-height:1.3;margin-top:0.9mm;color:${k.sub}">${p.about}</div></div>
       <div class="nw" style="text-align:right"><div class="d" style="font-size:9mm;color:${v1 && p.main ? k.hi : k.ink}">${p.price}</div>
-        <div style="font-size:2.9mm;font-weight:600;margin-top:0.8mm;color:${small}">${p.per}</div></div></div>`;
-  const tickColor = v1 ? k.sub : k.hi;
+        <div style="font-size:2.9mm;font-weight:600;margin-top:0.8mm;color:${k.sub}">${p.per}</div></div></div>`;
   return `
     ${ground(v)}
     ${column(FM, FW, FH, `
-      <div>
-        <div class="d nw" style="font-size:9mm;margin:0 0 4.4mm -0.4mm;color:${k.ink}">${v1 ? 'Get the pass.' : `Get the ${hi(v, 'pass.')}`}</div>
-        ${ORDER.map(row).join('')}
-      </div>
-      ${everyList({ size: 3.3, tickSize: 3.2, color: k.ink, tickColor, gap: 1.6 })}
+      <div class="d nw" style="font-size:9mm;margin-left:-0.4mm;color:${k.ink}">${v1 ? 'Get the pass.' : `Get the ${hi(v, 'pass.')}`}</div>
+      <div style="border-top:0.3mm solid ${k.rule};border-bottom:0.3mm solid ${k.rule}">${ORDER.map(row).join('')}</div>
+      <div>${label(v, 'What you get')}${featureGrid(v)}</div>
       <div style="padding:3mm 3.6mm;border-radius:1.2mm;font-size:3.3mm;font-weight:600;line-height:1.35;color:${k.ink};${v1 ? `background:${k.card};border:0.3mm solid ${k.rule}` : `background:${v === 'v2' ? C.tint : k.well}`}">${F.booth}</div>
-      <div>
-        <div style="font-size:3.1mm;font-weight:500;line-height:1.35;color:${k.sub}">${F.redeem}</div>
-        <div class="m nw" style="display:flex;justify-content:space-between;margin-top:3mm;padding-top:2.6mm;border-top:0.3mm solid ${k.rule};font-size:3mm;color:${k.sub}"><span>${F.ig}</span><span>${F.site}</span></div>
-      </div>`)}`;
+      <div class="m nw" style="font-size:3mm;color:${k.sub}">${F.site}</div>`)}`;
 };
 
 // v2 + v3 front: like the app. The four things it does in a card, and the QR in a thin-line box.
@@ -370,23 +370,20 @@ const simpleFlyerFront = (v) => {
     ${atb(FM + q + 5, FM, SHORT.home, `font-size:2.9mm;color:${k.ink}`, 'm nw')}`;
 };
 
-// v4–v6 back: the passes and prices, how to buy, how to redeem. No small print under each pass.
+// v4–v6 back: the passes and prices, the four features, how to buy. No small print under each pass.
 const simpleFlyerBack = (v) => {
   const k = LOOK[v];
-  const row = (p) => `<div style="display:flex;justify-content:space-between;align-items:baseline;padding:3.6mm 0 2.6mm;border-top:0.3mm solid ${k.rule}">
+  const row = (p, j) => `<div style="display:flex;justify-content:space-between;align-items:baseline;padding:3.4mm 0 2.6mm;${j ? `border-top:0.3mm solid ${k.rule}` : ''}">
     <span class="nw" style="font-size:4.8mm;font-weight:700;letter-spacing:-0.01em;color:${k.ink}">${p.name}</span>
     <span class="d nw" style="font-size:${p.main ? 12 : 9}mm;color:${p.main ? k.hi : k.ink}">${p.price}</span></div>`;
   return `
     ${ground(v)}
     ${column(FM, FW, FH, `
-      <div>
-        <div class="d nw" style="font-size:9mm;margin:0 0 5mm -0.4mm;color:${k.ink}">Get the ${hi(v, 'pass.')}</div>
-        ${ORDER.map(row).join('')}
-      </div>
-      <div>
-        <div style="font-size:3.8mm;font-weight:600;line-height:1.4;color:${k.ink}">${F.booth}</div>
-        <div style="font-size:3.5mm;font-weight:500;line-height:1.4;margin-top:3mm;color:${k.sub}">${F.redeem}</div>
-      </div>`)}`;
+      <div class="d nw" style="font-size:9mm;margin-left:-0.4mm;color:${k.ink}">Get the ${hi(v, 'pass.')}</div>
+      <div style="border-top:0.3mm solid ${k.rule};border-bottom:0.3mm solid ${k.rule}">${ORDER.map(row).join('')}</div>
+      <div>${label(v, 'What you get')}${featureGrid(v, { card: false, size: 3.8 })}</div>
+      <div style="font-size:3.8mm;font-weight:600;line-height:1.4;color:${k.ink}">${F.booth}</div>
+      <div class="m nw" style="font-size:3mm;color:${k.sub}">${F.site}</div>`)}`;
 };
 
 const flyer = {
@@ -395,7 +392,7 @@ const flyer = {
   versions: [
     {
       id: 'v1',
-      note: 'Navy front like the share card, with the drawing and the QR to profstopick.com; the back lists the passes.',
+      note: 'Navy front like the share card, with the drawing and the QR to profstopick.com; the back lists the passes and the four features.',
       html: (i) => {
         if (i === 1) return flyerBack('v1');
         const k = LOOK.v1;
@@ -416,9 +413,9 @@ const flyer = {
     },
     { id: 'v2', note: 'Light paper like the app: the four things it does in a white card, and the QR in a thin-line box.', html: (i) => (i ? flyerBack('v2') : paperFlyerFront('v2')) },
     { id: 'v3', note: 'V2 in blue: the four things it does in a see-through card, and the QR in a thin-line box. The back is V2 in blue.', html: (i) => (i ? flyerBack('v3') : paperFlyerFront('v3')) },
-    { id: 'v4', note: 'V1 with less: the headline, the QR, and the site. The back: the passes, how to buy, how to redeem.', html: (i) => (i ? simpleFlyerBack('v4') : simpleFlyerFront('v4')) },
+    { id: 'v4', note: 'V1 with less: the headline, the QR, and the site. The back: the passes, the four features, how to buy.', html: (i) => (i ? simpleFlyerBack('v4') : simpleFlyerFront('v4')) },
     { id: 'v5', note: 'V2 with less: no feature card, no boxes. The back has no small print under each pass.', html: (i) => (i ? simpleFlyerBack('v5') : simpleFlyerFront('v5')) },
-    { id: 'v6', note: 'V3 with less: the headline, the QR, and the site. The back: prices and how to buy only.', html: (i) => (i ? simpleFlyerBack('v6') : simpleFlyerFront('v6')) },
+    { id: 'v6', note: 'V3 with less: the headline, the QR, and the site. The back: prices, the four features, and how to buy.', html: (i) => (i ? simpleFlyerBack('v6') : simpleFlyerFront('v6')) },
   ],
 };
 

@@ -387,9 +387,9 @@
     {
      "id": "v1",
      "look": "v1",
-     "note": "Navy front like the share card, with the drawing and the QR to profstopick.com; the back lists the passes.",
+     "note": "Navy front like the share card, with the drawing and the QR to profstopick.com; the back lists the passes and the four features.",
      "pdf": "/assets/print/booth/flyer/v1.pdf",
-     "pdfKb": 247,
+     "pdfKb": 252,
      "jpg": [
       "/assets/print/booth/flyer/v1-1.jpg",
       "/assets/print/booth/flyer/v1-2.jpg"
@@ -408,7 +408,7 @@
      "look": "v2",
      "note": "Light paper like the app: the four things it does in a white card, and the QR in a thin-line box.",
      "pdf": "/assets/print/booth/flyer/v2.pdf",
-     "pdfKb": 174,
+     "pdfKb": 177,
      "jpg": [
       "/assets/print/booth/flyer/v2-1.jpg",
       "/assets/print/booth/flyer/v2-2.jpg"
@@ -427,7 +427,7 @@
      "look": "v3",
      "note": "V2 in blue: the four things it does in a see-through card, and the QR in a thin-line box. The back is V2 in blue.",
      "pdf": "/assets/print/booth/flyer/v3.pdf",
-     "pdfKb": 175,
+     "pdfKb": 179,
      "jpg": [
       "/assets/print/booth/flyer/v3-1.jpg",
       "/assets/print/booth/flyer/v3-2.jpg"
@@ -444,9 +444,9 @@
     {
      "id": "v4",
      "look": "v4",
-     "note": "V1 with less: the headline, the QR, and the site. The back: the passes, how to buy, how to redeem.",
+     "note": "V1 with less: the headline, the QR, and the site. The back: the passes, the four features, how to buy.",
      "pdf": "/assets/print/booth/flyer/v4.pdf",
-     "pdfKb": 107,
+     "pdfKb": 104,
      "jpg": [
       "/assets/print/booth/flyer/v4-1.jpg",
       "/assets/print/booth/flyer/v4-2.jpg"
@@ -465,7 +465,7 @@
      "look": "v5",
      "note": "V2 with less: no feature card, no boxes. The back has no small print under each pass.",
      "pdf": "/assets/print/booth/flyer/v5.pdf",
-     "pdfKb": 107,
+     "pdfKb": 104,
      "jpg": [
       "/assets/print/booth/flyer/v5-1.jpg",
       "/assets/print/booth/flyer/v5-2.jpg"
@@ -482,9 +482,9 @@
     {
      "id": "v6",
      "look": "v6",
-     "note": "V3 with less: the headline, the QR, and the site. The back: prices and how to buy only.",
+     "note": "V3 with less: the headline, the QR, and the site. The back: prices, the four features, and how to buy.",
      "pdf": "/assets/print/booth/flyer/v6.pdf",
-     "pdfKb": 106,
+     "pdfKb": 103,
      "jpg": [
       "/assets/print/booth/flyer/v6-1.jpg",
       "/assets/print/booth/flyer/v6-2.jpg"
@@ -520,7 +520,7 @@
      "look": "v1",
      "note": "Navy: the question big, the drawing, and the QR. The back lists the passes.",
      "pdf": "/assets/print/booth/hook-easy-a/v1.pdf",
-     "pdfKb": 158,
+     "pdfKb": 163,
      "jpg": [
       "/assets/print/booth/hook-easy-a/v1-1.jpg",
       "/assets/print/booth/hook-easy-a/v1-2.jpg"
@@ -539,7 +539,7 @@
      "look": "v2",
      "note": "Light paper: the question big with the accent word in brand blue, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-easy-a/v2.pdf",
-     "pdfKb": 160,
+     "pdfKb": 164,
      "jpg": [
       "/assets/print/booth/hook-easy-a/v2-1.jpg",
       "/assets/print/booth/hook-easy-a/v2-2.jpg"
@@ -558,7 +558,7 @@
      "look": "v3",
      "note": "V2 in blue: the question big, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-easy-a/v3.pdf",
-     "pdfKb": 154,
+     "pdfKb": 159,
      "jpg": [
       "/assets/print/booth/hook-easy-a/v3-1.jpg",
       "/assets/print/booth/hook-easy-a/v3-2.jpg"
@@ -577,7 +577,7 @@
      "look": "v4",
      "note": "V1 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-easy-a/v4.pdf",
-     "pdfKb": 115,
+     "pdfKb": 112,
      "jpg": [
       "/assets/print/booth/hook-easy-a/v4-1.jpg",
       "/assets/print/booth/hook-easy-a/v4-2.jpg"
@@ -596,7 +596,7 @@
      "look": "v5",
      "note": "V2 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-easy-a/v5.pdf",
-     "pdfKb": 115,
+     "pdfKb": 112,
      "jpg": [
       "/assets/print/booth/hook-easy-a/v5-1.jpg",
       "/assets/print/booth/hook-easy-a/v5-2.jpg"
@@ -615,7 +615,7 @@
      "look": "v6",
      "note": "V3 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-easy-a/v6.pdf",
-     "pdfKb": 114,
+     "pdfKb": 111,
      "jpg": [
       "/assets/print/booth/hook-easy-a/v6-1.jpg",
       "/assets/print/booth/hook-easy-a/v6-2.jpg"
@@ -651,7 +651,7 @@
      "look": "v1",
      "note": "Navy: the question big, the drawing, and the QR. The back lists the passes.",
      "pdf": "/assets/print/booth/hook-workload/v1.pdf",
-     "pdfKb": 161,
+     "pdfKb": 166,
      "jpg": [
       "/assets/print/booth/hook-workload/v1-1.jpg",
       "/assets/print/booth/hook-workload/v1-2.jpg"
@@ -670,7 +670,7 @@
      "look": "v2",
      "note": "Light paper: the question big with the accent word in brand blue, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-workload/v2.pdf",
-     "pdfKb": 162,
+     "pdfKb": 166,
      "jpg": [
       "/assets/print/booth/hook-workload/v2-1.jpg",
       "/assets/print/booth/hook-workload/v2-2.jpg"
@@ -689,7 +689,7 @@
      "look": "v3",
      "note": "V2 in blue: the question big, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-workload/v3.pdf",
-     "pdfKb": 156,
+     "pdfKb": 162,
      "jpg": [
       "/assets/print/booth/hook-workload/v3-1.jpg",
       "/assets/print/booth/hook-workload/v3-2.jpg"
@@ -708,7 +708,7 @@
      "look": "v4",
      "note": "V1 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-workload/v4.pdf",
-     "pdfKb": 118,
+     "pdfKb": 115,
      "jpg": [
       "/assets/print/booth/hook-workload/v4-1.jpg",
       "/assets/print/booth/hook-workload/v4-2.jpg"
@@ -727,7 +727,7 @@
      "look": "v5",
      "note": "V2 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-workload/v5.pdf",
-     "pdfKb": 118,
+     "pdfKb": 115,
      "jpg": [
       "/assets/print/booth/hook-workload/v5-1.jpg",
       "/assets/print/booth/hook-workload/v5-2.jpg"
@@ -746,7 +746,7 @@
      "look": "v6",
      "note": "V3 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-workload/v6.pdf",
-     "pdfKb": 117,
+     "pdfKb": 114,
      "jpg": [
       "/assets/print/booth/hook-workload/v6-1.jpg",
       "/assets/print/booth/hook-workload/v6-2.jpg"
@@ -782,7 +782,7 @@
      "look": "v1",
      "note": "Navy: the question big, the drawing, and the QR. The back lists the passes.",
      "pdf": "/assets/print/booth/hook-chill/v1.pdf",
-     "pdfKb": 179,
+     "pdfKb": 184,
      "jpg": [
       "/assets/print/booth/hook-chill/v1-1.jpg",
       "/assets/print/booth/hook-chill/v1-2.jpg"
@@ -801,7 +801,7 @@
      "look": "v2",
      "note": "Light paper: the question big with the accent word in brand blue, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-chill/v2.pdf",
-     "pdfKb": 196,
+     "pdfKb": 201,
      "jpg": [
       "/assets/print/booth/hook-chill/v2-1.jpg",
       "/assets/print/booth/hook-chill/v2-2.jpg"
@@ -820,7 +820,7 @@
      "look": "v3",
      "note": "V2 in blue: the question big, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-chill/v3.pdf",
-     "pdfKb": 175,
+     "pdfKb": 180,
      "jpg": [
       "/assets/print/booth/hook-chill/v3-1.jpg",
       "/assets/print/booth/hook-chill/v3-2.jpg"
@@ -839,7 +839,7 @@
      "look": "v4",
      "note": "V1 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-chill/v4.pdf",
-     "pdfKb": 120,
+     "pdfKb": 117,
      "jpg": [
       "/assets/print/booth/hook-chill/v4-1.jpg",
       "/assets/print/booth/hook-chill/v4-2.jpg"
@@ -858,7 +858,7 @@
      "look": "v5",
      "note": "V2 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-chill/v5.pdf",
-     "pdfKb": 120,
+     "pdfKb": 117,
      "jpg": [
       "/assets/print/booth/hook-chill/v5-1.jpg",
       "/assets/print/booth/hook-chill/v5-2.jpg"
@@ -877,7 +877,7 @@
      "look": "v6",
      "note": "V3 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-chill/v6.pdf",
-     "pdfKb": 120,
+     "pdfKb": 116,
      "jpg": [
       "/assets/print/booth/hook-chill/v6-1.jpg",
       "/assets/print/booth/hook-chill/v6-2.jpg"
@@ -913,7 +913,7 @@
      "look": "v1",
      "note": "Navy: the question big, the drawing, and the QR. The back lists the passes.",
      "pdf": "/assets/print/booth/hook-strict/v1.pdf",
-     "pdfKb": 179,
+     "pdfKb": 184,
      "jpg": [
       "/assets/print/booth/hook-strict/v1-1.jpg",
       "/assets/print/booth/hook-strict/v1-2.jpg"
@@ -932,7 +932,7 @@
      "look": "v2",
      "note": "Light paper: the question big with the accent word in brand blue, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-strict/v2.pdf",
-     "pdfKb": 191,
+     "pdfKb": 196,
      "jpg": [
       "/assets/print/booth/hook-strict/v2-1.jpg",
       "/assets/print/booth/hook-strict/v2-2.jpg"
@@ -951,7 +951,7 @@
      "look": "v3",
      "note": "V2 in blue: the question big, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-strict/v3.pdf",
-     "pdfKb": 174,
+     "pdfKb": 179,
      "jpg": [
       "/assets/print/booth/hook-strict/v3-1.jpg",
       "/assets/print/booth/hook-strict/v3-2.jpg"
@@ -970,7 +970,7 @@
      "look": "v4",
      "note": "V1 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-strict/v4.pdf",
-     "pdfKb": 118,
+     "pdfKb": 115,
      "jpg": [
       "/assets/print/booth/hook-strict/v4-1.jpg",
       "/assets/print/booth/hook-strict/v4-2.jpg"
@@ -989,7 +989,7 @@
      "look": "v5",
      "note": "V2 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-strict/v5.pdf",
-     "pdfKb": 118,
+     "pdfKb": 115,
      "jpg": [
       "/assets/print/booth/hook-strict/v5-1.jpg",
       "/assets/print/booth/hook-strict/v5-2.jpg"
@@ -1008,7 +1008,7 @@
      "look": "v6",
      "note": "V3 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-strict/v6.pdf",
-     "pdfKb": 117,
+     "pdfKb": 114,
      "jpg": [
       "/assets/print/booth/hook-strict/v6-1.jpg",
       "/assets/print/booth/hook-strict/v6-2.jpg"
@@ -1044,7 +1044,7 @@
      "look": "v1",
      "note": "Navy: the question big, the drawing, and the QR. The back lists the passes.",
      "pdf": "/assets/print/booth/hook-worried/v1.pdf",
-     "pdfKb": 159,
+     "pdfKb": 164,
      "jpg": [
       "/assets/print/booth/hook-worried/v1-1.jpg",
       "/assets/print/booth/hook-worried/v1-2.jpg"
@@ -1063,7 +1063,7 @@
      "look": "v2",
      "note": "Light paper: the question big with the accent word in brand blue, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-worried/v2.pdf",
-     "pdfKb": 158,
+     "pdfKb": 162,
      "jpg": [
       "/assets/print/booth/hook-worried/v2-1.jpg",
       "/assets/print/booth/hook-worried/v2-2.jpg"
@@ -1082,7 +1082,7 @@
      "look": "v3",
      "note": "V2 in blue: the question big, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-worried/v3.pdf",
-     "pdfKb": 155,
+     "pdfKb": 160,
      "jpg": [
       "/assets/print/booth/hook-worried/v3-1.jpg",
       "/assets/print/booth/hook-worried/v3-2.jpg"
@@ -1101,7 +1101,7 @@
      "look": "v4",
      "note": "V1 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-worried/v4.pdf",
-     "pdfKb": 118,
+     "pdfKb": 115,
      "jpg": [
       "/assets/print/booth/hook-worried/v4-1.jpg",
       "/assets/print/booth/hook-worried/v4-2.jpg"
@@ -1120,7 +1120,7 @@
      "look": "v5",
      "note": "V2 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-worried/v5.pdf",
-     "pdfKb": 118,
+     "pdfKb": 115,
      "jpg": [
       "/assets/print/booth/hook-worried/v5-1.jpg",
       "/assets/print/booth/hook-worried/v5-2.jpg"
@@ -1139,7 +1139,7 @@
      "look": "v6",
      "note": "V3 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-worried/v6.pdf",
-     "pdfKb": 117,
+     "pdfKb": 114,
      "jpg": [
       "/assets/print/booth/hook-worried/v6-1.jpg",
       "/assets/print/booth/hook-worried/v6-2.jpg"
@@ -1175,7 +1175,7 @@
      "look": "v1",
      "note": "Navy: the question big, the drawing, and the QR. The back lists the passes.",
      "pdf": "/assets/print/booth/hook-eight-am/v1.pdf",
-     "pdfKb": 176,
+     "pdfKb": 181,
      "jpg": [
       "/assets/print/booth/hook-eight-am/v1-1.jpg",
       "/assets/print/booth/hook-eight-am/v1-2.jpg"
@@ -1194,7 +1194,7 @@
      "look": "v2",
      "note": "Light paper: the question big with the accent word in brand blue, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-eight-am/v2.pdf",
-     "pdfKb": 188,
+     "pdfKb": 193,
      "jpg": [
       "/assets/print/booth/hook-eight-am/v2-1.jpg",
       "/assets/print/booth/hook-eight-am/v2-2.jpg"
@@ -1213,7 +1213,7 @@
      "look": "v3",
      "note": "V2 in blue: the question big, the drawing, and the QR.",
      "pdf": "/assets/print/booth/hook-eight-am/v3.pdf",
-     "pdfKb": 171,
+     "pdfKb": 176,
      "jpg": [
       "/assets/print/booth/hook-eight-am/v3-1.jpg",
       "/assets/print/booth/hook-eight-am/v3-2.jpg"
@@ -1232,7 +1232,7 @@
      "look": "v4",
      "note": "V1 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-eight-am/v4.pdf",
-     "pdfKb": 117,
+     "pdfKb": 113,
      "jpg": [
       "/assets/print/booth/hook-eight-am/v4-1.jpg",
       "/assets/print/booth/hook-eight-am/v4-2.jpg"
@@ -1251,7 +1251,7 @@
      "look": "v5",
      "note": "V2 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-eight-am/v5.pdf",
-     "pdfKb": 117,
+     "pdfKb": 113,
      "jpg": [
       "/assets/print/booth/hook-eight-am/v5-1.jpg",
       "/assets/print/booth/hook-eight-am/v5-2.jpg"
@@ -1270,7 +1270,7 @@
      "look": "v6",
      "note": "V3 with less: the question, one line, the QR. No drawing.",
      "pdf": "/assets/print/booth/hook-eight-am/v6.pdf",
-     "pdfKb": 116,
+     "pdfKb": 112,
      "jpg": [
       "/assets/print/booth/hook-eight-am/v6-1.jpg",
       "/assets/print/booth/hook-eight-am/v6-2.jpg"
