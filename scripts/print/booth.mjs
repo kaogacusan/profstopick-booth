@@ -53,6 +53,8 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 const [SEM, , GRAD] = F.passes;
 const MAIN = F.passes.find((p) => p.main);
 const ORDER = [MAIN, ...F.passes.filter((p) => !p.main)];
+// the flyer backs: every pass the same, by price (no main pass first)
+const BY_PRICE = F.passes;
 const FREE = { name: F.free.name, price: F.free.price, per: '', about: `${F.free.lines.map((l, i) => (i ? l[0].toLowerCase() + l.slice(1) : l)).join(', ')}.` };
 
 // ======================================================================
@@ -325,13 +327,13 @@ const flyerBack = (v) => {
   const row = (p, j) => `<div style="display:flex;justify-content:space-between;align-items:center;gap:4mm;padding:3mm 0;${j ? `border-top:0.3mm solid ${k.rule}` : ''}">
       <div><div class="nw" style="font-size:4.4mm;font-weight:700;letter-spacing:-0.01em;color:${k.ink}">${p.name}</div>
         <div style="font-size:3.1mm;font-weight:500;line-height:1.3;margin-top:0.9mm;color:${k.sub}">${p.about}</div></div>
-      <div class="nw" style="text-align:right"><div class="d" style="font-size:9mm;color:${v1 && p.main ? k.hi : k.ink}">${p.price}</div>
+      <div class="nw" style="text-align:right"><div class="d" style="font-size:9mm;color:${k.ink}">${p.price}</div>
         <div style="font-size:2.9mm;font-weight:600;margin-top:0.8mm;color:${k.sub}">${p.per}</div></div></div>`;
   return `
     ${ground(v)}
     ${column(FM, FW, FH, `
       <div class="d nw" style="font-size:9mm;margin-left:-0.4mm;color:${k.ink}">${v1 ? 'Get the pass.' : `Get the ${hi(v, 'pass.')}`}</div>
-      <div style="border-top:0.3mm solid ${k.rule};border-bottom:0.3mm solid ${k.rule}">${ORDER.map(row).join('')}</div>
+      <div style="border-top:0.3mm solid ${k.rule};border-bottom:0.3mm solid ${k.rule}">${BY_PRICE.map(row).join('')}</div>
       <div>${label(v, 'What you get')}${featureGrid(v)}</div>
       <div style="padding:3mm 3.6mm;border-radius:1.2mm;font-size:3.3mm;font-weight:600;line-height:1.35;color:${k.ink};${v1 ? `background:${k.card};border:0.3mm solid ${k.rule}` : `background:${v === 'v2' ? C.tint : k.well}`}">${F.booth}</div>
       <div class="m nw" style="font-size:3mm;color:${k.sub}">${F.site}</div>`)}`;
@@ -375,12 +377,12 @@ const simpleFlyerBack = (v) => {
   const k = LOOK[v];
   const row = (p, j) => `<div style="display:flex;justify-content:space-between;align-items:baseline;padding:3.4mm 0 2.6mm;${j ? `border-top:0.3mm solid ${k.rule}` : ''}">
     <span class="nw" style="font-size:4.8mm;font-weight:700;letter-spacing:-0.01em;color:${k.ink}">${p.name}</span>
-    <span class="d nw" style="font-size:${p.main ? 12 : 9}mm;color:${p.main ? k.hi : k.ink}">${p.price}</span></div>`;
+    <span class="d nw" style="font-size:9mm;color:${k.ink}">${p.price}</span></div>`;
   return `
     ${ground(v)}
     ${column(FM, FW, FH, `
       <div class="d nw" style="font-size:9mm;margin-left:-0.4mm;color:${k.ink}">Get the ${hi(v, 'pass.')}</div>
-      <div style="border-top:0.3mm solid ${k.rule};border-bottom:0.3mm solid ${k.rule}">${ORDER.map(row).join('')}</div>
+      <div style="border-top:0.3mm solid ${k.rule};border-bottom:0.3mm solid ${k.rule}">${BY_PRICE.map(row).join('')}</div>
       <div>${label(v, 'What you get')}${featureGrid(v, { card: false, size: 3.8 })}</div>
       <div style="font-size:3.8mm;font-weight:600;line-height:1.4;color:${k.ink}">${F.booth}</div>
       <div class="m nw" style="font-size:3mm;color:${k.sub}">${F.site}</div>`)}`;
