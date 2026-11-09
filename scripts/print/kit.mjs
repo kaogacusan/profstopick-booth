@@ -121,8 +121,8 @@ export const FAQ = [
 // How to make a sale, in four steps (the team, Nov 9). On the staff FAQ and the sales script.
 export const SALE_STEPS = [
   ['Talk to them.', 'Show them why profstopick is good for them this enlistment.'],
-  ['Bring them to the booth.', 'This is a must. If you let them go, they will not come back to pay.'],
-  ['Get them to pay.', 'Cash, or they scan the GCash QR. Do not let them leave easily.'],
+  ['Bring them to the booth.', 'Ask them to come with you to the booth. If you let them go, they will not come back to pay.'],
+  ['Get them to pay.', 'Cash, or they scan the GCash QR. Try to not let them go easily.'],
   ['Give them the voucher.', 'Write the code on the back of the pass card for their pass. No code? Ask Prince.'],
 ];
 
@@ -142,7 +142,7 @@ export const SCRIPT = [
     ['do', 'Let them search their prof on the laptop.'],
     ['you', '₱99 for a semester, ₱150 for a year, or ₱250 until you graduate. Cash or GCash?'],
     ['do', 'Write the code on the back of their pass card and give it. No code? Ask Prince.'],
-  ], 'Don’t let them leave easily. Help them redeem the code right there.'],
+  ], 'Try to not let them go easily. Help them redeem the code right there.'],
 ];
 
 // What to say back, short. [what they say, what you say]. Anything else: the Booth FAQ.
