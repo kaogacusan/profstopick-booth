@@ -616,48 +616,42 @@ const faq = {
 };
 
 // ======================================================================
-// Sales script, A4, two pages. Onboarding for the booth team: the four sale steps, then what to say at each step,
-// then what to say back. Words: SALE_STEPS, SCRIPT, OBJECTIONS in kit.mjs.
+// Sales script, A4, one page. Onboarding for the booth team: ask 1 or 2 questions, bring them to the booth, sell
+// at the laptop. Short lines only. Words: SCRIPT and OBJECTIONS in kit.mjs.
 // ======================================================================
-const scriptPage = (i) => {
+const scriptPage = () => {
   const M = 15, CW = PW - 2 * M;
-  const kick = (t, style = '') => `<div class="m" style="font-size:3mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:2.6mm;${style}">${t}</div>`;
-  const WHO = { you: 'You say', yes: 'If yes', no: 'If no', do: 'Do' };
-  const line = ([who, t]) => `<div style="display:grid;grid-template-columns:15mm 1fr;gap:3mm;align-items:baseline;margin-top:1.8mm">
-      <span class="m nw" style="font-size:2.7mm;font-weight:600;color:${who === 'you' ? C.accent : C.ink2}">${WHO[who]}</span>
-      ${who === 'do' ? `<span style="font-size:3.3mm;font-weight:600;line-height:1.4;color:${C.ink2}">${t}</span>`
-        : `<span style="font-size:3.5mm;font-weight:${who === 'you' ? 600 : 500};line-height:1.4;color:${C.ink}">“${t}”</span>`}</div>`;
-  const step = ([title, why, lines, tip], n) => `<div style="display:grid;grid-template-columns:9mm 1fr;gap:3mm;padding:3mm 0 3.2mm;border-top:0.25mm solid ${C.line}">
-      <span class="d" style="font-size:7mm;line-height:1;color:${C.accent}">${n + 1}</span>
-      <div><div class="nw" style="font-size:4.4mm;font-weight:700;letter-spacing:-0.01em;color:${C.ink}">${title}</div>
-        <div style="font-size:3.2mm;font-weight:500;margin-top:0.8mm;color:${C.ink2}">${why}</div>
+  const kick = (t) => `<div class="m" style="font-size:3.2mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:3mm">${t}</div>`;
+  const line = ([who, t]) => `<div style="display:grid;grid-template-columns:17mm 1fr;gap:3mm;align-items:baseline;margin-top:2.4mm">
+      <span class="m nw" style="font-size:3mm;font-weight:600;color:${who === 'you' ? C.accent : C.ink2}">${who === 'you' ? 'You say' : 'Do'}</span>
+      ${who === 'you' ? `<span style="font-size:4.3mm;font-weight:600;line-height:1.36;color:${C.ink}">“${t}”</span>`
+        : `<span style="font-size:4mm;font-weight:600;line-height:1.38;color:${C.ink2}">${t}</span>`}</div>`;
+  const step = ([title, why, lines, tip], n) => `<div style="display:grid;grid-template-columns:11mm 1fr;gap:4mm;padding:4.2mm 0 4.4mm;border-top:0.3mm solid ${C.line}">
+      <span class="d" style="font-size:10mm;line-height:1;color:${C.accent}">${n + 1}</span>
+      <div><div class="nw" style="font-size:6mm;font-weight:700;letter-spacing:-0.015em;color:${C.ink}">${title}</div>
+        <div style="font-size:3.6mm;font-weight:500;margin-top:1mm;color:${C.ink2}">${why}</div>
         ${lines.map(line).join('')}
-        <div style="margin-top:2.4mm;padding:1.6mm 2.6mm;background:${C.tint};border-radius:1mm;font-size:3.1mm;font-weight:600;line-height:1.35;color:${C.ink}"><span class="m" style="color:${C.accent};margin-right:1.6mm">Tip</span>${tip}</div></div></div>`;
-  const said = ([q, a]) => `<div style="display:grid;grid-template-columns:52mm 1fr;gap:6mm;padding:1.8mm 0 2mm;border-top:0.25mm solid ${C.line}">
-      <div style="font-size:3.4mm;font-weight:700;line-height:1.3;color:${C.ink}">“${q}”</div>
-      <div style="font-size:3.3mm;font-weight:500;line-height:1.4;color:${C.ink}">“${a}”</div></div>`;
-  const body = i === 0
-    ? `<div style="display:flex;justify-content:space-between;align-items:flex-end">
-        <div><div class="d nw" style="font-size:10mm;color:${C.ink}">Sales script</div>
-          <div style="font-size:3.6mm;font-weight:500;margin-top:2mm;color:${C.ink2}">For the booth team. What to say to bring in a sale. Use your own words.</div></div>
-        ${lockup(5.6, LOGO.v2)}</div>
-      <div style="margin-top:6mm;border:0.25mm solid ${C.line};border-radius:1.6mm;padding:4mm 5mm">${kick('The four steps')}${saleSteps(3.4)}</div>
-      <div style="margin-top:7mm">${kick('What to say, step by step')}${SCRIPT.slice(0, 3).map(step).join('')}</div>`
-    : `<div style="display:flex;justify-content:space-between;align-items:center">
-        <div class="d nw" style="font-size:7mm;color:${C.ink}">Sales script, continued</div>${lockup(4.6, LOGO.v2)}</div>
-      <div style="margin-top:6mm">${SCRIPT.slice(3).map((x, j) => step(x, j + 3)).join('')}</div>
-      <div style="margin-top:5mm">${kick('If they say')}${OBJECTIONS.map(said).join('')}</div>`;
+        <div style="margin-top:3mm;padding:2mm 3.2mm;background:${C.tint};border-radius:1.2mm;font-size:3.5mm;font-weight:600;line-height:1.35;color:${C.ink}"><span class="m" style="color:${C.accent};margin-right:2mm">Tip</span>${tip}</div></div></div>`;
+  const said = ([q, a]) => `<div style="display:grid;grid-template-columns:52mm 1fr;gap:6mm;padding:2.2mm 0 2.4mm;border-top:0.3mm solid ${C.line}">
+      <div style="font-size:3.8mm;font-weight:700;line-height:1.3;color:${C.ink}">“${q}”</div>
+      <div style="font-size:3.8mm;font-weight:500;line-height:1.38;color:${C.ink}">“${a}”</div></div>`;
   return `
     <div class="fill" style="background:#fff"></div>
-    <div class="abs" style="left:${M}mm;top:${M}mm;width:${CW}mm">${body}</div>
-    <div class="abs m nw" style="left:${M}mm;bottom:${M}mm;width:${CW}mm;border-top:0.25mm solid ${C.line};padding-top:2.6mm;display:flex;justify-content:space-between;font-size:2.9mm;color:${C.ink2}">
-      <span>${i === 0 ? 'More on the back.' : 'Questions you cannot answer: check the Booth FAQ, or ask Prince.'}</span><span>${i + 1} / 2</span></div>`;
+    <div class="abs" style="left:${M}mm;top:${M}mm;width:${CW}mm">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end">
+        <div><div class="d nw" style="font-size:11mm;color:${C.ink}">Sales script</div>
+          <div style="font-size:3.8mm;font-weight:500;margin-top:2.2mm;color:${C.ink2}">Keep it short. Ask 1 or 2 questions, then bring them to the booth.</div></div>
+        ${lockup(6, LOGO.v2)}</div>
+      <div style="margin-top:6mm">${SCRIPT.map(step).join('')}</div>
+      <div style="margin-top:6mm">${kick('If they say')}${OBJECTIONS.map(said).join('')}</div>
+    </div>
+    <div class="abs m nw" style="left:${M}mm;bottom:${M}mm;width:${CW}mm;border-top:0.3mm solid ${C.line};padding-top:2.8mm;font-size:3mm;color:${C.ink2}">Anything else: check the Booth FAQ, or ask Prince.</div>`;
 };
 
 const script = {
-  id: 'script', piece: 'faq', name: 'Sales script', size: 'A4, 210 × 297 mm, two pages', mm: [PW, PH], pages: ['Script, page 1', 'Script, page 2'],
-  print: 'Plain paper, A4, both sides (or two sheets). For the team: read it before your shift. Not for visitors.',
-  versions: [{ id: 'v1', look: 'staff', note: 'White, two pages: the four sale steps, what to say at each step, and what to say back.', html: scriptPage }],
+  id: 'script', piece: 'faq', name: 'Sales script', size: 'A4, 210 × 297 mm', mm: [PW, PH], pages: ['Script'],
+  print: 'Plain paper, A4. For the team: read it before your shift. Not for visitors.',
+  versions: [{ id: 'v1', look: 'staff', note: 'White, one page: ask 1 or 2 questions, bring them to the booth, sell at the laptop, and short answers.', html: scriptPage }],
 };
 
 // every ₱ in Inter (see peso() in kit.mjs). Its bars reach right, so keep the kit's small gap after it.

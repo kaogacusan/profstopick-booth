@@ -1774,34 +1774,30 @@
    "id": "script",
    "piece": "faq",
    "name": "Sales script",
-   "size": "A4, 210 × 297 mm, two pages",
+   "size": "A4, 210 × 297 mm",
    "mm": [
     210,
     297
    ],
    "pages": [
-    "Script, page 1",
-    "Script, page 2"
+    "Script"
    ],
-   "print": "Plain paper, A4, both sides (or two sheets). For the team: read it before your shift. Not for visitors.",
+   "print": "Plain paper, A4. For the team: read it before your shift. Not for visitors.",
    "versions": [
     {
      "id": "v1",
      "look": "staff",
-     "note": "White, two pages: the four sale steps, what to say at each step, and what to say back.",
+     "note": "White, one page: ask 1 or 2 questions, bring them to the booth, sell at the laptop, and short answers.",
      "pdf": "/assets/print/booth/script/v1.pdf",
-     "pdfKb": 315,
+     "pdfKb": 188,
      "jpg": [
-      "/assets/print/booth/script/v1-1.jpg",
-      "/assets/print/booth/script/v1-2.jpg"
+      "/assets/print/booth/script/v1-1.jpg"
      ],
      "m": [
-      "/assets/print/booth/script/v1-1.m.jpg",
-      "/assets/print/booth/script/v1-2.m.jpg"
+      "/assets/print/booth/script/v1-1.m.jpg"
      ],
      "t": [
-      "/assets/print/booth/script/v1-1.t.jpg",
-      "/assets/print/booth/script/v1-2.t.jpg"
+      "/assets/print/booth/script/v1-1.t.jpg"
      ]
     }
    ]

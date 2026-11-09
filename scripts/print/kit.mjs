@@ -126,48 +126,30 @@ export const SALE_STEPS = [
   ['Give them the voucher.', 'Write the code on the back of the pass card for their pass. No code? Ask Prince.'],
 ];
 
-// The sales script (onboarding for the team): what to say, step by step, then what to say back.
-// Each step: [title, what it is for, [lines to say], tip]. A line is [who, words]; who = 'you', 'yes', 'no', or 'do'.
+// The sales script (onboarding for the team). Short on purpose: people walking by do not want a speech.
+// Ask 1 or 2 questions, then bring them to the booth. The laptop does the selling.
+// Each step: [title, what it is for, [lines], tip]. A line is [who, words]; who = 'you' or 'do'.
 export const SCRIPT = [
-  ['Open with enlistment', 'Everyone has enlistment on their mind. Start there.', [
-    ['you', 'Hi! Enlistment season na, diba? Have you picked your profs yet?'],
-    ['yes', 'Nice. How did you pick them?'],
-    ['no', 'Same, it’s stressful. That’s exactly why we made this.'],
-  ], 'Smile and ask their name. Keep it light.'],
-  ['Find the pain', 'Get them to say the Facebook group is hard to use.', [
-    ['you', 'Are you in the Profs to Pick Facebook group?'],
-    ['yes', 'Diba, it’s so hard to use? You scroll through so many posts and read every comment just to get a feel for one prof. It takes forever.'],
-    ['no', 'That’s where students post about their profs. But you’d have to scroll through hundreds of posts and comments to find one prof.'],
-  ], 'Let them agree. Nod. Most people have felt this.'],
-  ['Show the fix', 'Hand them a flyer, then paint the picture.', [
-    ['do', 'Give them a flyer.'],
-    ['you', 'What if you could search your prof in seconds? You see right away if they give easy A’s, if the workload is heavy, if they’re strict.'],
-    ['you', 'We collected all the reviews and built stats for every prof. You just type a name or a course code.'],
-  ], 'Ask which prof they are thinking of. That’s your way to the booth.'],
-  ['Bring them to the booth', 'This is a must. If they leave now, they will not come back.', [
-    ['you', 'Who’s your prof? Come, let’s look them up on the laptop. It takes one minute.'],
-    ['do', 'Walk with them to the booth. Let them type the search themselves.'],
-  ], 'Seeing their own prof is the moment that sells. Don’t skip it.'],
-  ['Ask them to pay', 'Make it easy to say yes. Don’t let them leave easily.', [
-    ['you', 'Reviews are free. A pass gives you unlimited AI advisor asks, for who to take and when.'],
-    ['you', 'It’s ₱99 for a semester, ₱150 for a year, or ₱250 until you graduate. Which one fits you?'],
-    ['you', 'Cash or GCash? Here’s the QR.'],
-  ], 'Ask how long they need it, then let them choose. Wait for the payment to come in.'],
-  ['Give the voucher', 'Finish the sale and show them how to use it.', [
-    ['do', 'Write the code on the back of the pass card for their pass. No code? Ask Prince.'],
-    ['you', 'Here’s your code. Go to profstopick.com/pass, sign in, and type it under “Have a code”. Let’s do it now.'],
-  ], 'Thank them, and ask them to tell their blockmates.'],
+  ['Ask 1 or 2 questions', 'Keep it short. They are walking by.', [
+    ['you', 'Hi! Enlistment na, diba? Have you picked your profs yet?'],
+    ['you', 'Do you use the Profs to Pick Facebook group? So much scrolling, diba?'],
+  ], 'Smile. If they stop and answer, go to step 2.'],
+  ['Bring them to the booth', 'That is the whole goal. Do not explain everything.', [
+    ['you', 'We made a site with stats for every prof: easy A’s, workload, if they’re strict. Come check out our booth, let’s look up your prof!'],
+    ['do', 'Walk with them to the booth.'],
+  ], 'If you let them go, they will not come back.'],
+  ['At the booth', 'Let them see their own prof, then ask them to pay.', [
+    ['do', 'Let them search their prof on the laptop.'],
+    ['you', '₱99 for a semester, ₱150 for a year, or ₱250 until you graduate. Cash or GCash?'],
+    ['do', 'Write the code on the back of their pass card and give it. No code? Ask Prince.'],
+  ], 'Don’t let them leave easily. Help them redeem the code right there.'],
 ];
 
-// What to say back when they push back. [what they say, what you say]
+// What to say back, short. [what they say, what you say]. Anything else: the Booth FAQ.
 export const OBJECTIONS = [
-  ['I’ll come back later.', 'Sure, but it only takes a minute, and I’ve got the code ready now. Let me show you while you’re here.'],
-  ['I’ll just use the Facebook group.', 'You can, but it’s slow. We already read all of it for you and turned it into stats for each prof.'],
-  ['Is it free?', 'Yes. Reviews, ratings, and the schedule builder are free. The pass adds unlimited AI advisor asks.'],
-  ['It’s too expensive.', '₱99 covers your whole semester. And if it’s not for you, you get a full refund within 7 days.'],
-  ['I don’t like AI.', 'Fair. Our AI runs on our own PC at home, not in a data center. And everything else works without it.'],
-  ['Is it okay to use the Facebook posts?', 'We don’t copy the posts. Every review is de-identified first: names, profile links, and anything that could identify the writer are removed.'],
-  ['I’m not enlisting this term.', 'No problem. Do you have a friend or blockmate who is? Here’s a flyer for them.'],
+  ['I’ll come back later.', 'It only takes a minute. Let’s look up your prof now.'],
+  ['Is it free?', 'Reviews are free. The pass adds unlimited AI advisor asks.'],
+  ['I don’t like AI.', 'It runs on our own PC at home, not in a data center. And the rest works without it.'],
 ];
 
 // Real links. Every QR on every print goes to `home` (one QR for the whole booth). Test it on 2 phones before you print.
