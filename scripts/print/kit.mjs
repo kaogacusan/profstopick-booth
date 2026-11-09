@@ -114,7 +114,7 @@ export const FAQ = [
   ['Paying and the code', [
     ['How do I pay?', `${F.pay[0].toUpperCase()}${F.pay.slice(1)}, here at the booth. Online payment is not on yet. For GCash or Maya, check that the payment came in before you write the code.`],
     ['How do I use my code?', 'The code is written on the back of the pass card. Scan the QR or type profstopick.com, make an account, then go to profstopick.com/pass, type the code under “Have a code”, and tap Redeem.'],
-    ['The QR or code does not work.', 'QR: type profstopick.com. Code: check that they are signed in and that the code matches the card, then type it again. Still stuck: tell Prince.'],
+    ['The QR or code does not work.', '“Give us your email, the one you use to sign up on profstopick, and we’ll add the pass to your account.”'],
   ], 1],
 ];
 
