@@ -1752,9 +1752,9 @@
     {
      "id": "v1",
      "look": "staff",
-     "note": "White, two pages: the prices, the site, reviews and privacy; then the passes, the AI advisor, paying, and the steps after every sale.",
+     "note": "White, two pages: the prices, the site, reviews and privacy; then the passes, the AI advisor, paying, and how to make a sale.",
      "pdf": "/assets/print/booth/faq/v1.pdf",
-     "pdfKb": 187,
+     "pdfKb": 209,
      "jpg": [
       "/assets/print/booth/faq/v1-1.jpg",
       "/assets/print/booth/faq/v1-2.jpg"
@@ -1766,6 +1766,42 @@
      "t": [
       "/assets/print/booth/faq/v1-1.t.jpg",
       "/assets/print/booth/faq/v1-2.t.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "script",
+   "piece": "faq",
+   "name": "Sales script",
+   "size": "A4, 210 × 297 mm, two pages",
+   "mm": [
+    210,
+    297
+   ],
+   "pages": [
+    "Script, page 1",
+    "Script, page 2"
+   ],
+   "print": "Plain paper, A4, both sides (or two sheets). For the team: read it before your shift. Not for visitors.",
+   "versions": [
+    {
+     "id": "v1",
+     "look": "staff",
+     "note": "White, two pages: the four sale steps, what to say at each step, and what to say back.",
+     "pdf": "/assets/print/booth/script/v1.pdf",
+     "pdfKb": 315,
+     "jpg": [
+      "/assets/print/booth/script/v1-1.jpg",
+      "/assets/print/booth/script/v1-2.jpg"
+     ],
+     "m": [
+      "/assets/print/booth/script/v1-1.m.jpg",
+      "/assets/print/booth/script/v1-2.m.jpg"
+     ],
+     "t": [
+      "/assets/print/booth/script/v1-1.t.jpg",
+      "/assets/print/booth/script/v1-2.t.jpg"
      ]
     }
    ]

@@ -3,7 +3,7 @@
 // Words come from F in kit.mjs only. Looks: v1 Navy card, v2 Paper, v3 Blue (v2's layout, v3's colors), and
 // v4–v6, the same three with less (LOOK in kit.mjs). One QR on every print: profstopick.com.
 // Every ₱ goes through peso() at the end (Onest has no ₱, so it is set in Inter on purpose).
-import { C, F, URLS, HOOKS, FAQ, LOOK, margin, word, wordCom, badge, lockup, art, confetti, qrTile, peso } from './kit.mjs';
+import { C, F, URLS, HOOKS, FAQ, SALE_STEPS, SCRIPT, OBJECTIONS, LOOK, margin, word, wordCom, badge, lockup, art, confetti, qrTile, peso } from './kit.mjs';
 
 // ---------- small helpers ----------
 const at = (x, y, inner, style = '', cls = '') => `<div class="abs ${cls}" style="left:${x}mm;top:${y}mm;${style}">${inner}</div>`;
@@ -570,12 +570,17 @@ const hookFlyers = HOOKS.map((h) => ({
 // Page 1: the prices, the site, reviews and privacy. Page 2: the passes, the AI advisor, paying and the code,
 // and what to do after every sale. Words: FAQ in kit.mjs.
 // ======================================================================
+// the four sale steps (SALE_STEPS), two by two, numbered
+const saleSteps = (size) => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:${(size * 0.9).toFixed(2)}mm 8mm">${SALE_STEPS.map(([t, d], j) => `
+  <div style="display:flex;gap:${(size * 0.8).toFixed(2)}mm;line-height:1.35;color:${C.ink}"><span class="d" style="font-size:${(size * 1.5).toFixed(2)}mm;line-height:1;color:${C.accent}">${j + 1}</span>
+    <div><div style="font-size:${size}mm;font-weight:700">${t}</div><div style="font-size:${(size * 0.95).toFixed(2)}mm;font-weight:500;margin-top:0.6mm;color:${C.ink2}">${d}</div></div></div>`).join('')}</div>`;
+
 const faqPage = (i) => {
   const M = 15, CW = PW - 2 * M;
-  const row = ([q, a]) => `<div style="display:grid;grid-template-columns:48mm 1fr;gap:6mm;padding:2.2mm 0 2.4mm;border-top:0.25mm solid ${C.line}">
+  const row = ([q, a]) => `<div style="display:grid;grid-template-columns:48mm 1fr;gap:6mm;padding:1.9mm 0 2.1mm;border-top:0.25mm solid ${C.line}">
     <div style="font-size:3.4mm;font-weight:700;line-height:1.3;color:${C.ink}">${q}</div>
     <div style="font-size:3.3mm;font-weight:500;line-height:1.4;color:${C.ink}">${a}</div></div>`;
-  const section = ([title, list]) => `<div style="margin-top:7mm">
+  const section = ([title, list]) => `<div style="margin-top:6mm">
     <div class="m" style="font-size:3mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:2.4mm">${title}</div>
     ${list.map(row).join('')}</div>`;
   const price = (p) => `<div style="flex:1;border:0.25mm solid ${C.line};border-radius:1.4mm;padding:2.4mm 3.2mm">
@@ -589,12 +594,11 @@ const faqPage = (i) => {
       <div style="display:flex;gap:2.6mm;margin-top:6mm">${[{ name: F.free.name, price: F.free.price }, SEM, MAIN, GRAD].map(price).join('')}</div>`
     : `<div style="display:flex;justify-content:space-between;align-items:center">
         <div class="d nw" style="font-size:7mm;color:${C.ink}">Booth FAQ, continued</div>${lockup(4.6, LOGO.v2)}</div>`;
-  const steps = ['Check that the payment came in.', 'Write a code on the back of the card for that pass: 1 semester, 1 year, or Graduation.', 'Give the card and show them how to redeem it.', 'Log the sale and how they found us.'];
   const foot = i === 0
     ? `<div class="abs" style="left:${M}mm;bottom:${M}mm;width:${CW}mm;border-top:0.25mm solid ${C.line};padding-top:2.6mm;display:flex;justify-content:space-between;font-size:2.9mm;color:${C.ink2}" class="nw"><span>More on the back.</span><span class="m">1 / 2</span></div>`
     : `<div class="abs" style="left:${M}mm;bottom:${M}mm;width:${CW}mm;border-top:0.5mm solid ${C.ink};padding-top:3.4mm">
-        <div class="m" style="font-size:3mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:2.4mm">After every sale</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.4mm 8mm">${steps.map((t, j) => `<div style="display:flex;gap:2.4mm;font-size:3.3mm;font-weight:600;line-height:1.35;color:${C.ink}"><span class="d" style="color:${C.accent}">${j + 1}</span><span>${t}</span></div>`).join('')}</div>
+        <div class="m" style="font-size:3mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:2.6mm">How to make a sale</div>
+        ${saleSteps(3.3)}
         <div class="m nw" style="display:flex;justify-content:space-between;margin-top:4mm;font-size:2.9mm;color:${C.ink2}"><span>${F.email} · ${F.ig}</span><span>2 / 2</span></div></div>`;
   return `
     <div class="fill" style="background:#fff"></div>
@@ -608,7 +612,52 @@ const faqPage = (i) => {
 const faq = {
   id: 'faq', piece: 'faq', name: 'Staff FAQ', size: 'A4, 210 × 297 mm, two pages', mm: [PW, PH], pages: ['FAQ, page 1', 'FAQ, page 2'],
   print: 'Plain paper, A4, both sides (or two sheets). For the team: keep one behind the table. Not for visitors.',
-  versions: [{ id: 'v1', look: 'staff', note: 'White, two pages: the prices, the site, reviews and privacy; then the passes, the AI advisor, paying, and the steps after every sale.', html: faqPage }],
+  versions: [{ id: 'v1', look: 'staff', note: 'White, two pages: the prices, the site, reviews and privacy; then the passes, the AI advisor, paying, and how to make a sale.', html: faqPage }],
+};
+
+// ======================================================================
+// Sales script, A4, two pages. Onboarding for the booth team: the four sale steps, then what to say at each step,
+// then what to say back. Words: SALE_STEPS, SCRIPT, OBJECTIONS in kit.mjs.
+// ======================================================================
+const scriptPage = (i) => {
+  const M = 15, CW = PW - 2 * M;
+  const kick = (t, style = '') => `<div class="m" style="font-size:3mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:2.6mm;${style}">${t}</div>`;
+  const WHO = { you: 'You say', yes: 'If yes', no: 'If no', do: 'Do' };
+  const line = ([who, t]) => `<div style="display:grid;grid-template-columns:15mm 1fr;gap:3mm;align-items:baseline;margin-top:1.8mm">
+      <span class="m nw" style="font-size:2.7mm;font-weight:600;color:${who === 'you' ? C.accent : C.ink2}">${WHO[who]}</span>
+      ${who === 'do' ? `<span style="font-size:3.3mm;font-weight:600;line-height:1.4;color:${C.ink2}">${t}</span>`
+        : `<span style="font-size:3.5mm;font-weight:${who === 'you' ? 600 : 500};line-height:1.4;color:${C.ink}">“${t}”</span>`}</div>`;
+  const step = ([title, why, lines, tip], n) => `<div style="display:grid;grid-template-columns:9mm 1fr;gap:3mm;padding:3mm 0 3.2mm;border-top:0.25mm solid ${C.line}">
+      <span class="d" style="font-size:7mm;line-height:1;color:${C.accent}">${n + 1}</span>
+      <div><div class="nw" style="font-size:4.4mm;font-weight:700;letter-spacing:-0.01em;color:${C.ink}">${title}</div>
+        <div style="font-size:3.2mm;font-weight:500;margin-top:0.8mm;color:${C.ink2}">${why}</div>
+        ${lines.map(line).join('')}
+        <div style="margin-top:2.4mm;padding:1.6mm 2.6mm;background:${C.tint};border-radius:1mm;font-size:3.1mm;font-weight:600;line-height:1.35;color:${C.ink}"><span class="m" style="color:${C.accent};margin-right:1.6mm">Tip</span>${tip}</div></div></div>`;
+  const said = ([q, a]) => `<div style="display:grid;grid-template-columns:52mm 1fr;gap:6mm;padding:1.8mm 0 2mm;border-top:0.25mm solid ${C.line}">
+      <div style="font-size:3.4mm;font-weight:700;line-height:1.3;color:${C.ink}">“${q}”</div>
+      <div style="font-size:3.3mm;font-weight:500;line-height:1.4;color:${C.ink}">“${a}”</div></div>`;
+  const body = i === 0
+    ? `<div style="display:flex;justify-content:space-between;align-items:flex-end">
+        <div><div class="d nw" style="font-size:10mm;color:${C.ink}">Sales script</div>
+          <div style="font-size:3.6mm;font-weight:500;margin-top:2mm;color:${C.ink2}">For the booth team. What to say to bring in a sale. Use your own words.</div></div>
+        ${lockup(5.6, LOGO.v2)}</div>
+      <div style="margin-top:6mm;border:0.25mm solid ${C.line};border-radius:1.6mm;padding:4mm 5mm">${kick('The four steps')}${saleSteps(3.4)}</div>
+      <div style="margin-top:7mm">${kick('What to say, step by step')}${SCRIPT.slice(0, 3).map(step).join('')}</div>`
+    : `<div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="d nw" style="font-size:7mm;color:${C.ink}">Sales script, continued</div>${lockup(4.6, LOGO.v2)}</div>
+      <div style="margin-top:6mm">${SCRIPT.slice(3).map((x, j) => step(x, j + 3)).join('')}</div>
+      <div style="margin-top:5mm">${kick('If they say')}${OBJECTIONS.map(said).join('')}</div>`;
+  return `
+    <div class="fill" style="background:#fff"></div>
+    <div class="abs" style="left:${M}mm;top:${M}mm;width:${CW}mm">${body}</div>
+    <div class="abs m nw" style="left:${M}mm;bottom:${M}mm;width:${CW}mm;border-top:0.25mm solid ${C.line};padding-top:2.6mm;display:flex;justify-content:space-between;font-size:2.9mm;color:${C.ink2}">
+      <span>${i === 0 ? 'More on the back.' : 'Questions you cannot answer: check the Booth FAQ, or ask Prince.'}</span><span>${i + 1} / 2</span></div>`;
+};
+
+const script = {
+  id: 'script', piece: 'faq', name: 'Sales script', size: 'A4, 210 × 297 mm, two pages', mm: [PW, PH], pages: ['Script, page 1', 'Script, page 2'],
+  print: 'Plain paper, A4, both sides (or two sheets). For the team: read it before your shift. Not for visitors.',
+  versions: [{ id: 'v1', look: 'staff', note: 'White, two pages: the four sale steps, what to say at each step, and what to say back.', html: scriptPage }],
 };
 
 // every ₱ in Inter (see peso() in kit.mjs). Its bars reach right, so keep the kit's small gap after it.
@@ -616,5 +665,5 @@ const withPeso = (asset) => ({ ...asset, versions: asset.versions.map((v) => ({ 
 
 export default {
   page: 'booth',
-  assets: [banner, qrSign, prices, flyer, ...hookFlyers, card, cardFor('semester'), cardFor('graduation'), cardBackPrint, faq].map(withPeso),
+  assets: [banner, qrSign, prices, flyer, ...hookFlyers, card, cardFor('semester'), cardFor('graduation'), cardBackPrint, faq, script].map(withPeso),
 };

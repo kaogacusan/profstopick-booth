@@ -89,12 +89,13 @@ export const FAQ = [
   // Report pt. 2, Challenge 02: Data Privacy and Scraping. /privacy: "we do not sell anything". /terms: take down while we look.
   ['Reviews and privacy', [
     ['Where do the reviews come from?', 'Mostly the Profs to Pick Facebook group, where students post about their profs. Students can also post reviews on the site.'],
+    // source: the team (Nov 9)
+    ['Why not just use the Facebook group?', 'The group is slow. You scroll through so many posts and read so many comments just to get a feel for one prof. We collected all of it and built statistics for each prof, so you see right away if they give easy A’s, if the workload is heavy, if they are strict, and more.'],
     ['Are you just copying the Facebook posts?', 'No. We do not republish Facebook posts, and we do not build profiles on the students who wrote them. We turn the reviews into information about the prof: workload, grading fairness, and whether a 4.0 is attainable.'],
     ['Is it anonymous?', 'Yes. Every review is de-identified before it goes up. No one can see who wrote it, and nothing on the site links back to the person.'],
     ['What do you remove?', 'Reviewer names and usernames, profile links, phone numbers and emails, student IDs and tags, any mention that could identify the reviewer, unrelated personal details, and outside links.'],
     ['How is it cleaned?', 'Every review goes through automated cleaning, then a manual check, before it is published. Then it is scored on workload, grading fairness, and 4.0 attainability.'],
-    ['Is that legal?', 'We follow the Data Privacy Act of 2012 (RA 10173): we keep only what we need to describe the prof, and we strip out personal information.'],
-    ['Do you sell data?', 'No. We sell no data, to anyone.'],
+    ['Is that legal? Do you sell data?', 'We follow the Data Privacy Act of 2012 (RA 10173). We keep only what we need to describe the prof and strip out personal information. We sell no data, to anyone.'],
     ['I wrote a review, or one is about me.', `Message ${F.email} or ${F.ig}. We take it down while we check.`],
   ], 0],
   ['Free or paid', [
@@ -115,6 +116,58 @@ export const FAQ = [
     ['How do I use my code?', 'The code is written on the back of the pass card. Scan the QR or type profstopick.com, make an account, then go to profstopick.com/pass, type the code under “Have a code”, and tap Redeem.'],
     ['The QR or code does not work.', 'QR: type profstopick.com. Code: check that they are signed in and that the code matches the card, then type it again. Still stuck: tell Prince.'],
   ], 1],
+];
+
+// How to make a sale, in four steps (the team, Nov 9). On the staff FAQ and the sales script.
+export const SALE_STEPS = [
+  ['Talk to them.', 'Show them why profstopick is good for them this enlistment.'],
+  ['Bring them to the booth.', 'This is a must. If you let them go, they will not come back to pay.'],
+  ['Get them to pay.', 'Cash, or they scan the GCash QR. Do not let them leave easily.'],
+  ['Give them the voucher.', 'Write the code on the back of the pass card for their pass. No code? Ask Prince.'],
+];
+
+// The sales script (onboarding for the team): what to say, step by step, then what to say back.
+// Each step: [title, what it is for, [lines to say], tip]. A line is [who, words]; who = 'you', 'yes', 'no', or 'do'.
+export const SCRIPT = [
+  ['Open with enlistment', 'Everyone has enlistment on their mind. Start there.', [
+    ['you', 'Hi! Enlistment season na, diba? Have you picked your profs yet?'],
+    ['yes', 'Nice. How did you pick them?'],
+    ['no', 'Same, it’s stressful. That’s exactly why we made this.'],
+  ], 'Smile and ask their name. Keep it light.'],
+  ['Find the pain', 'Get them to say the Facebook group is hard to use.', [
+    ['you', 'Are you in the Profs to Pick Facebook group?'],
+    ['yes', 'Diba, it’s so hard to use? You scroll through so many posts and read every comment just to get a feel for one prof. It takes forever.'],
+    ['no', 'That’s where students post about their profs. But you’d have to scroll through hundreds of posts and comments to find one prof.'],
+  ], 'Let them agree. Nod. Most people have felt this.'],
+  ['Show the fix', 'Hand them a flyer, then paint the picture.', [
+    ['do', 'Give them a flyer.'],
+    ['you', 'What if you could search your prof in seconds? You see right away if they give easy A’s, if the workload is heavy, if they’re strict.'],
+    ['you', 'We collected all the reviews and built stats for every prof. You just type a name or a course code.'],
+  ], 'Ask which prof they are thinking of. That’s your way to the booth.'],
+  ['Bring them to the booth', 'This is a must. If they leave now, they will not come back.', [
+    ['you', 'Who’s your prof? Come, let’s look them up on the laptop. It takes one minute.'],
+    ['do', 'Walk with them to the booth. Let them type the search themselves.'],
+  ], 'Seeing their own prof is the moment that sells. Don’t skip it.'],
+  ['Ask them to pay', 'Make it easy to say yes. Don’t let them leave easily.', [
+    ['you', 'Reviews are free. A pass gives you unlimited AI advisor asks, for who to take and when.'],
+    ['you', 'It’s ₱99 for a semester, ₱150 for a year, or ₱250 until you graduate. Which one fits you?'],
+    ['you', 'Cash or GCash? Here’s the QR.'],
+  ], 'Ask how long they need it, then let them choose. Wait for the payment to come in.'],
+  ['Give the voucher', 'Finish the sale and show them how to use it.', [
+    ['do', 'Write the code on the back of the pass card for their pass. No code? Ask Prince.'],
+    ['you', 'Here’s your code. Go to profstopick.com/pass, sign in, and type it under “Have a code”. Let’s do it now.'],
+  ], 'Thank them, and ask them to tell their blockmates.'],
+];
+
+// What to say back when they push back. [what they say, what you say]
+export const OBJECTIONS = [
+  ['I’ll come back later.', 'Sure, but it only takes a minute, and I’ve got the code ready now. Let me show you while you’re here.'],
+  ['I’ll just use the Facebook group.', 'You can, but it’s slow. We already read all of it for you and turned it into stats for each prof.'],
+  ['Is it free?', 'Yes. Reviews, ratings, and the schedule builder are free. The pass adds unlimited AI advisor asks.'],
+  ['It’s too expensive.', '₱99 covers your whole semester. And if it’s not for you, you get a full refund within 7 days.'],
+  ['I don’t like AI.', 'Fair. Our AI runs on our own PC at home, not in a data center. And everything else works without it.'],
+  ['Is it okay to use the Facebook posts?', 'We don’t copy the posts. Every review is de-identified first: names, profile links, and anything that could identify the writer are removed.'],
+  ['I’m not enlisting this term.', 'No problem. Do you have a friend or blockmate who is? Here’s a flyer for them.'],
 ];
 
 // Real links. Every QR on every print goes to `home` (one QR for the whole booth). Test it on 2 phones before you print.
