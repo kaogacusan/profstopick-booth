@@ -86,7 +86,7 @@ export const FAQ = [
     ['Is it from Ateneo?', 'No. Students run it. It is not part of any school.'],
     ['Which schools?', 'Ateneo, UPD, DLSU, and Mapúa.'],
     ['What does a score mean?', 'It sums up how students feel about the prof. It is not a grade. Few comments: read the comments. No comments: no score.'],
-    ['How do I find my prof?', 'Search a surname or a course code, like MATH 30.23. Always check section times in the official enlistment system.'],
+    ['How do I find my prof?', 'Search a surname or a course code, like MATH 30.23.'],
   ], 0],
   // Report pt. 2, Challenge 02: Data Privacy and Scraping. /privacy: "we do not sell anything". /terms: take down while we look.
   ['Reviews and privacy', [
