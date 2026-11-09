@@ -94,11 +94,11 @@ export const FAQ = [
     // source: the team (Nov 9)
     ['Why not just use the Facebook group?', 'The group is slow. You scroll through so many posts and read so many comments just to get a feel for one prof. We collected all of it and built statistics for each prof, so you see right away if they give easy A’s, if the workload is heavy, if they are strict, and more.'],
     ['Are you just copying the Facebook posts?', 'No. We do not republish Facebook posts, and we do not build profiles on the students who wrote them. We turn the reviews into information about the prof: workload, grading fairness, and whether a 4.0 is attainable.'],
-    ['What about data privacy? Is it anonymous?', 'Yes. Every review is de-identified before it goes up. No one can see who wrote it, and nothing on the site links back to the person.'],
-    ['What do you remove?', 'Reviewer names and usernames, profile links, phone numbers and emails, student IDs and tags, any mention that could identify the reviewer, unrelated personal details, and outside links.'],
-    ['How is it cleaned?', 'Every review goes through automated cleaning, then a manual check, before it is published. Then it is scored on workload, grading fairness, and 4.0 attainability.'],
+    ['For data privacy, is it anonymous?', 'Yes. Every review is de-identified before it goes up. No one can see who wrote it, and nothing on the site links back to the person.'],
+    ['For data privacy, what data did you remove?', 'Reviewer names and usernames, profile links, phone numbers and emails, student IDs and tags, any mention that could identify the reviewer, unrelated personal details, and outside links.'],
+    ['For data privacy, how did you clean the data?', 'Every review goes through automated cleaning, then a manual check, before it is published. Then it is scored on workload, grading fairness, and 4.0 attainability.'],
     ['Is that legal? Do you sell data?', 'We follow the Data Privacy Act of 2012 (RA 10173). We keep only what we need to describe the prof and strip out personal information. We sell no data, to anyone.'],
-    ['I wrote a review, or one is about me.', `Message ${F.email} or ${F.ig}. We take it down while we check.`],
+    ['Can I get a review removed?', `Message ${F.email} or ${F.ig}. We take it down while we check.`],
   ], 0],
   ['Free or paid', [
     ['Is it free?', `Yes. Reviews, ratings, and the basic schedule builder are free. Free gets ${F.free.lines[2]}.`],
