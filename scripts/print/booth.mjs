@@ -566,38 +566,49 @@ const hookFlyers = HOOKS.map((h) => ({
 }));
 
 // ======================================================================
-// Staff FAQ, A4. For the team at the booth, not for visitors. White, one version. Words: FAQ in kit.mjs.
+// Staff FAQ, A4, two pages (print both sides). For the team at the booth, not for visitors. White, one version.
+// Page 1: the prices, the site, reviews and privacy. Page 2: the passes, the AI advisor, paying and the code,
+// and what to do after every sale. Words: FAQ in kit.mjs.
 // ======================================================================
-const faqPage = () => {
-  const M = 13, CW = PW - 2 * M;
-  const row = ([q, a]) => `<div style="display:grid;grid-template-columns:44mm 1fr;gap:5mm;padding:1.15mm 0 1.25mm;border-top:0.25mm solid ${C.line}">
-    <div style="font-size:3.1mm;font-weight:700;line-height:1.26;color:${C.ink}">${q}</div>
-    <div style="font-size:3.05mm;font-weight:500;line-height:1.3;color:${C.ink}">${a}</div></div>`;
-  const section = ([title, list]) => `<div style="margin-top:3.2mm">
-    <div class="m" style="font-size:2.9mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:1.4mm">${title}</div>
+const faqPage = (i) => {
+  const M = 15, CW = PW - 2 * M;
+  const row = ([q, a]) => `<div style="display:grid;grid-template-columns:48mm 1fr;gap:6mm;padding:2.2mm 0 2.4mm;border-top:0.25mm solid ${C.line}">
+    <div style="font-size:3.4mm;font-weight:700;line-height:1.3;color:${C.ink}">${q}</div>
+    <div style="font-size:3.3mm;font-weight:500;line-height:1.4;color:${C.ink}">${a}</div></div>`;
+  const section = ([title, list]) => `<div style="margin-top:7mm">
+    <div class="m" style="font-size:3mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:2.4mm">${title}</div>
     ${list.map(row).join('')}</div>`;
-  const price = (p) => `<div style="flex:1;border:0.25mm solid ${C.line};border-radius:1.4mm;padding:1.8mm 3mm">
-    <div class="nw" style="font-size:3mm;font-weight:600;color:${C.ink2}">${p.name}</div>
-    <div class="d nw" style="font-size:6mm;margin-top:0.8mm;color:${C.ink}">${p.price}</div></div>`;
+  const price = (p) => `<div style="flex:1;border:0.25mm solid ${C.line};border-radius:1.4mm;padding:2.4mm 3.2mm">
+    <div class="nw" style="font-size:3.1mm;font-weight:600;color:${C.ink2}">${p.name}</div>
+    <div class="d nw" style="font-size:6.6mm;margin-top:1mm;color:${C.ink}">${p.price}</div></div>`;
+  const head = i === 0
+    ? `<div style="display:flex;justify-content:space-between;align-items:flex-end">
+        <div><div class="d nw" style="font-size:10mm;color:${C.ink}">Booth FAQ</div>
+          <div style="font-size:3.6mm;font-weight:500;margin-top:2mm;color:${C.ink2}">For staff. What visitors ask, and what to say.</div></div>
+        ${lockup(5.6, LOGO.v2)}</div>
+      <div style="display:flex;gap:2.6mm;margin-top:6mm">${[{ name: F.free.name, price: F.free.price }, SEM, MAIN, GRAD].map(price).join('')}</div>`
+    : `<div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="d nw" style="font-size:7mm;color:${C.ink}">Booth FAQ, continued</div>${lockup(4.6, LOGO.v2)}</div>`;
+  const steps = ['Check that the payment came in.', 'Write a code on the back of the card for that pass: 1 semester, 1 year, or Graduation.', 'Give the card and show them how to redeem it.', 'Log the sale and how they found us.'];
+  const foot = i === 0
+    ? `<div class="abs" style="left:${M}mm;bottom:${M}mm;width:${CW}mm;border-top:0.25mm solid ${C.line};padding-top:2.6mm;display:flex;justify-content:space-between;font-size:2.9mm;color:${C.ink2}" class="nw"><span>More on the back.</span><span class="m">1 / 2</span></div>`
+    : `<div class="abs" style="left:${M}mm;bottom:${M}mm;width:${CW}mm;border-top:0.5mm solid ${C.ink};padding-top:3.4mm">
+        <div class="m" style="font-size:3mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:2.4mm">After every sale</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.4mm 8mm">${steps.map((t, j) => `<div style="display:flex;gap:2.4mm;font-size:3.3mm;font-weight:600;line-height:1.35;color:${C.ink}"><span class="d" style="color:${C.accent}">${j + 1}</span><span>${t}</span></div>`).join('')}</div>
+        <div class="m nw" style="display:flex;justify-content:space-between;margin-top:4mm;font-size:2.9mm;color:${C.ink2}"><span>${F.email} · ${F.ig}</span><span>2 / 2</span></div></div>`;
   return `
     <div class="fill" style="background:#fff"></div>
     <div class="abs" style="left:${M}mm;top:${M}mm;width:${CW}mm">
-      <div style="display:flex;justify-content:space-between;align-items:flex-end">
-        <div><div class="d nw" style="font-size:9mm;color:${C.ink}">Booth FAQ</div>
-          <div style="font-size:3.4mm;font-weight:500;margin-top:1.6mm;color:${C.ink2}">For staff. What visitors ask, and what to say.</div></div>
-        ${lockup(5.6, LOGO.v2)}</div>
-      <div style="display:flex;gap:2.6mm;margin-top:4mm">${[{ name: F.free.name, price: F.free.price }, SEM, MAIN, GRAD].map(price).join('')}</div>
-      ${FAQ.map(section).join('')}
+      ${head}
+      ${FAQ.filter((x) => x[2] === i).map(section).join('')}
     </div>
-    <div class="abs" style="left:${M}mm;bottom:${M}mm;width:${CW}mm;border-top:0.5mm solid ${C.ink};padding-top:2.6mm;display:flex;justify-content:space-between;align-items:baseline;gap:6mm">
-      <div style="font-size:3.2mm;font-weight:700;line-height:1.35;color:${C.ink}">After every sale: write a code on the back of the card for that pass (1 semester, 1 year, or Graduation), give it, then log the sale and how they found us.</div>
-      <div class="m nw" style="font-size:2.8mm;color:${C.ink2}">${F.ig}</div></div>`;
+    ${foot}`;
 };
 
 const faq = {
-  id: 'faq', piece: 'faq', name: 'Staff FAQ', size: 'A4, 210 × 297 mm', mm: [PW, PH], pages: ['FAQ'],
-  print: 'Plain paper, A4. For the team: keep one behind the table. Not for visitors.',
-  versions: [{ id: 'v1', look: 'staff', note: 'White page: the prices, then each common question with what to say, including the AI advisor.', html: faqPage }],
+  id: 'faq', piece: 'faq', name: 'Staff FAQ', size: 'A4, 210 × 297 mm, two pages', mm: [PW, PH], pages: ['FAQ, page 1', 'FAQ, page 2'],
+  print: 'Plain paper, A4, both sides (or two sheets). For the team: keep one behind the table. Not for visitors.',
+  versions: [{ id: 'v1', look: 'staff', note: 'White, two pages: the prices, the site, reviews and privacy; then the passes, the AI advisor, paying, and the steps after every sale.', html: faqPage }],
 };
 
 // every ₱ in Inter (see peso() in kit.mjs). Its bars reach right, so keep the kit's small gap after it.

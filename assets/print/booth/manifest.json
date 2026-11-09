@@ -1738,30 +1738,34 @@
    "id": "faq",
    "piece": "faq",
    "name": "Staff FAQ",
-   "size": "A4, 210 × 297 mm",
+   "size": "A4, 210 × 297 mm, two pages",
    "mm": [
     210,
     297
    ],
    "pages": [
-    "FAQ"
+    "FAQ, page 1",
+    "FAQ, page 2"
    ],
-   "print": "Plain paper, A4. For the team: keep one behind the table. Not for visitors.",
+   "print": "Plain paper, A4, both sides (or two sheets). For the team: keep one behind the table. Not for visitors.",
    "versions": [
     {
      "id": "v1",
      "look": "staff",
-     "note": "White page: the prices, then each common question with what to say, including the AI advisor.",
+     "note": "White, two pages: the prices, the site, reviews and privacy; then the passes, the AI advisor, paying, and the steps after every sale.",
      "pdf": "/assets/print/booth/faq/v1.pdf",
-     "pdfKb": 150,
+     "pdfKb": 187,
      "jpg": [
-      "/assets/print/booth/faq/v1-1.jpg"
+      "/assets/print/booth/faq/v1-1.jpg",
+      "/assets/print/booth/faq/v1-2.jpg"
      ],
      "m": [
-      "/assets/print/booth/faq/v1-1.m.jpg"
+      "/assets/print/booth/faq/v1-1.m.jpg",
+      "/assets/print/booth/faq/v1-2.m.jpg"
      ],
      "t": [
-      "/assets/print/booth/faq/v1-1.t.jpg"
+      "/assets/print/booth/faq/v1-1.t.jpg",
+      "/assets/print/booth/faq/v1-2.t.jpg"
      ]
     }
    ]

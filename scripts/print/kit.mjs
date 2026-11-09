@@ -73,39 +73,48 @@ export const HOOKS = [
   { id: 'eight-am', q: 'Hate\n*8 AM*\nclasses?', size: 17, art: ['spot', 'enlistment-rush-spot'] },
 ];
 
-// Staff FAQ (A4, for the team, not for visitors): what people ask at the booth, and what to say.
-// From the live site (/pass, /help, /about, /privacy, /terms) and the All Info file. [section, [[question, answer], ...]]
+// Staff FAQ (A4, two pages, for the team, not for visitors): what people ask at the booth, and what to say.
+// From the live site (/pass, /help, /about, /privacy, /terms), the All Info file, and the Business Preparation
+// Report pt. 2 (pricing matrix, Challenge 01 account sharing, Challenge 02 data privacy and scraping).
+// [section, [[question, answer], ...], page]  page 0 = front, 1 = back.
 const P = Object.fromEntries(F.passes.map((p) => [p.id, p]));
 export const FAQ = [
   ['The site', [
     ['What is profstopick?', 'A site for enlistment, made by students. Prof reviews, grading statistics, live section schedules, a schedule builder, and an AI advisor.'],
     ['Is it from Ateneo?', 'No. Students run it. It is not part of any school.'],
     ['Which schools?', 'Ateneo and UP Diliman: reviews and section schedules. Mapúa and De La Salle: reviews only, for now.'],
-    // source: the user (Nov 7): the reviews come from the Profs to Pick Facebook group. Site comments: /terms.
-    ['Where do the reviews come from?', 'The Profs to Pick Facebook group, where students post about their profs. Students can also post on the site. We check every review before it shows.'],
-    // All Info "Privacy and scraping" + /privacy ("we do not sell anything") + /terms (take down while we look)
-    ['What about privacy?', 'Reviews are de-identified first: we remove names, profile links, phone numbers, emails, student IDs, and outside links. We sell no data. This follows the Data Privacy Act. A review about you? We take it down while we check.'],
     ['What does a score mean?', 'It sums up how students feel about the prof. It is not a grade. Few comments: read the comments. No comments: no score.'],
     ['How do I find my prof?', 'Search a surname or a course code, like MATH 30.23. Always check section times in the official enlistment system.'],
-  ]],
+  ], 0],
+  // Report pt. 2, Challenge 02: Data Privacy and Scraping. /privacy: "we do not sell anything". /terms: take down while we look.
+  ['Reviews and privacy', [
+    ['Where do the reviews come from?', 'Mostly the Profs to Pick Facebook group, where students post about their profs. Students can also post reviews on the site.'],
+    ['Are you just copying the Facebook posts?', 'No. We do not republish Facebook posts, and we do not build profiles on the students who wrote them. We turn the reviews into information about the prof: workload, grading fairness, and whether a 4.0 is attainable.'],
+    ['Is it anonymous?', 'Yes. Every review is de-identified before it goes up. No one can see who wrote it, and nothing on the site links back to the person.'],
+    ['What do you remove?', 'Reviewer names and usernames, profile links, phone numbers and emails, student IDs and tags, any mention that could identify the reviewer, unrelated personal details, and outside links.'],
+    ['How is it cleaned?', 'Every review goes through automated cleaning, then a manual check, before it is published. Then it is scored on workload, grading fairness, and 4.0 attainability.'],
+    ['Is that legal?', 'We follow the Data Privacy Act of 2012 (RA 10173): we keep only what we need to describe the prof, and we strip out personal information.'],
+    ['Do you sell data?', 'No. We sell no data, to anyone.'],
+    ['I wrote a review, or one is about me.', `Message ${F.email} or ${F.ig}. We take it down while we check.`],
+  ], 0],
   ['Free or paid', [
-    ['Is it free?', `Yes. Reviews, ratings, and the schedule builder are free. Free gets ${F.free.lines[2]}.`],
+    ['Is it free?', `Yes. Reviews, ratings, and the basic schedule builder are free. Free gets ${F.free.lines[2]}.`],
     ['What does a pass add?', 'Unlimited AI advisor asks. Ask who to take for a course. It answers from the reviews and the sections.'],
-    ['Which pass should I get?', `Ask how long they need it. ${P.semester.name} ${P.semester.price}: one enlistment. ${P.year.name} ${P.year.price}: two enlistments. ${P.graduation.name} ${P.graduation.price}: every enlistment until they graduate.`],
+    ['Which pass should I get?', `Ask how long they need it. ${P.semester.name} ${P.semester.price}: one term, plus a preview of the next. ${P.year.name} ${P.year.price}: two full semesters. ${P.graduation.name} ${P.graduation.price}: until they graduate, with the calendar and schedule exporter.`],
     ['I got a new phone.', 'Sign in on it. Remove the old one in Settings. The pass moves over.'],
     ['Can I get my money back?', `Yes. Full refund within 7 days. Message ${F.email} or ${F.ig}.`],
-  ]],
+  ], 1],
   // source: the team (Nov 9). The advisor is a locally hosted AI on the team's own PC, at home, reached remotely.
   ['The AI advisor', [
     ['Why is there AI?', 'It is one part of the site. Reviews, grading statistics, and the schedule builder work without it. The advisor only answers when you ask it.'],
     ['Isn’t AI bad for the environment?', 'Our AI is hosted locally. It runs on our own PC at home, which we reach remotely, not in a data center. It uses no data center resources, only our own PC’s.'],
     ['Where do my questions go?', 'To our own PC at home. Not to a big AI company’s servers.'],
-  ]],
+  ], 1],
   ['Paying and the code', [
-    ['How do I pay?', `${F.pay[0].toUpperCase()}${F.pay.slice(1)}, here at the booth. Online payment is not on yet.`],
+    ['How do I pay?', `${F.pay[0].toUpperCase()}${F.pay.slice(1)}, here at the booth. Online payment is not on yet. For GCash or Maya, check that the payment came in before you write the code.`],
     ['How do I use my code?', 'The code is written on the back of the pass card. Scan the QR or type profstopick.com, make an account, then go to profstopick.com/pass, type the code under “Have a code”, and tap Redeem.'],
     ['The QR or code does not work.', 'QR: type profstopick.com. Code: check that they are signed in and that the code matches the card, then type it again. Still stuck: tell Prince.'],
-  ]],
+  ], 1],
 ];
 
 // Real links. Every QR on every print goes to `home` (one QR for the whole booth). Test it on 2 phones before you print.
