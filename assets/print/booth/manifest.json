@@ -1751,9 +1751,9 @@
     {
      "id": "v1",
      "look": "staff",
-     "note": "White page: the prices, then each common question with what to say.",
+     "note": "White page: the prices, then each common question with what to say, including the AI advisor.",
      "pdf": "/assets/print/booth/faq/v1.pdf",
-     "pdfKb": 149,
+     "pdfKb": 150,
      "jpg": [
       "/assets/print/booth/faq/v1-1.jpg"
      ],

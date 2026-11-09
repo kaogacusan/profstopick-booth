@@ -91,14 +91,20 @@ export const FAQ = [
   ['Free or paid', [
     ['Is it free?', `Yes. Reviews, ratings, and the schedule builder are free. Free gets ${F.free.lines[2]}.`],
     ['What does a pass add?', 'Unlimited AI advisor asks. Ask who to take for a course. It answers from the reviews and the sections.'],
-    ['Which pass should I get?', `The ${P.year.name}: ${P.year.price} for two enlistments, ${P.year.month}. ${P.semester.name} ${P.semester.price}: one enlistment. ${P.graduation.name} ${P.graduation.price}: every enlistment until you graduate.`],
+    ['Which pass should I get?', `Ask how long they need it. ${P.semester.name} ${P.semester.price}: one enlistment. ${P.year.name} ${P.year.price}: two enlistments. ${P.graduation.name} ${P.graduation.price}: every enlistment until they graduate.`],
     ['I got a new phone.', 'Sign in on it. Remove the old one in Settings. The pass moves over.'],
     ['Can I get my money back?', `Yes. Full refund within 7 days. Message ${F.email} or ${F.ig}.`],
   ]],
+  // source: the team (Nov 9). The advisor is a locally hosted AI on the team's own PC, at home, reached remotely.
+  ['The AI advisor', [
+    ['Why is there AI?', 'It is one part of the site. Reviews, grading statistics, and the schedule builder work without it. The advisor only answers when you ask it.'],
+    ['Isn’t AI bad for the environment?', 'Our AI is hosted locally. It runs on our own PC at home, which we reach remotely, not in a data center. It uses no data center resources, only our own PC’s.'],
+    ['Where do my questions go?', 'To our own PC at home. Not to a big AI company’s servers.'],
+  ]],
   ['Paying and the code', [
     ['How do I pay?', `${F.pay[0].toUpperCase()}${F.pay.slice(1)}, here at the booth. Online payment is not on yet.`],
-    ['How do I use my code?', 'Scan the QR or type profstopick.com. Make an account. Go to profstopick.com/pass, type the code under “Have a code”, and tap Redeem.'],
-    ['The QR or code does not work.', 'QR: type profstopick.com. Code: check that they are signed in, then type it again. Still stuck: tell Prince.'],
+    ['How do I use my code?', 'The code is written on the back of the pass card. Scan the QR or type profstopick.com, make an account, then go to profstopick.com/pass, type the code under “Have a code”, and tap Redeem.'],
+    ['The QR or code does not work.', 'QR: type profstopick.com. Code: check that they are signed in and that the code matches the card, then type it again. Still stuck: tell Prince.'],
   ]],
 ];
 
