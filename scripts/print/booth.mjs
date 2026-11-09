@@ -599,6 +599,7 @@ const faqPage = (i) => {
     : `<div class="abs" style="left:${M}mm;bottom:${M}mm;width:${CW}mm;border-top:0.5mm solid ${C.ink};padding-top:3.4mm">
         <div class="m" style="font-size:3mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:2.6mm">How to make a sale</div>
         ${saleSteps(3.3)}
+        <div style="margin-top:3.4mm;padding:2.2mm 3.2mm;background:${C.tint};border-radius:1.2mm;font-size:3.4mm;font-weight:700;color:${C.ink}">After every sale, update the voucher code sheets tracker.</div>
         <div class="m nw" style="display:flex;justify-content:space-between;margin-top:4mm;font-size:2.9mm;color:${C.ink2}"><span>${F.email} · ${F.ig}</span><span>2 / 2</span></div></div>`;
   return `
     <div class="fill" style="background:#fff"></div>
