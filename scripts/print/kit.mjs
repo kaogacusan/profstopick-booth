@@ -101,8 +101,7 @@ export const FAQ = [
   ['Free or paid', [
     ['Is it free?', `Yes. Reviews, ratings, and the basic schedule builder are free. Free gets ${F.free.lines[2]}.`],
     ['What does a pass add?', 'Unlimited AI advisor asks. Ask who to take for a course. It answers from the reviews and the sections.'],
-    ['Which pass should I get?', `Ask how long they need it. ${P.semester.name} ${P.semester.price}: one term, plus a preview of the next. ${P.year.name} ${P.year.price}: two full semesters. ${P.graduation.name} ${P.graduation.price}: until they graduate, with the calendar and schedule exporter.`],
-    ['I got a new phone.', 'Sign in on it. Remove the old one in Settings. The pass moves over.'],
+    ['Which pass should I get?', `“If you want to try it out, get the ${P.semester.name}. But we recommend the ${P.year.name}, or the ${P.graduation.name}, which lasts your entire 4 years in Ateneo.”`],
     ['Can I get my money back?', `Yes. Full refund within 7 days. Message ${F.email} or ${F.ig}.`],
   ], 1],
   // source: the team (Nov 9). The advisor is a locally hosted AI on the team's own PC, at home, reached remotely.
