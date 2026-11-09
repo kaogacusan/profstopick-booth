@@ -80,9 +80,11 @@ export const HOOKS = [
 const P = Object.fromEntries(F.passes.map((p) => [p.id, p]));
 export const FAQ = [
   ['The site', [
-    ['What is profstopick?', 'A site for enlistment, made by students. Prof reviews, grading statistics, live section schedules, a schedule builder, and an AI advisor.'],
+    ['What is profstopick?', 'A site for enlistment. Prof reviews, grading statistics, live section schedules, a schedule builder, and an AI advisor.'],
+    // source: the team (Nov 9)
+    ['Who made it?', 'Gelo, a software developer who works at a software technology company with one of our members.'],
     ['Is it from Ateneo?', 'No. Students run it. It is not part of any school.'],
-    ['Which schools?', 'Ateneo and UP Diliman: reviews and section schedules. Mapúa and De La Salle: reviews only, for now.'],
+    ['Which schools?', 'Ateneo, UPD, DLSU, and Mapúa.'],
     ['What does a score mean?', 'It sums up how students feel about the prof. It is not a grade. Few comments: read the comments. No comments: no score.'],
     ['How do I find my prof?', 'Search a surname or a course code, like MATH 30.23. Always check section times in the official enlistment system.'],
   ], 0],
@@ -92,7 +94,7 @@ export const FAQ = [
     // source: the team (Nov 9)
     ['Why not just use the Facebook group?', 'The group is slow. You scroll through so many posts and read so many comments just to get a feel for one prof. We collected all of it and built statistics for each prof, so you see right away if they give easy A’s, if the workload is heavy, if they are strict, and more.'],
     ['Are you just copying the Facebook posts?', 'No. We do not republish Facebook posts, and we do not build profiles on the students who wrote them. We turn the reviews into information about the prof: workload, grading fairness, and whether a 4.0 is attainable.'],
-    ['Is it anonymous?', 'Yes. Every review is de-identified before it goes up. No one can see who wrote it, and nothing on the site links back to the person.'],
+    ['What about data privacy? Is it anonymous?', 'Yes. Every review is de-identified before it goes up. No one can see who wrote it, and nothing on the site links back to the person.'],
     ['What do you remove?', 'Reviewer names and usernames, profile links, phone numbers and emails, student IDs and tags, any mention that could identify the reviewer, unrelated personal details, and outside links.'],
     ['How is it cleaned?', 'Every review goes through automated cleaning, then a manual check, before it is published. Then it is scored on workload, grading fairness, and 4.0 attainability.'],
     ['Is that legal? Do you sell data?', 'We follow the Data Privacy Act of 2012 (RA 10173). We keep only what we need to describe the prof and strip out personal information. We sell no data, to anyone.'],
@@ -129,12 +131,13 @@ export const SALE_STEPS = [
 // Ask 1 or 2 questions, then bring them to the booth. The laptop does the selling.
 // Each step: [title, what it is for, [lines], tip]. A line is [who, words]; who = 'you' or 'do'.
 export const SCRIPT = [
-  ['Ask 1 or 2 questions', 'Keep it short. They are walking by.', [
-    ['you', 'Hi! Enlistment na, diba? Have you picked your profs yet?'],
-    ['you', 'Do you use the Profs to Pick Facebook group? So much scrolling, diba?'],
+  ['Ask 1 or 2 questions', 'Keep it short. They are walking by. Pick from these.', [
+    ['you', 'Did you know it’s enlistment season na on Thursday?'],
+    ['you', 'Are you in the Profs to Pick Facebook group?'],
+    ['you', 'Are you gonna choose your profs?'],
   ], 'Smile. If they stop and answer, go to step 2.'],
   ['Bring them to the booth', 'That is the whole goal. Do not explain everything.', [
-    ['you', 'We made a site with stats for every prof: easy A’s, workload, if they’re strict. Come check out our booth, let’s look up your prof!'],
+    ['you', 'We have a website with stats for every prof: easy A’s, workload, if they’re strict. Come check out our booth, we’ll show you how it works!'],
     ['do', 'Walk with them to the booth.'],
   ], 'If you let them go, they will not come back.'],
   ['At the booth', 'Let them see their own prof, then ask them to pay.', [
@@ -146,9 +149,10 @@ export const SCRIPT = [
 
 // What to say back, short. [what they say, what you say]. Anything else: the Booth FAQ.
 export const OBJECTIONS = [
-  ['I’ll come back later.', 'It only takes a minute. Let’s look up your prof now.'],
+  ['I’ll come back later.', 'It only takes a minute. This can literally decide if you get good grades for your next sem.'],
   ['Is it free?', 'Reviews are free. The pass adds unlimited AI advisor asks.'],
-  ['I don’t like AI.', 'It runs on our own PC at home, not in a data center. And the rest works without it.'],
+  ['I don’t like AI.', 'It runs on our own PC at home, not in a data center, so it doesn’t harm the environment.'],
+  ['Is my data safe? What about the Facebook posts?', 'Yes. Every review is anonymous. We remove names and anything that could identify who wrote it.'],
 ];
 
 // Real links. Every QR on every print goes to `home` (one QR for the whole booth). Test it on 2 phones before you print.

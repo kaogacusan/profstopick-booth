@@ -577,10 +577,10 @@ const saleSteps = (size) => `<div style="display:grid;grid-template-columns:1fr 
 
 const faqPage = (i) => {
   const M = 15, CW = PW - 2 * M;
-  const row = ([q, a]) => `<div style="display:grid;grid-template-columns:48mm 1fr;gap:6mm;padding:1.9mm 0 2.1mm;border-top:0.25mm solid ${C.line}">
+  const row = ([q, a]) => `<div style="display:grid;grid-template-columns:48mm 1fr;gap:6mm;padding:1.5mm 0 1.7mm;border-top:0.25mm solid ${C.line}">
     <div style="font-size:3.4mm;font-weight:700;line-height:1.3;color:${C.ink}">${q}</div>
     <div style="font-size:3.3mm;font-weight:500;line-height:1.4;color:${C.ink}">${a}</div></div>`;
-  const section = ([title, list]) => `<div style="margin-top:6mm">
+  const section = ([title, list]) => `<div style="margin-top:5mm">
     <div class="m" style="font-size:3mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:2.4mm">${title}</div>
     ${list.map(row).join('')}</div>`;
   const price = (p) => `<div style="flex:1;border:0.25mm solid ${C.line};border-radius:1.4mm;padding:2.4mm 3.2mm">
@@ -623,17 +623,17 @@ const faq = {
 const scriptPage = () => {
   const M = 15, CW = PW - 2 * M;
   const kick = (t) => `<div class="m" style="font-size:3.2mm;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${C.accent};margin-bottom:3mm">${t}</div>`;
-  const line = ([who, t]) => `<div style="display:grid;grid-template-columns:17mm 1fr;gap:3mm;align-items:baseline;margin-top:2.4mm">
+  const line = ([who, t]) => `<div style="display:grid;grid-template-columns:17mm 1fr;gap:3mm;align-items:baseline;margin-top:1.8mm">
       <span class="m nw" style="font-size:3mm;font-weight:600;color:${who === 'you' ? C.accent : C.ink2}">${who === 'you' ? 'You say' : 'Do'}</span>
-      ${who === 'you' ? `<span style="font-size:4.3mm;font-weight:600;line-height:1.36;color:${C.ink}">“${t}”</span>`
+      ${who === 'you' ? `<span style="font-size:4.1mm;font-weight:600;line-height:1.34;color:${C.ink}">“${t}”</span>`
         : `<span style="font-size:4mm;font-weight:600;line-height:1.38;color:${C.ink2}">${t}</span>`}</div>`;
-  const step = ([title, why, lines, tip], n) => `<div style="display:grid;grid-template-columns:11mm 1fr;gap:4mm;padding:4.2mm 0 4.4mm;border-top:0.3mm solid ${C.line}">
+  const step = ([title, why, lines, tip], n) => `<div style="display:grid;grid-template-columns:11mm 1fr;gap:4mm;padding:3.2mm 0 3.4mm;border-top:0.3mm solid ${C.line}">
       <span class="d" style="font-size:10mm;line-height:1;color:${C.accent}">${n + 1}</span>
       <div><div class="nw" style="font-size:6mm;font-weight:700;letter-spacing:-0.015em;color:${C.ink}">${title}</div>
         <div style="font-size:3.6mm;font-weight:500;margin-top:1mm;color:${C.ink2}">${why}</div>
         ${lines.map(line).join('')}
-        <div style="margin-top:3mm;padding:2mm 3.2mm;background:${C.tint};border-radius:1.2mm;font-size:3.5mm;font-weight:600;line-height:1.35;color:${C.ink}"><span class="m" style="color:${C.accent};margin-right:2mm">Tip</span>${tip}</div></div></div>`;
-  const said = ([q, a]) => `<div style="display:grid;grid-template-columns:52mm 1fr;gap:6mm;padding:2.2mm 0 2.4mm;border-top:0.3mm solid ${C.line}">
+        <div style="margin-top:2.6mm;padding:1.8mm 3.2mm;background:${C.tint};border-radius:1.2mm;font-size:3.5mm;font-weight:600;line-height:1.35;color:${C.ink}"><span class="m" style="color:${C.accent};margin-right:2mm">Tip</span>${tip}</div></div></div>`;
+  const said = ([q, a]) => `<div style="display:grid;grid-template-columns:52mm 1fr;gap:6mm;padding:1.8mm 0 2mm;border-top:0.3mm solid ${C.line}">
       <div style="font-size:3.8mm;font-weight:700;line-height:1.3;color:${C.ink}">“${q}”</div>
       <div style="font-size:3.8mm;font-weight:500;line-height:1.38;color:${C.ink}">“${a}”</div></div>`;
   return `
@@ -643,8 +643,8 @@ const scriptPage = () => {
         <div><div class="d nw" style="font-size:11mm;color:${C.ink}">Sales script</div>
           <div style="font-size:3.8mm;font-weight:500;margin-top:2.2mm;color:${C.ink2}">Keep it short. Ask 1 or 2 questions, then bring them to the booth.</div></div>
         ${lockup(6, LOGO.v2)}</div>
-      <div style="margin-top:6mm">${SCRIPT.map(step).join('')}</div>
-      <div style="margin-top:6mm">${kick('If they say')}${OBJECTIONS.map(said).join('')}</div>
+      <div style="margin-top:5mm">${SCRIPT.map(step).join('')}</div>
+      <div style="margin-top:5mm">${kick('If they say')}${OBJECTIONS.map(said).join('')}</div>
     </div>
     <div class="abs m nw" style="left:${M}mm;bottom:${M}mm;width:${CW}mm;border-top:0.3mm solid ${C.line};padding-top:2.8mm;font-size:3mm;color:${C.ink2}">Anything else: check the Booth FAQ, or ask Prince.</div>`;
 };
